@@ -54,30 +54,12 @@ Welcome to the official source code for **Sai Gopal Mayur's Interactive Engineer
 
 ---
 
-## 💻 LOCAL DEVELOPMENT & EXECUTION
-
-To run and preview this portfolio locally on your machine:
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/saigopal9666/portfolio-website.git
-
-# 2. Navigate to the project directory
-cd portfolio-website
-
-# 3. Start a local Python HTTP web server
-python -m http.server 8090
-
-# 4. Open your browser at http://localhost:8090/
-```
-
----
-
-## 👨‍💻 ABOUT THE AUTHOR
+## 👨‍💻 ABOUT THE AUTHOR & CONTACT
 
 **Sai Gopal Mayur, MCA**  
 *Azure Data Engineer & GenAI Platform Architect*  
-* **Portfolio:** [saigopal9666.github.io/portfolio-website](https://saigopal9666.github.io/portfolio-website/)  
-* **GitHub:** [github.com/saigopal9666](https://github.com/saigopal9666)  
-* **Medium:** [medium.com/@ramgopal1992.m](https://medium.com/@ramgopal1992.m)  
-* **Email:** ramgopal1992.m@gmail.com  
+* 🌐 **Live Portfolio:** [saigopal9666.github.io/portfolio-website](https://saigopal9666.github.io/portfolio-website/)  
+* 🐙 **GitHub:** [github.com/saigopal9666](https://github.com/saigopal9666)  
+* 📰 **Medium Articles:** [medium.com/@ramgopal1992.m](https://medium.com/@ramgopal1992.m)  
+* 📧 **Email:** ramgopal1992.m@gmail.com  
+

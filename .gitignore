@@ -1,0 +1,19 @@
+# Security & Environment Variables
+.env
+*.env
+*.pem
+*.key
+credentials.json
+
+# Python Pycache & Compiled Files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Temporary Executables & Binaries
+*.exe
+yt-dlp.exe
+
+# OS generated files
+.DS_Store
+Thumbs.db

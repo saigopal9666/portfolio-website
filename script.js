@@ -1666,7 +1666,7 @@ async function runSandboxCode() {
 // ==================== IN-COURSE AI TUTOR LOGIC (REAL AI) ====================
 
 // ⚠️ PASTE YOUR GOOGLE GEMINI API KEY HERE
-const GEMINI_API_KEY = "AQ.Ab8RN6KM504-UQmdULQdLS6qLXxWJCB9F1xI1fZrtvWLelq5OA";
+const GEMINI_API_KEY = "";
 
 // Store conversation history for context
 let chatHistory = [

@@ -1123,10 +1123,34 @@ const TECH_IMAGE_MATRIX = [
 let GLOBAL_TECH_NEWS_DATABASE = [
     {
         id: "n1",
-        tag: "AI BREAKTHROUGH",
+        tag: "GEOPOLITICS & CHIPS",
+        category: "Global & Geopolitics",
+        title: "TSMC & ASML Accelerate 2nm Chip Fabs Amid Global Semiconductor Supply Chain Shifts",
+        date: "Just Now",
+        readTime: "4 min read",
+        link: "https://www.reuters.com/technology/",
+        img_url: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop",
+        desc: "Global tech powers ramp up domestic semiconductor manufacturing facilities to secure GPU hardware supply chains for next-gen AI supercomputers.",
+        takeaway: "High-end chip availability directly impacts cloud data center capacity for Azure, AWS, and GCP data workloads."
+    },
+    {
+        id: "n2",
+        tag: "CYBER WARFARE",
+        category: "Global & Geopolitics",
+        title: "Global Critical Infrastructure Shields Up Against AI-Driven Automated Cyber Attacks",
+        date: "15 mins ago",
+        readTime: "5 min read",
+        link: "https://www.defense.gov",
+        img_url: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop",
+        desc: "Nations strengthen zero-trust cyber defense systems, deploying automated threat detection to protect power grids, data pipelines, and satellite networks.",
+        takeaway: "Zero-Trust security architectures are now mandatory across enterprise cloud data pipelines."
+    },
+    {
+        id: "n3",
+        tag: "AI REASONING",
         category: "AI Breakthroughs",
         title: "DeepSeek-R1 & OpenAI o3-Mini Redefine Autonomous AI Code Agents & Reasoning",
-        date: "Just Now",
+        date: "25 mins ago",
         readTime: "3 min read",
         link: "https://techcrunch.com/category/artificial-intelligence/",
         img_url: TECH_IMAGE_MATRIX[0],
@@ -1134,11 +1158,11 @@ let GLOBAL_TECH_NEWS_DATABASE = [
         takeaway: "Reasoning models allow automated root-cause diagnosis of failed Spark DAGs and self-healing ADF pipelines."
     },
     {
-        id: "n2",
+        id: "n4",
         tag: "MICROSOFT FABRIC",
         category: "Azure",
         title: "Microsoft Fabric OneLake DirectLake Engine Delivers 100x Query Speedup",
-        date: "12 mins ago",
+        date: "40 mins ago",
         readTime: "4 min read",
         link: "https://blog.fabric.microsoft.com/en-us/blog/",
         img_url: TECH_IMAGE_MATRIX[1],
@@ -1146,23 +1170,35 @@ let GLOBAL_TECH_NEWS_DATABASE = [
         takeaway: "DirectLake bypasses Synapse SQL import mode, serving Power BI dashboards directly from Delta parquet files in ADLS Gen2."
     },
     {
-        id: "n3",
-        tag: "DATABRICKS",
+        id: "n5",
+        tag: "DATABRICKS PHOTON",
         category: "Databricks",
-        title: "Databricks Unity Catalog 2.0 Open Sources Governance Across Multi-Cloud Lakes",
-        date: "45 mins ago",
+        title: "Databricks Photon Engine Acceleration Delivers 12x Faster C++ Query Vectorization",
+        date: "1 hour ago",
         readTime: "5 min read",
         link: "https://www.databricks.com/blog/category/engineering",
         img_url: TECH_IMAGE_MATRIX[2],
-        desc: "Unified data lineage, column-level masking, and automatic PySpark AI optimization rolled out globally across Azure, AWS, and GCP.",
-        takeaway: "Unity Catalog gives enterprise teams single-pane-of-glass governance across Delta, Iceberg, and Hudi formats."
+        desc: "Native C++ query engine bypasses JVM overhead, providing 12x acceleration for PySpark DataFrame joins, aggregations, and Delta MERGE INTO CDC operations.",
+        takeaway: "Photon engine optimization dramatically cuts cluster execution time and Azure compute bills."
     },
     {
-        id: "n4",
+        id: "n6",
+        tag: "MARITIME LOGISTICS",
+        category: "Global & Geopolitics",
+        title: "Global Supply Chain Tech Deploys Real-Time IoT Data Streaming Across Trade Routes",
+        date: "2 hours ago",
+        readTime: "4 min read",
+        link: "https://www.bloomberg.com/technology",
+        img_url: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop",
+        desc: "Global shipping conglomerates integrate Kafka & Azure Event Hub real-time telemetry streaming to reroute cargo ships and predict port congestion.",
+        takeaway: "Real-time stream processing reduces maritime delay costs and improves global trade logistics."
+    },
+    {
+        id: "n7",
         tag: "AZURE DATA FACTORY",
         category: "Azure",
         title: "Azure Data Factory Integrates GenAI Control Tables & Self-Healing Pipelines",
-        date: "1 hour ago",
+        date: "3 hours ago",
         readTime: "4 min read",
         link: "https://techcommunity.microsoft.com/t5/azure-data-factory-blog/bg-p/AzureDataFactoryBlog",
         img_url: TECH_IMAGE_MATRIX[3],
@@ -1170,128 +1206,96 @@ let GLOBAL_TECH_NEWS_DATABASE = [
         takeaway: "Dynamic control tables combined with KeyVault metadata reduce ADF pipeline maintenance overhead by 80%."
     },
     {
-        id: "n5",
+        id: "n8",
         tag: "PYSPARK & DELTA",
         category: "Data Engineering",
         title: "Apache Spark 3.5 Releases Liquid Clustering: RIP Manual Partitioning & Z-Order",
-        date: "2 hours ago",
+        date: "4 hours ago",
         readTime: "3 min read",
         link: "https://spark.apache.org/news/",
         img_url: TECH_IMAGE_MATRIX[4],
         desc: "Liquid clustering dynamically adjusts data layouts as write patterns change, eliminating data skew and manual OPTIMIZE jobs.",
         takeaway: "Replaces rigid hive-style directory partitioning with flexible multi-column clustering keys."
-    },
-    {
-        id: "n6",
-        tag: "VOICE AI & AGENTS",
-        category: "AI Breakthroughs",
-        title: "Vapi & ElevenLabs Voice AI SDKs Enable Real-Time 150ms Conversational Latency",
-        date: "3 hours ago",
-        readTime: "4 min read",
-        link: "https://vapi.ai",
-        img_url: TECH_IMAGE_MATRIX[5],
-        desc: "New WebRTC streaming pipelines allow ultra-realistic multi-lingual voice assistants for eldercare, healthcare, and customer support.",
-        takeaway: "Low latency Telugu & English STT/TTS models unlock voice-first health monitoring for aging parents."
-    },
-    {
-        id: "n7",
-        tag: "ICEBERG vs DELTA",
-        category: "Data Engineering",
-        title: "Apache Iceberg & Delta Lake UniForm Bridge Format War into Single Parquet Storage",
-        date: "5 hours ago",
-        readTime: "4 min read",
-        link: "https://github.com/delta-io/delta",
-        img_url: TECH_IMAGE_MATRIX[6],
-        desc: "Universal Format (UniForm) allows Delta Lake tables to be read as Iceberg and Hudi metadata without duplicating physical underlying files.",
-        takeaway: "Single storage footprint supports both Databricks (Delta) and Snowflake (Iceberg) query engines."
-    },
-    {
-        id: "n8",
-        tag: "DUCKDB ANALYTICS",
-        category: "Data Engineering",
-        title: "DuckDB 1.1 In-Memory Engine Accelerates Local PySpark DataFrame Testing",
-        date: "6 hours ago",
-        readTime: "3 min read",
-        link: "https://duckdb.org/news/",
-        img_url: TECH_IMAGE_MATRIX[7],
-        desc: "Zero-dependency embedded analytical engine provides sub-second query performance over local Parquet & CSV files directly in VS Code.",
-        takeaway: "Enables fast local testing for Data Engineers before submitting heavy Spark cluster jobs."
     }
 ];
 
 let activeNewsCategory = "all";
 
 async function fetchLiveNews(categoryFilter = "all") {
-    activeNewsCategory = categoryFilter;
-    const portalMainEl = document.getElementById('newsPortalMain');
-    const portalSidebarEl = document.getElementById('newsPortalSidebar');
+    try {
+        activeNewsCategory = categoryFilter;
+        const portalMainEl = document.getElementById('newsPortalMain');
+        const portalSidebarEl = document.getElementById('newsPortalSidebar');
 
-    if (!portalMainEl) return;
+        if (!portalMainEl) return;
 
-    // Filter Stories
-    let newsList = GLOBAL_TECH_NEWS_DATABASE;
-    if (categoryFilter !== "all" && categoryFilter !== "Latest") {
-        newsList = GLOBAL_TECH_NEWS_DATABASE.filter(item => 
-            item.category === categoryFilter || 
-            item.tag.toLowerCase().includes(categoryFilter.toLowerCase())
-        );
-        if (newsList.length === 0) newsList = GLOBAL_TECH_NEWS_DATABASE;
-    }
+        // Filter Stories
+        let newsList = GLOBAL_TECH_NEWS_DATABASE;
+        if (categoryFilter !== "all" && categoryFilter !== "Latest") {
+            newsList = GLOBAL_TECH_NEWS_DATABASE.filter(item => 
+                item.category === categoryFilter || 
+                item.tag.toLowerCase().includes(categoryFilter.toLowerCase())
+            );
+            if (newsList.length === 0) newsList = GLOBAL_TECH_NEWS_DATABASE;
+        }
 
-    const mainNews = newsList[0];
-    const subNews1 = newsList[1] || newsList[0];
-    const subNews2 = newsList[2] || newsList[0];
+        const mainNews = newsList[0] || GLOBAL_TECH_NEWS_DATABASE[0];
+        const subNews1 = newsList[1] || newsList[0];
+        const subNews2 = newsList[2] || newsList[0];
 
-    // Main Grid HTML
-    portalMainEl.innerHTML = `
-        <div onclick="openNewsReaderModal('${mainNews.id}')" class="portal-main-card" style="cursor:pointer; background-image: linear-gradient(to top, rgba(15,23,42,0.95), rgba(15,23,42,0.2)), url('${mainNews.img_url}'); border-radius:16px; min-height:280px; padding:25px; display:flex; flex-direction:column; justify-content:flex-end; border:1px solid rgba(168,85,247,0.3); transition:transform 0.3s; position:relative; overflow:hidden;">
-            <div style="position:relative; z-index:2;">
-                <span class="portal-tag" style="background:var(--grad); color:#fff; padding:4px 12px; border-radius:50px; font-size:0.75rem; font-weight:800; text-transform:uppercase;">${mainNews.tag}</span>
-                <h3 style="font-size:1.35rem; font-weight:800; color:#fff; margin:10px 0 6px 0; line-height:1.3;">${mainNews.title}</h3>
-                <p style="color:#cbd5e1; font-size:0.88rem; margin-bottom:12px; line-height:1.5;">${mainNews.desc}</p>
-                <div style="font-size:0.8rem; color:#94a3b8; display:flex; gap:12px; align-items:center;">
-                    <span>${mainNews.readTime}</span> • <span>${mainNews.date}</span> • <span style="color:var(--accent2); font-weight:bold;">Click to Read Article 📖 →</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="portal-sub-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-top:15px;">
-            <div onclick="openNewsReaderModal('${subNews1.id}')" style="cursor:pointer; background:rgba(30,41,59,0.5); padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,0.08); display:flex; gap:14px; align-items:center; transition:background 0.2s;">
-                <div style="background-image: url('${subNews1.img_url}'); width:75px; height:75px; background-size:cover; background-position:center; border-radius:8px; flex-shrink:0;"></div>
-                <div>
-                    <span style="color:var(--accent2); font-size:0.75rem; font-weight:800;">${subNews1.tag}</span>
-                    <h4 style="font-size:0.88rem; color:#fff; margin:4px 0 6px 0; line-height:1.3;">${subNews1.title.length > 50 ? subNews1.title.substring(0, 50) + '...' : subNews1.title}</h4>
-                    <span style="color:var(--t3); font-size:0.75rem;">${subNews1.date}</span>
-                </div>
-            </div>
-
-            <div onclick="openNewsReaderModal('${subNews2.id}')" style="cursor:pointer; background:rgba(30,41,59,0.5); padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,0.08); display:flex; gap:14px; align-items:center; transition:background 0.2s;">
-                <div style="background-image: url('${subNews2.img_url}'); width:75px; height:75px; background-size:cover; background-position:center; border-radius:8px; flex-shrink:0;"></div>
-                <div>
-                    <span style="color:var(--accent); font-size:0.75rem; font-weight:800;">${subNews2.tag}</span>
-                    <h4 style="font-size:0.88rem; color:#fff; margin:4px 0 6px 0; line-height:1.3;">${subNews2.title.length > 50 ? subNews2.title.substring(0, 50) + '...' : subNews2.title}</h4>
-                    <span style="color:var(--t3); font-size:0.75rem;">${subNews2.date}</span>
-                </div>
-            </div>
-        </div>
-    `;
-
-    // Sidebar Feed HTML
-    if (portalSidebarEl) {
-        let sidebarHTML = '';
-        newsList.slice(3).concat(GLOBAL_TECH_NEWS_DATABASE.slice(0, 3)).slice(0, 5).forEach(item => {
-            sidebarHTML += `
-                <div onclick="openNewsReaderModal('${item.id}')" style="cursor:pointer; display:flex; gap:12px; margin-bottom:12px; background:rgba(255,255,255,0.02); padding:10px; border-radius:10px; border:1px solid rgba(255,255,255,0.06); transition:border-color 0.2s;">
-                    <div style="background-image: url('${item.img_url}'); width:60px; height:60px; background-size:cover; background-position:center; border-radius:8px; flex-shrink:0;"></div>
-                    <div>
-                        <span style="color:var(--accent2); font-size:0.7rem; font-weight:800; display:block; margin-bottom:2px;">${item.tag}</span>
-                        <h5 style="color:#fff; font-size:0.84rem; margin:0 0 4px 0; font-weight:600; line-height:1.3;">${item.title.length > 45 ? item.title.substring(0, 45) + '...' : item.title}</h5>
-                        <span style="color:var(--t3); font-size:0.7rem;">${item.date}</span>
+        // Main Grid HTML
+        portalMainEl.innerHTML = `
+            <div onclick="openNewsReaderModal('${mainNews.id}')" class="portal-main-card" style="cursor:pointer; background-image: linear-gradient(to top, rgba(15,23,42,0.95), rgba(15,23,42,0.2)), url('${mainNews.img_url}'); border-radius:16px; min-height:280px; padding:25px; display:flex; flex-direction:column; justify-content:flex-end; border:1px solid rgba(168,85,247,0.3); transition:transform 0.3s; position:relative; overflow:hidden;">
+                <div style="position:relative; z-index:2;">
+                    <span class="portal-tag" style="background:var(--grad); color:#fff; padding:4px 12px; border-radius:50px; font-size:0.75rem; font-weight:800; text-transform:uppercase;">${mainNews.tag}</span>
+                    <h3 style="font-size:1.35rem; font-weight:800; color:#fff; margin:10px 0 6px 0; line-height:1.3;">${mainNews.title}</h3>
+                    <p style="color:#cbd5e1; font-size:0.88rem; margin-bottom:12px; line-height:1.5;">${mainNews.desc}</p>
+                    <div style="font-size:0.8rem; color:#94a3b8; display:flex; gap:12px; align-items:center;">
+                        <span>${mainNews.readTime}</span> • <span>${mainNews.date}</span> • <span style="color:var(--accent2); font-weight:bold;">Click to Read Article 📖 →</span>
                     </div>
                 </div>
-            `;
-        });
-        portalSidebarEl.innerHTML = sidebarHTML;
+            </div>
+
+            <div class="portal-sub-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-top:15px;">
+                <div onclick="openNewsReaderModal('${subNews1.id}')" style="cursor:pointer; background:rgba(30,41,59,0.5); padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,0.08); display:flex; gap:14px; align-items:center; transition:background 0.2s;">
+                    <div style="background-image: url('${subNews1.img_url}'); width:75px; height:75px; background-size:cover; background-position:center; border-radius:8px; flex-shrink:0;"></div>
+                    <div>
+                        <span style="color:var(--accent2); font-size:0.75rem; font-weight:800;">${subNews1.tag}</span>
+                        <h4 style="font-size:0.88rem; color:#fff; margin:4px 0 6px 0; line-height:1.3;">${subNews1.title.length > 50 ? subNews1.title.substring(0, 50) + '...' : subNews1.title}</h4>
+                        <span style="color:var(--t3); font-size:0.75rem;">${subNews1.date}</span>
+                    </div>
+                </div>
+
+                <div onclick="openNewsReaderModal('${subNews2.id}')" style="cursor:pointer; background:rgba(30,41,59,0.5); padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,0.08); display:flex; gap:14px; align-items:center; transition:background 0.2s;">
+                    <div style="background-image: url('${subNews2.img_url}'); width:75px; height:75px; background-size:cover; background-position:center; border-radius:8px; flex-shrink:0;"></div>
+                    <div>
+                        <span style="color:var(--accent); font-size:0.75rem; font-weight:800;">${subNews2.tag}</span>
+                        <h4 style="font-size:0.88rem; color:#fff; margin:4px 0 6px 0; line-height:1.3;">${subNews2.title.length > 50 ? subNews2.title.substring(0, 50) + '...' : subNews2.title}</h4>
+                        <span style="color:var(--t3); font-size:0.75rem;">${subNews2.date}</span>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Sidebar Feed HTML
+        if (portalSidebarEl) {
+            let sidebarHTML = '';
+            newsList.slice(3).concat(GLOBAL_TECH_NEWS_DATABASE.slice(0, 3)).slice(0, 5).forEach(item => {
+                sidebarHTML += `
+                    <div onclick="openNewsReaderModal('${item.id}')" style="cursor:pointer; display:flex; gap:12px; margin-bottom:12px; background:rgba(255,255,255,0.02); padding:10px; border-radius:10px; border:1px solid rgba(255,255,255,0.06); transition:border-color 0.2s;">
+                        <div style="background-image: url('${item.img_url}'); width:60px; height:60px; background-size:cover; background-position:center; border-radius:8px; flex-shrink:0;"></div>
+                        <div>
+                            <span style="color:var(--accent2); font-size:0.7rem; font-weight:800; display:block; margin-bottom:2px;">${item.tag}</span>
+                            <h5 style="color:#fff; font-size:0.84rem; margin:0 0 4px 0; font-weight:600; line-height:1.3;">${item.title.length > 45 ? item.title.substring(0, 45) + '...' : item.title}</h5>
+                            <span style="color:var(--t3); font-size:0.7rem;">${item.date}</span>
+                        </div>
+                    </div>
+                `;
+            });
+            portalSidebarEl.innerHTML = sidebarHTML;
+        }
+    } catch (err) {
+        console.warn("News Portal Isolated Error (Ignored for site stability):", err);
     }
 }
 

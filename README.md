@@ -1,25 +1,42 @@
-# 🚀 SAI GOPAL MAYUR — ENTERPRISE DATA ENGINEERING & AI PLATFORM HUB
+# 🚀 MANTRIS AI — GLOBAL DATA ENGINEERING & AI CAREER HUB
 
-[![Live Portfolio](https://img.shields.io/badge/🌐_Live_Portfolio-Click_to_View_Online-0078D4?style=for-the-badge&logo=githubpages&logoColor=white)](https://saigopal9666.github.io/portfolio-website/)
+[![Live Website](https://img.shields.io/badge/🌐_MANTRIS_AI_Platform-Click_to_Launch-0078D4?style=for-the-badge&logo=githubpages&logoColor=white)](https://saigopal9666.github.io/portfolio-website/)
 [![DP-203 Verified](https://img.shields.io/badge/Microsoft-DP--203_Azure_Data_Engineer-blue?style=for-the-badge&logo=microsoft)](https://saigopal9666.github.io/portfolio-website/)
 [![DP-700 Candidate](https://img.shields.io/badge/Microsoft-DP--700_Fabric_Data_Engineer-purple?style=for-the-badge&logo=microsoftfabric)](https://saigopal9666.github.io/portfolio-website/)
-[![Medium Articles](https://img.shields.io/badge/Medium-@ramgopal1992.m-black?style=for-the-badge&logo=medium)](https://medium.com/@ramgopal1992.m)
+[![Medium Masterclasses](https://img.shields.io/badge/Medium-@ramgopal1992.m-black?style=for-the-badge&logo=medium)](https://medium.com/@ramgopal1992.m)
 
-Welcome to the official source code for **Sai Gopal Mayur's Interactive Engineering Portfolio**. This platform showcases production-grade **Azure Data Engineering pipelines, PySpark Medallion Lakehouses, Microsoft Fabric architectures, Cybersecurity command centers, and Generative AI platforms**.
+Welcome to **MANTRIS AI**, the official open-source platform founded by **Sai Gopal Mayur, MCA**. Mantris AI is an All-in-One **Data Engineering & AI Career Acceleration Platform** designed to empower students, freshers, and experienced engineers with production-grade project proof, ATS resume analyzers, real-time tech news, and interactive code translators.
 
 ---
 
-## 🌟 PUBLIC LIVE WEBSITE URL
+## 🌟 PUBLIC LIVE PLATFORM URL
 👉 **[https://saigopal9666.github.io/portfolio-website/](https://saigopal9666.github.io/portfolio-website/)**
 
 ---
 
+## 🎓 HOW MANTRIS AI EMPOWERS STUDENTS & JOB SEEKERS
+
+Mantris AI is built to bridge the gap between academic theory and real-world enterprise engineering. Here is how students and aspiring Data Engineers use the platform:
+
+1. 📄 **ATS Resume Analyzer & Contact Engine:**  
+   - Integrated tools helping students structure ATS-optimized resumes that pass automated recruiter ATS scanners.
+2. 📰 **Real-Time Tech & AI News Engine for Data Engineers:**  
+   - Live updated 2026 tech news portal tracking the latest breakthroughs in **Microsoft Fabric, Databricks, PySpark, Snowflake, and Generative AI** with an interactive `#newsReaderModal`.
+3. 💻 **Interactive SQL-to-PySpark Code Converter:**  
+   - Live AST parser allowing students to type ANSI SQL queries (`GROUP BY`, `DENSE_RANK()`, `HAVING`) and instantly view the optimized PySpark & Delta Lake code equivalent.
+4. 📚 **Interactive SQL Masterclass Course Hub:**  
+   - Dedicated learning portal (`sql-course.html`) featuring hands-on SQL query tutorials from basic selects to complex Window Functions (`ROW_NUMBER()`, `LEAD()`, `LAG()`).
+5. 🏛️ **Production-Grade Project Proof & Architecture Blueprint:**  
+   - Real-world 3-Tier Medallion Lakehouse blueprints showing students how 50M+ records are processed in production using Azure Data Factory, Databricks, and Delta Liquid Clustering.
+
+---
+
 ## 🛠️ COMPREHENSIVE TECH STACK & DESIGN SYSTEM
+* **Platform Name:** MANTRIS AI (Founded by Sai Gopal Mayur, MCA).
 * **Frontend UI/UX:** HTML5, Modern Vanilla CSS3 (Slate & Navy Executive Theme with Glassmorphic Glow), JavaScript ES6+ (Zero heavy framework overhead for sub-second page loads).
 * **Architecture:** 3-Tier Medallion Lakehouse Architecture (Bronze ➔ Silver ➔ Gold), REST APIs, JSON-RPC 2.0.
 * **Cloud & Big Data Stack:** Azure Data Factory (ADF), Databricks, Apache Spark 3.5, PySpark DataFrames, Delta Lake, Microsoft Fabric, OneLake.
 * **AI & Security Engineering:** Vapi Voice AI SDK, OpenAI GPT-4, ElevenLabs TTS, Model Context Protocol (MCP), Anti-Deepfake Cryptography, GDPR Art. 17 Automation.
-* **Database & Querying:** ANSI SQL, T-SQL, PostgreSQL, Azure SQL, Parquet, Delta Lake DDL.
 * **Global Hosting:** GitHub Pages (24/7 Edge CDN Deployment).
 
 ---
@@ -53,23 +70,6 @@ Welcome to the official source code for **Sai Gopal Mayur's Interactive Engineer
 
 ---
 
-## 📰 INTERACTIVE PLATFORM MODULES & FEATURES
-
-### ⚡ 1. Real-Time Tech & AI News Engine
-* Integrated dynamic news portal featuring rotating 2026 AI/Data stories, HD Unsplash image matrix, and an interactive **News Reader Modal (`#newsReaderModal`)** for full article reading without page reloads.
-
-### 🎓 2. Interactive SQL Masterclass & Course Hub
-* Built-in dedicated interactive SQL learning portal (`sql-course.html`, `course.css`) offering step-by-step query tutorials from basic `SELECT` queries to advanced Window Functions (`ROW_NUMBER()`, `LEAD()`, `LAG()`).
-
-### 🎨 3. Interactive 3D Preview Visualizer
-* Custom interactive 3D component preview visualizer (`ultimate_3d_preview.html`) demonstrating modern UI micro-animations and glassmorphism.
-
-### 📊 4. Typical Data Engineering Pipeline Architecture (ETL & ELT Flow)
-* Visual architectural representation of enterprise data pipelines:  
-  `RAW DATA` ➔ `SPARK PROCESSING` ➔ `DELTA LAKEHOUSE (Bronze / Silver / Gold)` ➔ `POWER BI / SYNAPSE ANALYTICS`
-
----
-
 ## 🏆 INDUSTRY CERTIFIED EXPERTISE
 
 * 🥇 **Microsoft Certified: Azure Data Engineer Associate (DP-203)** — Verified Credential
@@ -77,11 +77,11 @@ Welcome to the official source code for **Sai Gopal Mayur's Interactive Engineer
 
 ---
 
-## 👨‍💻 ABOUT THE AUTHOR & CONTACT
+## 👨‍💻 ABOUT THE FOUNDER & CONTACT
 
 **Sai Gopal Mayur, MCA**  
 *Azure Data Engineer & GenAI Platform Architect*  
-* 🌐 **Live Portfolio:** [saigopal9666.github.io/portfolio-website](https://saigopal9666.github.io/portfolio-website/)  
+* 🌐 **Mantris AI Platform:** [saigopal9666.github.io/portfolio-website](https://saigopal9666.github.io/portfolio-website/)  
 * 🐙 **GitHub:** [github.com/saigopal9666](https://github.com/saigopal9666)  
 * 📰 **Medium Technical Articles:** [medium.com/@ramgopal1992.m](https://medium.com/@ramgopal1992.m)  
 * 📧 **Email:** ramgopal1992.m@gmail.com  

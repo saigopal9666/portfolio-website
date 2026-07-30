@@ -1,0 +1,2395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayur Soft@sonic — Data Engineer & Cloud Solutions</title>
+    <meta name="description" content="Mayur Soft@sonic — Building scalable data pipelines, cloud-native solutions, and transforming raw data into powerful business insights.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .ai-modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+        .ai-modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .ai-modal-content {
+            width: 90%;
+            max-width: 800px;
+            background: #0f172a;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transform: scale(0.95);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .ai-modal-overlay.active .ai-modal-content {
+            transform: scale(1);
+        }
+        
+        .sample-btn {
+            background: rgba(56, 189, 248, 0.1);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .sample-btn:hover {
+            background: rgba(56, 189, 248, 0.25);
+            border-color: #38bdf8;
+            box-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+        }
+
+        /* Job Aggregator Styles */
+        .job-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        .job-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(168, 85, 247, 0.6);
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.15), inset 0 0 20px rgba(168, 85, 247, 0.05);
+        }
+        .job-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, #a855f7, transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .job-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Auth Modal */
+        .auth-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(2, 6, 23, 0.8); backdrop-filter: blur(8px);
+            z-index: 10000; display: flex; justify-content: center; align-items: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .auth-modal.active { opacity: 1; pointer-events: all; }
+        .auth-box {
+            background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px; padding: 40px; width: 100%; max-width: 400px;
+            transform: translateY(20px); transition: transform 0.3s ease;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5); position: relative;
+        }
+        .auth-modal.active .auth-box { transform: translateY(0); }
+        .auth-header { text-align: center; margin-bottom: 30px; }
+        .auth-header h3 { font-size: 1.5rem; color: #fff; margin-bottom: 8px; }
+        .auth-header p { color: #94a3b8; font-size: 0.9rem; }
+        .auth-input {
+            width: 100%; padding: 12px 16px; background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px;
+            color: #fff; margin-bottom: 15px; outline: none; transition: all 0.2s; box-sizing: border-box;
+        }
+        .auth-input:focus { border-color: var(--accent); background: rgba(14, 165, 233, 0.05); }
+        .auth-btn {
+            width: 100%; padding: 12px; background: var(--accent); color: #0f172a;
+            border: none; border-radius: 8px; font-weight: 700; cursor: pointer;
+            transition: all 0.2s;
+        }
+        .auth-btn:hover { background: #0284c7; color: #fff; }
+        .auth-google {
+            width: 100%; padding: 12px; background: #fff; color: #333;
+            border: none; border-radius: 8px; font-weight: 600; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            margin-top: 15px; transition: all 0.2s;
+        }
+        .auth-google:hover { background: #f1f5f9; }
+        .auth-close {
+            position: absolute; top: 15px; right: 15px; background: none; border: none;
+            color: #94a3b8; cursor: pointer; font-size: 1.5rem;
+        }
+        
+        /* Dashboard Styles */
+        .dashboard-container { padding-top: 120px; display: none; }
+        .dash-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; flex-wrap: wrap; gap: 20px;
+        }
+        .dash-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;
+        }
+        .dash-card {
+            background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 24px;
+        }
+        .dash-card h4 { color: var(--accent); margin-bottom: 15px; font-size: 1.1rem; }
+        .progress-bar { width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; margin-top: 10px; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--accent); border-radius: 4px; }
+        /* Premium Modal */
+        .premium-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(12px);
+            z-index: 10001; display: flex; justify-content: center; align-items: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .premium-modal.active { opacity: 1; pointer-events: all; }
+        .premium-box {
+            background: linear-gradient(180deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
+            border: 1px solid rgba(168, 85, 247, 0.4); border-radius: 16px; padding: 40px; 
+            width: 100%; max-width: 450px; text-align: center; position: relative;
+            transform: translateY(20px) scale(0.95); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 0 20px rgba(168, 85, 247, 0.1);
+        }
+        .premium-modal.active .premium-box { transform: translateY(0) scale(1); }
+        .premium-icon { font-size: 3rem; margin-bottom: 20px; animation: float 3s ease-in-out infinite; }
+        .premium-box h3 { font-size: 1.8rem; color: #fff; margin-bottom: 10px; background: linear-gradient(90deg, #c084fc, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .premium-box p { color: #cbd5e1; font-size: 1rem; margin-bottom: 25px; line-height: 1.5; }
+        .premium-btn {
+            background: linear-gradient(90deg, #a855f7, #3b82f6); color: #fff; border: none;
+            padding: 14px 24px; border-radius: 8px; font-weight: 700; font-size: 1.1rem;
+            cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+            display: inline-block; text-decoration: none; width: 100%; box-sizing: border-box;
+        }
+        .premium-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(168, 85, 247, 0.6); }
+        .premium-close {
+            position: absolute; top: 15px; right: 15px; background: none; border: none;
+            color: #64748b; cursor: pointer; font-size: 1.5rem; transition: color 0.2s;
+        }
+        .premium-close:hover { color: #fff; }
+
+        /* AI Tutor Floating Widget */
+        .tutor-widget-btn {
+            position: fixed; bottom: 30px; right: 30px; z-index: 9999;
+            width: 60px; height: 60px; border-radius: 50%;
+            background: linear-gradient(135deg, #a855f7, #38bdf8);
+            border: none; cursor: pointer; display: none; /* hidden by default */
+            align-items: center; justify-content: center;
+            box-shadow: 0 10px 25px rgba(168, 85, 247, 0.4);
+            transition: all 0.3s ease; animation: float 3s ease-in-out infinite;
+        }
+        .tutor-widget-btn:hover { transform: scale(1.1); }
+        .tutor-widget-btn svg { width: 30px; height: 30px; color: #fff; }
+        
+        .tutor-window {
+            position: fixed; top: 0; right: 0; bottom: 0; z-index: 9998;
+            width: 450px; height: 100vh; max-height: 100vh; border-radius: 16px 0 0 16px;
+            background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px);
+            border-left: 1px solid rgba(168, 85, 247, 0.3); display: flex; flex-direction: column;
+            box-shadow: -10px 0 50px rgba(0,0,0,0.5); opacity: 0; pointer-events: none;
+            transform: translateX(20px) scale(0.95); transition: opacity 0.3s, transform 0.3s;
+            overflow: hidden; min-width: 300px; min-height: 400px;
+        }
+        .tutor-window.active { opacity: 1; pointer-events: all; transform: translateX(0) scale(1); }
+        
+        /* Custom Resize Handles */
+        .resize-edge-w { position: absolute; width: 8px; height: 100%; top: 0; left: -4px; cursor: ew-resize; z-index: 10000; }
+        .tutor-window.minimized { height: auto !important; }
+        .tutor-window.minimized .tutor-body, .tutor-window.minimized .tutor-footer { display: none !important; }
+        @media (max-width: 480px) {
+            .tutor-window { width: calc(100% - 40px); right: 20px; bottom: 90px; height: 60vh; }
+        }
+        .tutor-header {
+            padding: 15px 20px; border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(255,255,255,0.02); border-radius: 16px 16px 0 0;
+            cursor: grab;
+        }
+        .tutor-header:active { cursor: grabbing; }
+        .tutor-header h4 { margin: 0; color: #fff; display: flex; align-items: center; gap: 8px; }
+        .tutor-header button { background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 1.5rem; line-height: 1; }
+        .tutor-body { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
+        .tutor-msg { max-width: 85%; padding: 12px 16px; border-radius: 12px; font-size: 0.9rem; line-height: 1.5; word-wrap: break-word; }
+        .tutor-msg.ai { background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.2); color: #e2e8f0; align-self: flex-start; border-bottom-left-radius: 4px; }
+        .tutor-msg.user { background: linear-gradient(90deg, #a855f7, #3b82f6); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+        .tutor-footer { padding: 15px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; gap: 10px; }
+        .tutor-input {
+            flex: 1; padding: 10px 15px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px; color: #fff; outline: none; transition: border-color 0.2s;
+        }
+        .tutor-input:focus { border-color: #38bdf8; }
+        .tutor-send {
+            width: 40px; height: 40px; border-radius: 50%; background: var(--accent); border: none;
+            color: #0f172a; cursor: pointer; display: flex; justify-content: center; align-items: center;
+        }
+
+        /* Tutor Voice and Vision animations */
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); background-color: rgba(239, 68, 68, 0.2); }
+            70% { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); background-color: rgba(239, 68, 68, 0.8); }
+            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); background-color: rgba(239, 68, 68, 0.2); }
+        }
+        .mic-listening { animation: pulse-red 1.5s infinite; color: white !important; }
+        .tutor-icon-btn {
+            background: none; border: none; color: #94a3b8; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; padding: 8px;
+            border-radius: 50%; transition: color 0.2s, background 0.2s;
+        }
+        .tutor-icon-btn:hover { color: #fff; background: rgba(255,255,255,0.1); }
+        .tutor-msg img { max-width: 100%; border-radius: 8px; margin-top: 5px; border: 1px solid rgba(255,255,255,0.2); }
+        .vision-scan { position: relative; overflow: hidden; border-radius: 8px; }
+        .vision-scan::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+            background: #38bdf8; box-shadow: 0 0 10px #38bdf8;
+            animation: scan 2s linear infinite;
+        }
+        @keyframes scan {
+            0% { top: 0; }
+            50% { top: 100%; }
+            100% { top: 0; }
+        }
+
+        /* AI Tutor Code Blocks */
+        .code-block-wrapper {
+            background: #1e293b; border-radius: 8px; margin: 10px 0;
+            overflow: hidden; border: 1px solid rgba(255,255,255,0.1);
+        }
+        .code-block-header {
+            display: flex; justify-content: space-between; align-items: center;
+            background: #0f172a; padding: 5px 15px; font-size: 0.8rem; color: #94a3b8;
+        }
+        .code-block-header button {
+            background: none; border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; 
+            cursor: pointer; font-size: 0.75rem; padding: 2px 8px; border-radius: 4px;
+            transition: all 0.2s;
+        }
+        .code-block-header button:hover { background: #38bdf8; color: #0f172a; }
+        .code-block-content { 
+            padding: 12px 15px; overflow-x: auto; margin: 0; 
+            font-family: 'Fira Code', monospace; font-size: 0.85rem; color: #e2e8f0; 
+        }
+    </style>
+</head>
+<body>
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+    <!-- Aurora Background -->
+    <div class="aurora">
+        <div class="aurora-blob blob-1"></div>
+        <div class="aurora-blob blob-2"></div>
+        <div class="aurora-blob blob-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-inner">
+            <a href="#hero" class="brand" id="brand">
+                <div class="brand-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                </div>
+                <span class="brand-text">
+                    <span class="brand-name">Mayur</span>
+                    <span class="brand-accent">Soft@sonic</span>
+                </span>
+            </a>
+            <div class="nav-center" id="navCenter">
+                <a href="#hero" class="nav-pill active" data-section="hero">Home</a>
+                <a href="#about" class="nav-pill" data-section="about">About</a>
+                <a href="#skills" class="nav-pill" data-section="skills">Skills</a>
+                <a href="#projects" class="nav-pill" data-section="projects">Work</a>
+                <a href="#ats-builder" class="nav-pill" data-section="ats-builder">ATS Builder</a>
+                <a href="#courses" class="nav-pill" data-section="courses">Courses</a>
+                <a href="#digital-store" class="nav-pill" data-section="digital-store">Store</a>
+                <a href="#tech-updates" class="nav-pill" data-section="tech-updates">News</a>
+                <a href="#contact" class="nav-pill" data-section="contact">Contact</a>
+                <div class="nav-indicator" id="navIndicator"></div>
+            </div>
+            <div style="display:flex; align-items:center; gap: 10px;">
+                <button onclick="openAuthModal()" class="nav-cta" style="background: transparent; border: 1px solid var(--accent); color: var(--accent); margin-right: 10px; display: flex; align-items: center;" id="loginNavBtn">
+                    <span>Student Login</span>
+                </button>
+                <a href="#contact" class="nav-cta" id="contactNavBtn">
+                    <span>Let's Talk</span>
+                    <div class="cta-arrow">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </a>
+                <button id="settingsBtn" class="nav-cta" style="padding: 0; width: 40px; height: 40px; display:flex; justify-content:center; align-items:center; background: rgba(255,255,255,0.05);">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                </button>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-inner">
+            <a href="#" onclick="openAuthModal()" class="mobile-link" style="color: var(--accent);" id="mobileLoginBtn">Student Login</a>
+            <a href="#hero" class="mobile-link">Home</a>
+            <a href="#about" class="mobile-link">About</a>
+            <a href="#skills" class="mobile-link">Skills</a>
+            <a href="#projects" class="mobile-link">Work</a>
+            <a href="#ats-builder" class="mobile-link">ATS Builder</a>
+            <a href="#courses" class="mobile-link">Courses</a>
+            <a href="#experience" class="mobile-link">Journey</a>
+            <a href="#contact" class="mobile-link">Contact</a>
+        </div>
+    </div>
+
+    <!-- ==================== STUDENT DASHBOARD ==================== -->
+    <section id="student-dashboard" class="section dashboard-container">
+        <div class="container">
+            <div class="dash-header">
+                <div>
+                    <h2 class="sec-heading" style="margin:0; font-size:2rem;">Welcome, <span class="shimmer-text" id="userNameDisplay">Student</span>!</h2>
+                    <p style="color:#94a3b8; margin-top:5px;">Your personalized learning hub.</p>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button onclick="toggleTutor()" class="btn-glow" style="padding: 8px 16px; font-size: 0.9rem;" id="topTutorBtn">✨ Course Copilot</button>
+                    <button onclick="logoutUser()" class="btn-outline" style="padding: 8px 16px; border-color:#ef4444; color:#ef4444; font-size: 0.9rem;">Logout</button>
+                </div>
+            </div>
+            
+            <div class="dash-grid">
+                <!-- Course Progress -->
+                <div class="dash-card">
+                    <h4>My Enrolled Courses</h4>
+                    <div style="margin-bottom: 20px;">
+                        <div style="display:flex; justify-content:space-between; font-size:0.9rem; color: #e2e8f0;">
+                            <span>PySpark & Fabric Mastery</span>
+                            <span>60%</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 60%;"></div></div>
+                    </div>
+                    <div>
+                        <div style="display:flex; justify-content:space-between; font-size:0.9rem; color: #e2e8f0;">
+                            <span>Azure Data Engineer</span>
+                            <span>15%</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 15%;"></div></div>
+                    </div>
+                    <button class="btn-outline full" style="margin-top:25px; padding:10px;">Resume Learning</button>
+                </div>
+                
+                <!-- Quick Tools -->
+                <div class="dash-card">
+                    <h4>Quick Access Tools</h4>
+                    <a href="#ai-sandbox" class="nav-pill active" style="display:flex; justify-content:center; align-items:center; margin-bottom:12px; width:100%; box-sizing:border-box;">Data Engineering Sandbox</a>
+                    <a href="#ats-builder" class="nav-pill" style="display:flex; justify-content:center; align-items:center; margin-bottom:12px; width:100%; box-sizing:border-box;">ATS Resume Builder</a>
+                    <a href="#job-hunt" class="nav-pill" style="display:flex; justify-content:center; align-items:center; width:100%; box-sizing:border-box;">Live Global Job Board</a>
+                </div>
+                
+                <!-- Mentorship -->
+                <div class="dash-card">
+                    <h4>1-on-1 Mentorship</h4>
+                    <p style="font-size:0.9rem; color:#cbd5e1; margin-bottom:15px;">Book your weekly doubt-clearing or interview prep session.</p>
+                    <div style="background: rgba(255,255,255,0.05); padding:20px; border-radius:8px; text-align:center;">
+                        <span style="display:block; font-size:2.5rem; margin-bottom:15px;">🗓️</span>
+                        <a href="https://calendly.com" target="_blank" class="btn-glow full" style="padding:10px; text-decoration:none; display:block;">Book on Calendly</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== HERO ==================== -->
+    <section id="hero" class="section hero-section">
+        <div class="container hero-layout">
+            <div class="hero-left">
+                <div class="hero-badge anim-up" style="--d:0.1s">
+                    <span class="pulse-dot"></span>
+                    Open to Opportunities
+                </div>
+                <h1 class="hero-title anim-up" style="--d:0.25s">
+                    <span class="hero-sub">Hi, I'm Mayur —</span>
+                    I build <span class="shimmer-text">data&nbsp;systems</span> that scale.
+                </h1>
+                <p class="hero-desc anim-up" style="--d:0.4s">
+                    Data Engineer specializing in <strong>Microsoft Fabric</strong>, <strong>PySpark</strong>,
+                    and <strong>Azure Cloud</strong>. I design end-to-end data pipelines that turn chaos into clarity.
+                </p>
+                <div class="hero-btns anim-up" style="--d:0.55s">
+                    <a href="#projects" class="btn-glow">
+                        <span>Explore Work</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <button class="btn-outline" onclick="openVideoModal()" style="display: flex; align-items: center; gap: 8px;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        Databricks Demo
+                    </button>
+                    <a href="resume.pdf" download class="btn-outline">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right:6px;vertical-align:middle"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download Resume
+                    </a>
+                </div>
+                <div class="hero-metrics anim-up" style="--d:0.7s">
+                    <div class="hm-item">
+                        <span class="hm-num" data-count="15">0</span><span class="hm-plus">+</span>
+                        <span class="hm-label">Projects</span>
+                    </div>
+                    <div class="hm-sep"></div>
+                    <div class="hm-item">
+                        <span class="hm-num" data-count="10">0</span><span class="hm-plus">+</span>
+                        <span class="hm-label">Technologies</span>
+                    </div>
+                    <div class="hm-sep"></div>
+                    <div class="hm-item" style="min-width: 120px;">
+                        <span class="hm-num" id="liveDataCounter" style="font-size: clamp(1.2rem, 2vw, 1.8rem);">1420500</span><br>
+                        <span class="hm-label" style="display: flex; align-items: center; justify-content: center; gap: 4px; margin-top: 5px;">
+                            <span class="pulse-dot small" style="width: 6px; height: 6px; display: inline-block;"></span> Live Records Processed
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-right anim-up" style="--d:0.5s">
+                <div class="terminal">
+                    <div class="term-bar">
+                        <div class="term-dots"><i></i><i></i><i></i></div>
+                        <span class="term-title">mayur@sonic ~ pipeline.py</span>
+                        <button id="sqlModeBtn" class="sql-mode-btn">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                            Try SQL Mode
+                        </button>
+                        <button id="termBackBtn" class="sql-mode-btn" style="display:none; color:#fbbf24; border-color:rgba(251,191,36,0.3); background:rgba(251,191,36,0.1);">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                            Back to Auto
+                        </button>
+                    </div>
+                    <div class="term-body" id="terminalBody"></div>
+                    <div class="term-glow"></div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-cue anim-up" style="--d:1.2s">
+            <div class="scroll-line"></div>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    
+    <!-- ==================== PLATFORM OVERVIEW ==================== -->
+    <section id="platform-features" class="section" style="padding-top: 40px; padding-bottom: 20px;">
+        <div class="container">
+            <div class="sticker-label reveal-el">Platform Overview</div>
+            <h2 class="sec-heading reveal-el" style="margin-bottom: 20px; font-size: 2rem;">
+                More Than Just a <span class="shimmer-text">Resume</span>
+            </h2>
+            <div class="site-disclaimer reveal-el" style="background: rgba(14, 165, 233, 0.05); border: 1px solid rgba(14, 165, 233, 0.2); border-radius: 12px; padding: 25px; margin-bottom: 40px; text-align: left; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: #0ea5e9;"></div>
+                <h3 style="color: #0ea5e9; font-size: 1.2rem; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    About This Interactive Platform
+                </h3>
+                <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.6; margin: 0;">
+                    Welcome! This website is not a typical static portfolio. It is a <strong>fully functional, AI-powered toolkit</strong> connected to a live Python (FastAPI) backend and Google Gemini.
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 20px;">
+                    <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px;">
+                        <strong style="color: #fff; display: block; margin-bottom: 5px;">🚀 ATS Resume Builder</strong>
+                        <span style="font-size: 0.85rem; color: #94a3b8;">AI analyzes your CV and suggests improvements. (Check the Nav Bar)</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px;">
+                        <strong style="color: #fff; display: block; margin-bottom: 5px;">🎙️ AI Mock Interview</strong>
+                        <span style="font-size: 0.85rem; color: #94a3b8;">Practice Data Engineering interviews with a live AI agent.</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px;">
+                        <strong style="color: #fff; display: block; margin-bottom: 5px;">🌐 Global Data Fetcher</strong>
+                        <span style="font-size: 0.85rem; color: #94a3b8;">Live fetch of Tech News and Software Jobs directly to the UI.</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px;">
+                        <strong style="color: #fff; display: block; margin-bottom: 5px;">💻 Interactive Terminal</strong>
+                        <span style="font-size: 0.85rem; color: #94a3b8;">Run mock SQL/PySpark code in the hero section terminal.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+<!-- ==================== ABOUT ==================== -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="sticker-label reveal-el">About</div>
+            <h2 class="sec-heading reveal-el">
+                Passionate about turning <span class="shimmer-text">raw data</span> into real impact.
+            </h2>
+                        <div class="bento-grid reveal-el">
+                <div class="bento-card bento-wide card-glow" id="about-card-1">
+                    <div class="bc-icon icon-gradient-1">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h3>Data Engineering</h3>
+                    <p>Building robust ETL/ELT pipelines with PySpark, Azure Data Factory, and Microsoft Fabric. Designing Lakehouse architectures using the Medallion pattern — Bronze → Silver → Gold.</p>
+                </div>
+                <div class="bento-card card-glow" id="about-card-2">
+                    <div class="bc-icon icon-gradient-2">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 10h-4V6"/><path d="M14 10l7.1-7.1"/><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg>
+                    </div>
+                    <h3>Cloud & Analytics</h3>
+                    <p>Azure Synapse, Data Lake Storage, Databricks, Power BI — delivering actionable insights at enterprise scale.</p>
+                </div>
+                <div class="bento-card card-glow" id="about-card-3">
+                    <div class="bc-icon icon-gradient-3">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    </div>
+                    <h3>Software Dev</h3>
+                    <p>Clean Python & SQL code, REST APIs, automation tools, and full-stack apps with modern frameworks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SKILLS ==================== -->
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="sticker-label reveal-el">Tech Stack</div>
+            <h2 class="sec-heading reveal-el">
+                Tools & technologies I <span class="shimmer-text">work&nbsp;with</span> every day.
+            </h2>
+            <div class="skill-orbit reveal-el">
+                <div class="orbit-ring ring-1">
+                    <div class="orbit-chip oc-1" data-tip="PySpark"><span style="background:#E25A1C"></span>PySpark</div>
+                    <div class="orbit-chip oc-2" data-tip="Fabric"><span style="background:#00A4EF"></span>Fabric</div>
+                    <div class="orbit-chip oc-3" data-tip="Delta Lake"><span style="background:#00758F"></span>Delta Lake</div>
+                </div>
+                <div class="orbit-ring ring-2">
+                    <div class="orbit-chip oc-4" data-tip="Python"><span style="background:#3776AB"></span>Python</div>
+                    <div class="orbit-chip oc-5" data-tip="SQL"><span style="background:#CC2927"></span>SQL</div>
+                    <div class="orbit-chip oc-6" data-tip="Azure"><span style="background:#0078D4"></span>Azure</div>
+                    <div class="orbit-chip oc-7" data-tip="Databricks"><span style="background:#FF3621"></span>Databricks</div>
+                </div>
+                <div class="orbit-ring ring-3">
+                    <div class="orbit-chip oc-8" data-tip="Synapse"><span style="background:#0078D4"></span>Synapse</div>
+                    <div class="orbit-chip oc-9" data-tip="Power BI"><span style="background:#F2C811"></span>Power BI</div>
+                    <div class="orbit-chip oc-10" data-tip="ADF"><span style="background:#0078D4"></span>ADF</div>
+                    <div class="orbit-chip oc-11" data-tip="Docker"><span style="background:#2496ED"></span>Docker</div>
+                    <div class="orbit-chip oc-12" data-tip="Git"><span style="background:#F05032"></span>Git</div>
+                </div>
+                <div class="orbit-center">
+                    <div class="oc-label">Mayur</div>
+                </div>
+            </div>
+            <!-- Skill bars for mobile / fallback -->
+            <div class="skill-bars reveal-el">
+                <div class="sb-group">
+                    <div class="sb-title">Data & Analytics</div>
+                    <div class="sb-row"><span class="sb-name">PySpark</span><div class="sb-track"><div class="sb-fill" style="--w:92%"></div></div><span class="sb-pct">92%</span></div>
+                    <div class="sb-row"><span class="sb-name">Microsoft Fabric</span><div class="sb-track"><div class="sb-fill" style="--w:88%"></div></div><span class="sb-pct">88%</span></div>
+                    <div class="sb-row"><span class="sb-name">Delta Lake</span><div class="sb-track"><div class="sb-fill" style="--w:85%"></div></div><span class="sb-pct">85%</span></div>
+                    <div class="sb-row"><span class="sb-name">Power BI</span><div class="sb-track"><div class="sb-fill" style="--w:80%"></div></div><span class="sb-pct">80%</span></div>
+                </div>
+                <div class="sb-group">
+                    <div class="sb-title">Languages & Cloud</div>
+                    <div class="sb-row"><span class="sb-name">Python</span><div class="sb-track"><div class="sb-fill" style="--w:90%"></div></div><span class="sb-pct">90%</span></div>
+                    <div class="sb-row"><span class="sb-name">SQL</span><div class="sb-track"><div class="sb-fill" style="--w:93%"></div></div><span class="sb-pct">93%</span></div>
+                    <div class="sb-row"><span class="sb-name">Azure Cloud</span><div class="sb-track"><div class="sb-fill" style="--w:82%"></div></div><span class="sb-pct">82%</span></div>
+                    <div class="sb-row"><span class="sb-name">Databricks</span><div class="sb-track"><div class="sb-fill" style="--w:78%"></div></div><span class="sb-pct">78%</span></div>
+                </div>
+            </div>
+            
+            <!-- GitHub Contributions Graph -->
+            <div class="github-graph reveal-el" style="margin-top: 60px; text-align: center; background: var(--surface); padding: 24px; border-radius: var(--rad); border: 1px solid var(--border);">
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 16px;">
+                    <h3 style="font-size: 1.1rem; color: var(--t2);">GitHub Contributions</h3>
+                    <span style="font-size: 0.8rem; color: var(--t3);">1,205 contributions in the last year</span>
+                </div>
+                
+                <div class="gh-grid-wrapper">
+                    <div class="gh-grid" id="githubGrid">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+                
+                <div style="display: flex; justify-content: flex-end; align-items: center; gap: 4px; font-size: 0.75rem; color: var(--t3); margin-top: 12px;">
+                    Less 
+                    <div class="gh-cell lvl-0"></div>
+                    <div class="gh-cell lvl-1"></div>
+                    <div class="gh-cell lvl-2"></div>
+                    <div class="gh-cell lvl-3"></div>
+                    <div class="gh-cell lvl-4"></div>
+                    More
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- ==================== PROJECTS ==================== -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="sticker-label reveal-el">Featured Work</div>
+            <h2 class="sec-heading reveal-el">
+                Projects that <span class="shimmer-text">showcase</span> what I do best.
+            </h2>
+            <div class="project-stack">
+
+                <!-- IDEA 3: INTERACTIVE AZURE ARCHITECTURE VISUALIZER -->
+                <div class="card-glow reveal-el" style="background: rgba(15, 23, 42, 0.8); border-radius: 18px; border: 1px solid rgba(56, 189, 248, 0.3); padding: 25px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;">
+                        <h4 style="margin: 0; color: #fff; font-size: 1.1rem; display: flex; align-items: center; gap: 8px;">
+                            <span style="color: var(--accent2);">📊 Interactive Pipeline Explorer:</span> Enterprise Medallion Flow
+                        </h4>
+                        <span style="font-size: 0.75rem; color: var(--t3);">Click any stage node below to inspect live specifications</span>
+                    </div>
+
+                    <!-- Pipeline Flow Nodes -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
+                        <button onclick="inspectArchNode('adf')" id="archNode-adf" class="arch-node-btn active" style="flex: 1 1 140px; background: rgba(14, 165, 233, 0.2); border: 1px solid #0ea5e9; color: #fff; padding: 12px; border-radius: 10px; cursor: pointer; text-align: center; font-weight: bold; font-size: 0.85rem;">
+                            1. ADF Ingestion
+                        </button>
+                        <span style="color: var(--accent2); font-weight: bold;">➔</span>
+                        <button onclick="inspectArchNode('bronze')" id="archNode-bronze" class="arch-node-btn" style="flex: 1 1 140px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255,255,255,0.1); color: #cbd5e1; padding: 12px; border-radius: 10px; cursor: pointer; text-align: center; font-weight: bold; font-size: 0.85rem;">
+                            2. Bronze Layer
+                        </button>
+                        <span style="color: var(--accent2); font-weight: bold;">➔</span>
+                        <button onclick="inspectArchNode('silver')" id="archNode-silver" class="arch-node-btn" style="flex: 1 1 140px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255,255,255,0.1); color: #cbd5e1; padding: 12px; border-radius: 10px; cursor: pointer; text-align: center; font-weight: bold; font-size: 0.85rem;">
+                            3. Silver Cleansing
+                        </button>
+                        <span style="color: var(--accent2); font-weight: bold;">➔</span>
+                        <button onclick="inspectArchNode('gold')" id="archNode-gold" class="arch-node-btn" style="flex: 1 1 140px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255,255,255,0.1); color: #cbd5e1; padding: 12px; border-radius: 10px; cursor: pointer; text-align: center; font-weight: bold; font-size: 0.85rem;">
+                            4. Gold Delta Lake
+                        </button>
+                        <span style="color: var(--accent2); font-weight: bold;">➔</span>
+                        <button onclick="inspectArchNode('powerbi')" id="archNode-powerbi" class="arch-node-btn" style="flex: 1 1 140px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255,255,255,0.1); color: #cbd5e1; padding: 12px; border-radius: 10px; cursor: pointer; text-align: center; font-weight: bold; font-size: 0.85rem;">
+                            5. Power BI / Synapse
+                        </button>
+                    </div>
+
+                    <!-- Inspector Box -->
+                    <div id="archInspectorBox" style="background: #06060e; border: 1px solid rgba(14, 165, 233, 0.3); border-radius: 10px; padding: 18px; color: #f1f5f9; font-size: 0.9rem;">
+                        <h5 style="margin: 0 0 8px 0; color: #0ea5e9; font-size: 1rem;" id="archStageTitle">⚡ Stage 1: Azure Data Factory Ingestion</h5>
+                        <p style="margin: 0 0 10px 0; color: #94a3b8;" id="archStageDesc">Dynamic Parameterized Copy Activity pulling raw JSON API streams via Key Vault & SHIR integration into Azure Data Lake Gen2.</p>
+                        <div style="font-family: monospace; font-size: 0.8rem; background: rgba(255,255,255,0.03); padding: 10px; border-radius: 6px; color: #38bdf8;" id="archStageCode">
+                            // ADF Pipeline Trigger -> LinkedService_KeyVault -> Raw API Sink to ADLS Gen2 /raw/
+                        </div>
+                    </div>
+                </div>
+
+                <!-- === MY PROJECTS === -->
+                <h3 style="color: var(--t2); font-size: 1.5rem; margin-bottom: 20px; text-align: center; width: 100%;">My Core Projects</h3>
+                
+                <!-- Project 0 (Vapi) -->
+                <article class="proj-card reverse reveal-el" id="project-0" style="border: 1px solid var(--accent); box-shadow: 0 0 20px rgba(14, 165, 233, 0.2);">
+                    <div class="proj-visual pv-vapi" style="display:flex; flex-direction:column; justify-content:center; align-items:center; background: rgba(15,23,42,0.6); border-radius: 12px; padding: 20px;">
+                        <div class="pv-pipeline" style="width:100%; justify-content:center; gap: 10px;">
+                            <div class="pv-node n1" style="background:#0ea5e9; color:#fff; font-size:0.8rem; width:80px;"><span>Vapi AI</span></div>
+                            <div class="pv-edge" style="width:20px;"></div>
+                            <div class="pv-node n2" style="background:#8b5cf6; color:#fff; font-size:0.8rem; width:80px;"><span>Make.com</span></div>
+                            <div class="pv-edge" style="width:20px;"></div>
+                            <div class="pv-node n3" style="background:#fff; color:#000; font-size:0.8rem; width:80px;"><span>Notion</span></div>
+                        </div>
+                        <div style="margin-top: 30px; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 8px; font-size: 0.9rem; color: #cbd5e1; text-align: center; font-style: italic; border-left: 4px solid var(--accent);">
+                            "Hello Dad! This is Jiddu. Did you take your morning tablets today? What is your current BP and Blood Sugar level?"
+                        </div>
+                    </div>
+                    <div class="proj-info">
+                        <div class="proj-tags"><span style="background:rgba(14,165,233,0.2);color:#0ea5e9;border:none;">Voice AI Companion</span><span style="background:rgba(139,92,246,0.2);color:#8b5cf6;border:none;">Eldercare Automation</span><span style="background:rgba(255,255,255,0.1);color:#fff;border:none;">Notion DB</span></div>
+                        <h3 style="display:flex; align-items:center; flex-wrap:wrap; gap:10px; font-size: 1.25rem;">
+                            To Every Professional Living Away From Parents: How I Built an AI Voice Agent for My Parents
+                            <span style="font-size:0.6em; background:var(--accent); color:#0f172a; padding:4px 8px; border-radius:12px; text-transform:uppercase; font-weight:800; letter-spacing:1px; vertical-align:middle;">"Jiddu" AI</span>
+                        </h3>
+                        <p style="margin-bottom: 8px;">An empathetic, autonomous Voice AI companion built for parents living away from home. Automatically places scheduled calls in native Telugu, tracks daily medications & health vitals, and logs instant reports with family alerts. Here is how the architecture works:</p>
+                        <ul style="text-align: left; margin: 0 0 15px 0; padding-left: 20px; font-size: 0.9rem; color: #cbd5e1; list-style-type: disc;">
+                            <li><strong>Vapi:</strong> Initiates outbound calls on schedule (Morning/Evening).</li>
+                            <li><strong>Azure STT (Ears):</strong> Listens and transcribes the Telugu speech.</li>
+                            <li><strong>GPT-4 (Brain):</strong> Asks about specific tablets by name and generates contextual replies.</li>
+                            <li><strong>OpenAI TTS (Voice):</strong> Speaks back in a natural, respectful Telugu tone.</li>
+                            <li><strong>Make.com + Notion:</strong> Parses responses, logs them into a database, and sends instant alerts.</li>
+                        </ul>
+                        <div class="proj-kpis">
+                            <div class="kpi"><strong>100%</strong><small>Automated</small></div>
+                            <div class="kpi"><strong>Telugu</strong><small>Native Voice</small></div>
+                            <div class="kpi"><strong>Zero</strong><small>Code Stack</small></div>
+                        </div>
+                        <div class="proj-links" style="margin-top: 20px; justify-content: flex-start; gap: 10px; flex-wrap: wrap;">
+                            <button onclick="openJidduSimModal()" class="proj-link-btn" title="Simulate Live Telugu Health Call" style="background: linear-gradient(135deg, #0ea5e9, #8b5cf6); border: none; color: #fff; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 8px; box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                Test Live Call Simulator ▶
+                            </button>
+                            <a href="https://medium.com/@ramgopal1992.m" target="_blank" class="proj-link-btn" title="Read on Medium" style="background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.3); color: #fff;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42c1.87 0 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+                                Read Article
+                            </a>
+                            <a href="https://github.com/saigopal9666/Jiddu-voice-ai" target="_blank" class="proj-link-btn" title="View Source Code">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                                GitHub Repo
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project Sentinel-X AI (Cyber Guardian) -->
+                <article class="proj-card reveal-el" id="project-sentinel-x" style="border: 1px solid #00f0ff; box-shadow: 0 0 25px rgba(0, 240, 255, 0.25);">
+                    <div class="proj-visual" style="display:flex; flex-direction:column; justify-content:center; align-items:center; background: rgba(5,7,14,0.85); border-radius: 12px; padding: 20px; border: 1px solid rgba(0,240,255,0.3);">
+                        <div style="font-size: 3rem; margin-bottom: 10px;">🛡️⚡</div>
+                        <div style="font-family: monospace; font-weight: bold; color: #00f0ff; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; text-align: center;">
+                            SENTINEL-X AI MILITARY-GRADE CYBER DEFENDER
+                        </div>
+                        <div style="margin-top: 15px; padding: 10px 15px; background: rgba(239,68,68,0.15); border: 1px solid #ef4444; border-radius: 8px; font-size: 0.8rem; color: #f8fafc; text-align: center;">
+                            🚨 Anti-Deepfake Cryptographic Watermark Active & OSINT Leak Scanner
+                        </div>
+                    </div>
+                    <div class="proj-info">
+                        <div class="proj-tags">
+                            <span style="background:rgba(0,240,255,0.2);color:#00f0ff;border:none;">Cyber Security</span>
+                            <span style="background:rgba(168,85,247,0.2);color:#a855f7;border:none;">Anti-Deepfake Noise</span>
+                            <span style="background:rgba(16,185,129,0.2);color:#10b981;border:none;">GDPR Auto Eraser</span>
+                        </div>
+                        <h3 style="font-size: 1.25rem; color: #fff;">
+                            Sentinel-X AI: Military-Grade Personal Cyber Security Command Center & Anti-Hack Shield
+                        </h3>
+                        <p style="margin-bottom: 8px;">Zero-Trust Personal Cyber Defense Platform protecting users from phishing traps, deepfake image morphing, dark web data leaks, and rogue app permission abuses.</p>
+                        <ul style="text-align: left; margin: 0 0 15px 0; padding-left: 20px; font-size: 0.9rem; color: #cbd5e1; list-style-type: disc;">
+                            <li><strong>Dark Web OSINT Scanner:</strong> Scans 10+ Billion breach records for leaked emails & passwords.</li>
+                            <li><strong>Anti-Deepfake Noise Watermarker:</strong> Injects cryptographic pixel noise that distorts AI morphing engines.</li>
+                            <li><strong>Auto Data Eraser:</strong> Fires automated GDPR Art 17 & CCPA 'Right to Be Forgotten' legal removal notices to 25+ data brokers.</li>
+                            <li><strong>Phishing Sandbox Inspector:</strong> Analyzes WhatsApp/SMS URLs before opening.</li>
+                        </ul>
+                        <div class="proj-kpis">
+                            <div class="kpi"><strong>100%</strong><small>Zero-Trust</small></div>
+                            <div class="kpi"><strong>10B+</strong><small>OSINT Records</small></div>
+                            <div class="kpi"><strong>GDPR</strong><small>Auto Eraser</small></div>
+                        </div>
+                        <div class="proj-links" style="margin-top: 20px; justify-content: flex-start; gap: 10px; flex-wrap: wrap;">
+                            <a href="http://localhost:8099" target="_blank" class="proj-link-btn" style="background: linear-gradient(135deg, #00f0ff, #0284c7); border: none; color: #000; font-weight: bold; box-shadow: 0 4px 15px rgba(0, 240, 255, 0.4);">
+                                🛡️ Open Cyber Guardian Live ▶
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 1 (Medallion) -->
+                <article class="proj-card reverse reveal-el" id="project-4">
+                    <div class="proj-visual pv-4">
+                        <div class="pv-dataflow">
+                            <div class="pv-df-node df-ingest">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                <span>Ingest</span>
+                            </div>
+                            <div class="pv-edge"></div>
+                            <div class="pv-df-node df-clean">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                                <span>Clean</span>
+                            </div>
+                            <div class="pv-edge"></div>
+                            <div class="pv-df-node df-delta">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                                <span>Delta</span>
+                            </div>
+                            <div class="pv-edge"></div>
+                            <div class="pv-df-node df-bi">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                                <span>BI</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="proj-info">
+                        <div class="proj-tags"><span>Microsoft Fabric</span><span>PySpark</span><span>Delta Lake</span><span>Power BI</span></div>
+                        <h3>Retail Sales Analytics — Medallion Architecture</h3>
+                        <p>End-to-End Data Engineering Pipeline using <strong>PySpark</strong> with strict Schema Enforcement (StructType), advanced deduplication via Window Functions, and custom Data Quality Framework routing corrupted logs into Delta Lake.</p>
+                        <div class="proj-kpis">
+                            <div class="kpi"><strong>10×</strong><small>Faster Queries</small></div>
+                            <div class="kpi"><strong>100%</strong><small>ACID Compliant</small></div>
+                            <div class="kpi"><strong>Direct</strong><small>Lake → BI</small></div>
+                        </div>
+                        <div class="proj-links">
+                            <a href="https://medium.com/@ramgopal1992.m" target="_blank" class="proj-link-btn" title="Read on Medium" style="background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.3); color: #fff;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 010 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42c1.87 0 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+                                Read Article
+                            </a>
+                            <a href="https://github.com/saigopal9666/pyspark-retail-sales-medallion" target="_blank" class="proj-link-btn" title="View Source Code">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                                GitHub
+                            </a>
+                        </div>
+                    </div></article>
+                
+                <!-- Project 3 (Enterprise Lakehouse Architecture) -->
+                <article class="proj-card reverse reveal-el" id="project-2">
+                    <div class="proj-visual pv-3">
+                        <div class="pv-layers">
+                            <div class="pv-layer ly-bronze">Bronze</div>
+                            <div class="pv-layer ly-silver">Silver</div>
+                            <div class="pv-layer ly-gold">Gold</div>
+                        </div>
+                    </div>
+                    <div class="proj-info">
+                        <div class="proj-tags"><span>Python Data Generator</span><span>Microsoft Fabric</span><span>Medallion Lakehouse</span></div>
+                        <h3>Generating Sample Elon Musk Tweet Data for Fabric Medallion Pipeline</h3>
+                        <p>Built a custom Python synthetic data generator simulating real-time Elon Musk Twitter/X data. Processed raw tweet streams through Microsoft Fabric Lakehouse using Bronze (Raw), Silver (Cleaned), and Gold (Analytics) Delta tables.</p>
+                        <div class="proj-kpis">
+                            <div class="kpi"><strong>Low</strong><small>Code Stack</small></div>
+                            <div class="kpi"><strong>3-Tier</strong><small>Medallion</small></div>
+                            <div class="kpi"><strong>100%</strong><small>Automated</small></div>
+                        </div>
+                        <div class="proj-links" style="margin-top: 20px; justify-content: flex-start; gap: 10px;">
+                            <a href="https://medium.com/@ramgopal1992.m" target="_blank" class="proj-link-btn" title="Read on Medium" style="background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.3); color: #fff;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 010 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42c1.87 0 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+                                Read Article
+                            </a>
+                            <a href="https://github.com/saigopal9666" target="_blank" class="proj-link-btn" title="View Source Code">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                                GitHub Repo
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                <div style="width: 100%; margin: 60px 0; border-bottom: 1px solid var(--border);"></div>
+                
+                
+                <!-- === DATA ENGINEERING PIPELINE STRUCTURE === -->
+                <div style="margin-top: 40px; text-align: center; background: rgba(15,23,42,0.5); padding: 40px 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+                    <h3 style="color: var(--t2); font-size: 1.3rem; margin-bottom: 30px;">Typical Data Engineering Architecture (ETL & ELT)</h3>
+                    
+                    <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 15px; max-width: 800px; margin: 0 auto;">
+                        <div style="padding: 15px 25px; background: #334155; border-radius: 8px; color: #f8fafc; font-weight: 600;">RAW DATA</div>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        <div style="padding: 15px 25px; background: #0284c7; border-radius: 8px; color: #f8fafc; font-weight: 600; box-shadow: 0 0 15px rgba(2,132,199,0.4);">SPARK PROCESSING</div>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        <div style="padding: 15px 25px; background: #0f766e; border-radius: 8px; color: #f8fafc; font-weight: 600;">DELTA LAKE (Medallion)</div>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        <div style="padding: 15px 25px; background: #eab308; border-radius: 8px; color: #0f172a; font-weight: 700;">POWER BI DASHBOARDS</div>
+                    </div>
+                    <p style="margin-top: 30px; color: var(--t3); font-size: 0.95rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+                        This illustrates the core data flow utilized in most of my advanced enterprise solutions, supporting both <strong>ETL</strong> and <strong>ELT</strong> pipelines. Raw data is securely ingested (Extract & Load), transformed via PySpark distributed computing within the Lakehouse (Transform), stored efficiently in Delta format, and finally visualized.
+                    </p>
+                </div>
+
+                
+                
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ATS RESUME BUILDER ==================== -->
+    <section id="ats-builder" class="section">
+        <div class="container">
+            <div class="sticker-label reveal-el">Free Tool</div>
+            <h2 class="sec-heading reveal-el">
+                ATS Resume <span class="shimmer-text">Builder</span> — Match your resume to any JD.
+            </h2>
+            <p class="ats-subtitle reveal-el">Paste your resume and a job description below. The tool analyzes keyword matches, gives you an ATS compatibility score, and shows exactly what's missing.</p>
+
+            <div class="ats-layout reveal-el">
+                <!-- Input Side -->
+                <div class="ats-inputs">
+                    <div class="ats-input-card card-glow">
+                        <div class="ats-input-header">
+                            <div class="ats-input-icon icon-gradient-2">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                            </div>
+                            <h3>Job Description</h3>
+                        </div>
+                        <textarea id="atsJD" rows="10" placeholder="Paste the job description here...\n\nExample:\nWe are looking for a Data Engineer with experience in PySpark, Azure, Delta Lake, ETL pipelines..."></textarea>
+                    </div>
+                    <div class="ats-input-card card-glow">
+                        <div class="ats-input-header">
+                            <div class="ats-input-icon icon-gradient-1">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            </div>
+                            <h3>Your Resume</h3>
+                        </div>
+                        <div style="background: rgba(168,85,247,0.05); border: 1px solid rgba(168,85,247,0.3); border-radius: 8px; padding: 15px; margin-bottom: 15px;">
+                            <h4 style="margin: 0 0 8px 0; color: #a855f7; display: flex; align-items: center; gap: 6px; font-size: 0.9rem;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                AI Resume Builder
+                            </h4>
+                            <p style="font-size: 0.75rem; color: #94a3b8; margin-bottom: 10px; line-height: 1.4;">Enter a role and tools to instantly generate a highly-detailed professional resume and job description.</p>
+                            <div style="display: flex; gap: 8px;">
+                                <input type="text" id="aiResumePrompt" placeholder="e.g., DevOps Engineer with AWS, Docker, Jenkins" style="flex: 1; padding: 8px 12px; border-radius: 6px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); color: #fff; font-size: 0.85rem; font-family: 'Inter', sans-serif;">
+                                <button class="btn-glow" id="generateResumeBtn" onclick="generateAIResume()" style="padding: 0 15px; font-size: 0.8rem; white-space: nowrap;">Generate ✨</button>
+                            </div>
+                        </div>
+                        <textarea id="atsResume" rows="10" placeholder="Paste your resume text here...\n\nExample:\nData Engineer with 3+ years of experience in building ETL pipelines using PySpark and Azure..."></textarea>
+                        <div class="ats-action" style="display: flex; flex-direction: column; gap: 10px;">
+                            <button class="btn-glow full" id="atsAnalyzeBtn" onclick="analyzeATS()">Analyze Match ✨</button>
+                            <button class="btn-glow full" onclick="openInterviewModal()" style="background: rgba(168,85,247,0.1); border-color: rgba(168,85,247,0.5);">Practice Mock Interview 🎙️</button>
+                            <div id="atsProgressBarContainer" style="display: none; width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 4px; margin-top: 5px; overflow: hidden;">
+                                <div id="atsProgressBar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #38bdf8, #818cf8); transition: width 0.3s ease; box-shadow: 0 0 10px rgba(56,189,248,0.5);"></div>
+                            </div>
+                            <div id="atsProgressText" style="display: none; text-align: center; color: #94a3b8; font-size: 0.9rem; margin-top: 8px; font-family: monospace;">Initializing AI...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Side -->
+                <div class="ats-results" id="atsResults">
+                    <div class="ats-empty-state" id="atsEmptyState">
+                        <div class="ats-empty-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                        </div>
+                        <h3>Paste & Analyze</h3>
+                        <p>Add a job description and your resume, then click "Analyze Match" to see your ATS compatibility score.</p>
+                    </div>
+
+                    <!-- Score Card (hidden initially) -->
+                    <div class="ats-score-card" id="atsScoreCard" style="display:none">
+                        <div class="ats-gauge-wrap">
+                            <svg class="ats-gauge" viewBox="0 0 120 120">
+                                <circle class="gauge-bg" cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="10"/>
+                                <circle class="gauge-fill" id="gaugeFill" cx="60" cy="60" r="52" fill="none" stroke="url(#gaugeGrad)" stroke-width="10" stroke-linecap="round" stroke-dasharray="326.73" stroke-dashoffset="326.73" transform="rotate(-90 60 60)"/>
+                                <defs><linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#ef4444"/>
+                                    <stop offset="50%" stop-color="#f59e0b"/>
+                                    <stop offset="100%" stop-color="#22c55e"/>
+                                </linearGradient></defs>
+                            </svg>
+                            <div class="gauge-center">
+                                <span class="gauge-num" id="gaugeNum">0</span>
+                                <span class="gauge-pct">%</span>
+                            </div>
+                        </div>
+                        <div class="ats-grade" id="atsGrade">—</div>
+                        <p class="ats-grade-msg" id="atsGradeMsg"></p>
+                    </div>
+
+                    <!-- Keywords Section (hidden initially) -->
+                    <div class="ats-keywords" id="atsKeywords" style="display:none">
+                        <div class="ats-kw-section">
+                            <div class="ats-kw-header matched">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span>Matched Keywords</span>
+                                <span class="kw-count" id="matchedCount">0</span>
+                            </div>
+                            <div class="ats-kw-chips" id="matchedChips"></div>
+                        </div>
+                        <div class="ats-kw-section">
+                            <div class="ats-kw-header missing">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                                <span>Missing Keywords</span>
+                                <span class="kw-count" id="missingCount">0</span>
+                            </div>
+                            <div class="ats-kw-chips" id="missingChips"></div>
+                        </div>
+                    </div>
+
+                    <!-- Tips (hidden initially) -->
+                    <div class="ats-tips card-glow" id="atsTips" style="display:none">
+                        <h4>💡 Improvement Tips</h4>
+                        <ul id="atsTipsList"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== GLOBAL JOB SEARCH (Aggregator) ==================== -->
+    <section id="job-hunt" class="section" style="background: rgba(15, 23, 42, 0.4);">
+        <div class="container">
+            <div class="sticker-label reveal-el">New Feature</div>
+            <h2 class="sec-heading reveal-el">
+                Global Job <span class="shimmer-text">Aggregator</span> 🌍
+            </h2>
+            <p class="ats-subtitle reveal-el" style="max-width: 700px; margin: 0 auto 40px auto; text-align: center;">
+                Don't waste time checking 10 different websites. Search here and we'll pull the best matches from LinkedIn, Naukri, Indeed, and more. 
+                <br><b>Your goal is to learn. Our goal is to get you hired.</b>
+            </p>
+
+            <!-- Search Bar -->
+            <div class="reveal-el" style="display: flex; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; justify-content: center; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <div style="flex: 1 1 300px; position: relative;">
+                    <svg style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #94a3b8;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" id="jobSearchInput" placeholder="e.g., Data Analyst in Hyderabad" style="width: 100%; padding: 14px 14px 14px 45px; border-radius: 8px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); color: #fff; font-size: 1rem; box-shadow: inset 0 0 10px rgba(0,0,0,0.5);">
+                </div>
+                <select id="jobCountryFilter" style="padding: 14px; border-radius: 8px; background: rgba(0,0,0,0.8); border: 1px solid rgba(168,85,247,0.3); color: #fff; font-size: 1rem; outline: none; box-shadow: inset 0 0 10px rgba(168,85,247,0.1);">
+                    <option value="Global">Worldwide (Global)</option>
+                    <option value="USA">United States (USA)</option>
+                    <option value="UK">United Kingdom (UK)</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Singapore">Singapore</option>
+                    <option value="Remote">Remote</option>
+                </select>
+                <select id="jobExpFilter" style="padding: 14px; border-radius: 8px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); color: #fff; font-size: 1rem; outline: none;">
+                    <option value="all">Any Experience</option>
+                    <option value="0-1">Fresher (0-1 yrs)</option>
+                    <option value="1-3">Junior (1-3 yrs)</option>
+                    <option value="3+">Senior (3+ yrs)</option>
+                </select>
+                <select id="jobSourceFilter" style="padding: 14px; border-radius: 8px; background: rgba(0,0,0,0.8); border: 1px solid rgba(168,85,247,0.3); color: #fff; font-size: 1rem; outline: none; box-shadow: inset 0 0 10px rgba(168,85,247,0.1);">
+                    <option value="all">All Sources</option>
+                    <option value="linkedin">LinkedIn</option>
+                    <option value="naukri">Naukri</option>
+                    <option value="indeed">Indeed</option>
+                    <option value="monster">Monster</option>
+                    <option value="glassdoor">Glassdoor</option>
+                    <option value="foundit">Foundit</option>
+                    <option value="internshala">Internshala</option>
+                    <option value="wellfound">Wellfound</option>
+                </select>
+                <button class="btn-glow" onclick="searchJobs()" style="padding: 0 30px; display: flex; align-items: center; gap: 8px;">
+                    Find Jobs ✨
+                </button>
+            </div>
+
+            <!-- Loading State -->
+            <div id="jobLoadingState" style="display: none; text-align: center; padding: 40px 0;">
+                <div class="pulse-dot" style="width: 20px; height: 20px; margin: 0 auto 15px auto;"></div>
+                <p style="color: #94a3b8; font-family: monospace;">Fetching jobs from multiple sources...</p>
+            </div>
+
+            <!-- Results Grid -->
+            <div id="jobResultsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto;">
+                <!-- Job Cards will be injected here via JS -->
+            </div>
+            
+            <div id="jobEmptyState" style="text-align: center; padding: 60px 20px; color: #94a3b8; border: 1px dashed rgba(255,255,255,0.1); border-radius: 12px; max-width: 1000px; margin: 0 auto;">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom: 15px; opacity: 0.5;"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                <h3>Ready to get hired?</h3>
+                <p>Search above to find aggregated jobs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== IDEA 2: DATAENGINE SQL TO PYSPARK CONVERTER ==================== -->
+    <section id="data-engine-tool" class="section" style="background: rgba(15, 23, 42, 0.5); border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <div class="sticker-label reveal-el">Interactive Tool</div>
+            <h2 class="sec-heading reveal-el">
+                SQL to <span class="shimmer-text">PySpark & Delta Lake</span> Converter ⚡
+            </h2>
+            <p class="ats-subtitle reveal-el" style="max-width: 750px; margin: 0 auto 40px auto; text-align: center;">
+                Paste any ANSI SQL query below and instantly generate production-grade, optimized PySpark DataFrame & Delta Lake code with performance recommendations.
+            </p>
+
+            <div class="card-glow reveal-el" style="background: rgba(15, 23, 42, 0.85); border-radius: 18px; border: 1px solid rgba(168, 85, 247, 0.3); padding: 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
+                <!-- Preset Buttons -->
+                <div style="display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; align-items: center;">
+                    <span style="color: var(--t2); font-size: 0.85rem; font-weight: bold;">Quick Presets:</span>
+                    <button onclick="loadSqlPreset('agg')" class="btn-outline" style="padding: 4px 12px; font-size: 0.8rem;">Group & Filter</button>
+                    <button onclick="loadSqlPreset('window')" class="btn-outline" style="padding: 4px 12px; font-size: 0.8rem;">Window Function (DENSE_RANK)</button>
+                    <button onclick="loadSqlPreset('join')" class="btn-outline" style="padding: 4px 12px; font-size: 0.8rem;">Inner Join & Aggregation</button>
+                </div>
+
+                <!-- Split Converter Grid -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+                    <!-- Left: Input SQL -->
+                    <div>
+                        <label style="display: block; color: var(--accent2); font-weight: bold; font-size: 0.9rem; margin-bottom: 8px;">
+                            INPUT: ANSI SQL Query
+                        </label>
+                        <textarea id="sqlInput" rows="10" style="width: 100%; background: #06060e; border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 15px; color: #38bdf8; font-family: monospace; font-size: 0.9rem; outline: none; box-sizing: border-box; line-height: 1.5;">SELECT user_id, COUNT(order_id) as total_orders, SUM(amount) as total_spent
+FROM orders
+WHERE status = 'completed'
+GROUP BY user_id
+HAVING total_orders >= 5
+ORDER BY total_spent DESC;</textarea>
+                        <button onclick="convertSqlToPySpark()" class="btn-glow full" style="margin-top: 12px; padding: 12px; font-weight: bold;">
+                            Convert to PySpark & Delta Lake ⚡
+                        </button>
+                    </div>
+
+                    <!-- Right: Output PySpark -->
+                    <div>
+                        <label style="display: block; color: #a855f7; font-weight: bold; font-size: 0.9rem; margin-bottom: 8px;">
+                            OUTPUT: Optimized PySpark & Delta Code
+                        </label>
+                        <div id="pysparkOutput" style="width: 100%; min-height: 240px; background: #06060e; border: 1px solid rgba(168,85,247,0.3); border-radius: 10px; padding: 15px; color: #e2e8f0; font-family: monospace; font-size: 0.85rem; overflow-x: auto; box-sizing: border-box; white-space: pre-wrap; line-height: 1.6;">
+# Click 'Convert to PySpark' to generate code...
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance Tip Box -->
+                <div id="pysparkTips" style="margin-top: 15px; padding: 12px 16px; background: rgba(56, 189, 248, 0.1); border-left: 4px solid var(--accent2); border-radius: 6px; font-size: 0.85rem; color: #cbd5e1; display: none;">
+                    💡 <strong>Performance Tip:</strong> For large Delta tables, ensure <code>spark.sql.shuffle.partitions</code> is tuned and apply <code>OPTIMIZE table ZORDER BY (user_id)</code> or Liquid Clustering.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== REDESIGNED TECH UPDATES & NEWS ==================== -->
+    <section id="tech-updates" class="section" style="background: linear-gradient(180deg, rgba(15,23,42,0.8), rgba(6,6,14,0.95)); border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <div class="sticker-label reveal-el">Live Global Feed</div>
+            <h2 class="sec-heading reveal-el">
+                Global Tech & AI <span class="shimmer-text">News Portal</span> 📰
+            </h2>
+            <p class="ats-subtitle reveal-el" style="max-width: 700px; margin: 0 auto 35px auto; text-align: center;">
+                Real-time 2026 breakthroughs in AI Reasoning Models, Azure Data Engineering, Databricks Unity Catalog, and PySpark Lakehouses.
+            </p>
+
+            <!-- Ultra-Modern Glassmorphic News Container -->
+            <div class="news-portal reveal-el" style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(168, 85, 247, 0.25); border-radius: 24px; padding: 25px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); backdrop-filter: blur(15px);">
+                
+                <!-- 1. Category Filter Bar & Live Refresh Button -->
+                <div class="news-menu-bar" style="display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 15px;">
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        <button onclick="filterNewsCategory('all', this)" class="news-menu-btn active" style="background: var(--grad); color: #fff; border: none; padding: 8px 18px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 0.85rem;">Latest</button>
+                        <button onclick="filterNewsCategory('AI Breakthroughs', this)" class="news-menu-btn" style="background: rgba(255,255,255,0.05); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.1); padding: 8px 18px; border-radius: 20px; cursor: pointer; font-size: 0.85rem;">AI Breakthroughs</button>
+                        <button onclick="filterNewsCategory('Azure', this)" class="news-menu-btn" style="background: rgba(255,255,255,0.05); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.1); padding: 8px 18px; border-radius: 20px; cursor: pointer; font-size: 0.85rem;">Azure & Fabric</button>
+                        <button onclick="filterNewsCategory('Databricks', this)" class="news-menu-btn" style="background: rgba(255,255,255,0.05); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.1); padding: 8px 18px; border-radius: 20px; cursor: pointer; font-size: 0.85rem;">Databricks</button>
+                        <button onclick="filterNewsCategory('Data Engineering', this)" class="news-menu-btn" style="background: rgba(255,255,255,0.05); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.1); padding: 8px 18px; border-radius: 20px; cursor: pointer; font-size: 0.85rem;">Data Engineering</button>
+                    </div>
+                    <button onclick="refreshLiveNewsFeed()" class="btn-glow" style="padding: 6px 14px; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 6px;" id="refreshNewsBtn">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                        <span>Refresh Live Feed</span>
+                    </button>
+                </div>
+
+                <!-- 2. Live Marquee Ticker -->
+                <div style="background: rgba(6, 6, 14, 0.8); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 12px; padding: 8px 15px; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; overflow: hidden;">
+                    <span style="background: #ef4444; color: #fff; font-size: 0.7rem; font-weight: 900; padding: 3px 10px; border-radius: 8px; text-transform: uppercase; flex-shrink: 0; animation: pulse-red 2s infinite;">🔴 REALTIME</span>
+                    <div style="white-space: nowrap; overflow: hidden; font-size: 0.85rem; color: #f1f5f9; width: 100%;">
+                        <marquee scrollamount="6" behavior="scroll" direction="left" style="vertical-align: middle;">
+                            🚀 <strong style="color: var(--accent2);">DeepSeek-R1 & OpenAI o3-Mini:</strong> Benchmark records broken for Data Engineering & Code Generation &nbsp;&nbsp;•&nbsp;&nbsp;
+                            ⚡ <strong style="color: var(--accent);">Microsoft Fabric OneLake:</strong> DirectLake Engine delivers 100x Query speedup &nbsp;&nbsp;•&nbsp;&nbsp;
+                            🧱 <strong style="color: #f97316;">Databricks Unity Catalog 2.0:</strong> Multi-cloud open-source governance launched
+                        </marquee>
+                    </div>
+                </div>
+
+                <!-- 3. News Bento Grid (Main + Side) -->
+                <div class="news-portal-grid" style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
+                    <!-- Left: Featured & Sub Cards -->
+                    <div id="newsPortalMain">
+                        <!-- Filled by JS -->
+                    </div>
+
+                    <!-- Right: Live Feed Sidebar -->
+                    <div class="news-portal-sidebar">
+                        <div style="color: var(--t1); font-weight: bold; font-size: 0.95rem; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
+                            <span>🔥 Trending Discussions</span>
+                            <span style="font-size: 0.75rem; color: var(--accent2);">Updated Live</span>
+                        </div>
+                        <div id="newsPortalSidebar">
+                            <!-- Filled by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== EXPERIENCE ==================== -->
+    <section id="experience" class="section">
+        <div class="container">
+            <div class="sticker-label reveal-el">Career Journey</div>
+            <h2 class="sec-heading reveal-el">
+                My professional <span class="shimmer-text">timeline</span>.
+            </h2>
+            <div class="exp-timeline">
+                <div class="exp-item reveal-el" id="exp-1">
+                    <div class="exp-marker"><div class="exp-dot live"></div></div>
+                    <div class="exp-card card-glow">
+                        <span class="exp-date">2024 — Present</span>
+                        <h3>Data Engineer</h3>
+                        <p class="exp-company">Soft@sonic Technologies</p>
+                        <ul>
+                            <li>Building scalable data pipelines with Microsoft Fabric & PySpark</li>
+                            <li>Implementing Medallion Architecture for enterprise data lake</li>
+                            <li>Automating ETL workflows with Azure Data Factory</li>
+                        </ul>
+                        <div class="exp-chips"><span>Fabric</span><span>PySpark</span><span>Delta Lake</span><span>ADF</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CERTIFICATIONS ==================== -->
+    <section id="certifications" class="section">
+        <div class="container">
+            <div class="sticker-label reveal-el">🏆 Certifications</div>
+            <h2 class="sec-heading reveal-el">
+                Industry <span class="shimmer-text">certified</span> expertise.
+            </h2>
+            <div class="cert-grid reveal-el">
+                <div class="cert-card card-glow" id="cert-1">
+                    <div class="cert-icon" style="background:linear-gradient(135deg,#0078d4,#00bcf2)">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <div class="cert-info">
+                        <h3>DP-203</h3>
+                        <p>Azure Data Engineer Associate</p>
+                        <span class="cert-issuer">Microsoft</span>
+                    </div>
+                    <div class="cert-badge">Verified</div>
+                </div>
+                <div class="cert-card card-glow" id="cert-2">
+                    <div class="cert-icon" style="background:linear-gradient(135deg,#7c3aed,#a855f7)">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <div class="cert-info">
+                        <h3>DP-600</h3>
+                        <p>Fabric Analytics Engineer</p>
+                        <span class="cert-issuer">Microsoft</span>
+                    </div>
+                    <div class="cert-badge">Verified</div>
+                </div>
+                <div class="cert-card card-glow" id="cert-3">
+                    <div class="cert-icon" style="background:linear-gradient(135deg,#06b6d4,#0ea5e9)">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <div class="cert-info">
+                        <h3>AZ-900</h3>
+                        <p>Azure Fundamentals</p>
+                        <span class="cert-issuer">Microsoft</span>
+                    </div>
+                    <div class="cert-badge">Verified</div>
+                </div>
+                <div class="cert-card card-glow" id="cert-4">
+                    <div class="cert-icon" style="background:linear-gradient(135deg,#f97316,#eab308)">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <div class="cert-info">
+                        <h3>DP-900</h3>
+                        <p>Azure Data Fundamentals</p>
+                        <span class="cert-issuer">Microsoft</span>
+                    </div>
+                    <div class="cert-badge">Verified</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== COURSES & FEES ==================== -->
+    <section id="courses" class="section">
+        <div class="container">
+            <div class="sticker-label reveal-el">📚 Courses</div>
+            <h2 class="sec-heading reveal-el">
+                Learn from the best. <span class="shimmer-text">Upskill</span> your career.
+            </h2>
+            <p class="courses-subtitle reveal-el">Industry-ready courses designed for real-world data engineering. Hands-on projects, interview prep, and lifetime access.</p>
+
+            <div class="pricing-grid reveal-el">
+                <!-- Course 1 -->
+                <div class="price-card card-glow" id="course-1">
+                    <div class="pc-badge">Beginner</div>
+                    <div class="pc-icon" style="background:rgba(6,182,212,.12);border-color:rgba(6,182,212,.25);color:#06b6d4">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+                    </div>
+                    <h3>Python for Data Engineering</h3>
+                    <p class="pc-desc">Master Python fundamentals, data structures, file handling, APIs, and automation for data pipelines.</p>
+                    <div class="pc-meta">
+                        <span>🕐 6 Weeks</span>
+                        <span>📹 40+ Videos</span>
+                        <span>📋 5 Projects</span>
+                    </div>
+                    <div class="pc-features">
+                        <div>✅ Python Basics to Advanced</div>
+                        <div>✅ Pandas & NumPy</div>
+                        <div>✅ API Integration</div>
+                        <div>✅ Hands-on Projects</div>
+                        <div>✅ Certificate</div>
+                    </div>
+                    <div class="pc-price">
+                        <span class="pc-amount">₹2,999</span>
+                        <span class="pc-original">₹5,999</span>
+                        <span class="pc-save">50% OFF</span>
+                    </div>
+                    <a href="#contact" class="btn-outline full">Enroll Now</a>
+                </div>
+
+                <!-- Course 2 — POPULAR -->
+                <div class="price-card card-glow popular" id="course-2">
+                    <div class="pc-popular-badge">🔥 Most Popular</div>
+                    <div class="pc-badge">Intermediate</div>
+                    <div class="pc-icon" style="background:rgba(168,85,247,.12);border-color:rgba(168,85,247,.25);color:#a855f7">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h3>PySpark & Fabric Mastery</h3>
+                    <p class="pc-desc">Complete data engineering with PySpark, Microsoft Fabric, Delta Lake, and Medallion Architecture.</p>
+                    <div class="pc-meta">
+                        <span>🕐 10 Weeks</span>
+                        <span>📹 80+ Videos</span>
+                        <span>📋 10 Projects</span>
+                    </div>
+                    <div class="pc-features">
+                        <div>✅ Everything in Python Course</div>
+                        <div>✅ PySpark Transformations</div>
+                        <div>✅ Microsoft Fabric</div>
+                        <div>✅ Delta Lake & Lakehouse</div>
+                        <div>✅ Real-time Projects</div>
+                        <div>✅ Interview Preparation</div>
+                        <div>✅ Resume Review</div>
+                    </div>
+                    <div class="pc-price">
+                        <span class="pc-amount">₹6,999</span>
+                        <span class="pc-original">₹12,999</span>
+                        <span class="pc-save">46% OFF</span>
+                    </div>
+                    <a href="#contact" class="btn-glow full">Enroll Now →</a>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="price-card card-glow" id="course-3">
+                    <div class="pc-badge">Advanced</div>
+                    <div class="pc-icon" style="background:rgba(249,115,22,.12);border-color:rgba(249,115,22,.25);color:#f97316">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 10h-4V6"/><path d="M14 10l7.1-7.1"/><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg>
+                    </div>
+                    <h3>Azure Data Engineer</h3>
+                    <p class="pc-desc">Master Azure Synapse, ADF, ADLS, Databricks, and prepare for DP-203 certification.</p>
+                    <div class="pc-meta">
+                        <span>🕐 12 Weeks</span>
+                        <span>📹 100+ Videos</span>
+                        <span>📋 8 Projects</span>
+                    </div>
+                    <div class="pc-features">
+                        <div>✅ Azure Fundamentals</div>
+                        <div>✅ Synapse Analytics</div>
+                        <div>✅ Azure Data Factory</div>
+                        <div>✅ Databricks & Spark</div>
+                        <div>✅ DP-203 Exam Prep</div>
+                        <div>✅ Mock Interviews</div>
+                    </div>
+                    <div class="pc-price">
+                        <span class="pc-amount">₹8,999</span>
+                        <span class="pc-original">₹15,999</span>
+                        <span class="pc-save">44% OFF</span>
+                    </div>
+                    <a href="#contact" class="btn-outline full">Enroll Now</a>
+                </div>
+
+                <!-- Course 4 -->
+                <div class="price-card card-glow" id="course-4">
+                    <div class="pc-badge">Complete Bundle</div>
+                    <div class="pc-icon" style="background:rgba(34,197,94,.12);border-color:rgba(34,197,94,.25);color:#22c55e">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <h3>Full Stack Data Engineer</h3>
+                    <p class="pc-desc">All 3 courses combined + exclusive mentorship, job referrals, and 1-on-1 doubt sessions.</p>
+                    <div class="pc-meta">
+                        <span>🕐 6 Months</span>
+                        <span>📹 220+ Videos</span>
+                        <span>📋 23 Projects</span>
+                    </div>
+                    <div class="pc-features">
+                        <div>✅ All 3 Courses Included</div>
+                        <div>✅ 1-on-1 Mentorship</div>
+                        <div>✅ Job Referrals</div>
+                        <div>✅ Doubt Sessions</div>
+                        <div>✅ Lifetime Access</div>
+                        <div>✅ Community Access</div>
+                    </div>
+                    <div class="pc-price">
+                        <span class="pc-amount">₹14,999</span>
+                        <span class="pc-original">₹34,997</span>
+                        <span class="pc-save">57% OFF</span>
+                    </div>
+                    <a href="#contact" class="btn-outline full">Enroll Now</a>
+                </div>
+            </div>
+
+            <div class="courses-trust reveal-el">
+                <div class="trust-item">🎓 <strong>500+</strong> Students Enrolled</div>
+                <div class="trust-sep"></div>
+                <div class="trust-item">⭐ <strong>4.8/5</strong> Rating</div>
+                <div class="trust-sep"></div>
+                <div class="trust-item">💼 <strong>92%</strong> Placement Rate</div>
+                <div class="trust-sep"></div>
+                <div class="trust-item">🔄 <strong>Lifetime</strong> Access</div>
+            </div>
+
+            <div class="courses-cta reveal-el" style="text-align:center;margin-top:32px">
+                <a href="sql-course.html" class="btn-glow" style="display:inline-flex; border-radius:30px; padding:12px 28px; background:rgba(168,85,247,0.15); border:1px solid rgba(168,85,247,0.4); color:#fff; text-decoration:none; font-weight:600;">
+                    <span>📚 View Full SQL Course Curriculum →</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== DIGITAL RESOURCE STORE ==================== -->
+    <section id="digital-store" class="section">
+        <div class="container">
+            <div class="sec-header text-center">
+                <div class="sec-badge" style="display:inline-flex; align-items:center; gap:8px; padding:6px 16px; background:rgba(168,85,247,0.12); border:1px solid rgba(168,85,247,0.3); border-radius:50px; font-size:0.8rem; font-weight:600; color:#c084fc; margin-bottom:15px;">
+                    <span class="pulse-dot"></span> Instant Digital Downloads
+                </div>
+                <h2 class="sec-heading">Data Engineering <span class="shimmer-text">Digital Store & Resource Hub</span></h2>
+                <p class="sec-sub">Level up your career instantly with production-ready code templates, interview cheatsheets, and ATS resume kits.</p>
+            </div>
+
+            <div class="courses-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+                <!-- Product 1 -->
+                <div class="price-card card-glow popular">
+                    <div class="pc-popular-badge">⚡ Best Seller</div>
+                    <div class="pc-badge" style="background: rgba(56,189,248,0.15); color:#38bdf8;">PDF Guide</div>
+                    <div class="pc-icon" style="background:rgba(56,189,248,.12);border-color:rgba(56,189,248,.25);color:#38bdf8">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                    </div>
+                    <h3>Data Engineer Interview Cheatsheet (2026)</h3>
+                    <p class="pc-desc">100+ Real Interview Questions & Answers covering SQL, PySpark, Azure Data Factory, Databricks & Synapse.</p>
+                    <div class="pc-features">
+                        <div>✅ Instant PDF Download</div>
+                        <div>✅ SQL & PySpark Code Snippets</div>
+                        <div>✅ System Design Flowcharts</div>
+                    </div>
+                    <div class="pc-price">
+                        <span class="pc-amount">₹399</span>
+                        <span class="pc-original">₹999</span>
+                        <span class="pc-save">60% OFF</span>
+                    </div>
+                    <a href="https://gumroad.com" target="_blank" class="btn-glow full" style="text-align:center; text-decoration:none;">Buy & Download PDF</a>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="price-card card-glow">
+                    <div class="pc-badge" style="background: rgba(168,85,247,0.15); color:#a855f7;">Template Pack</div>
+                    <div class="pc-icon" style="background:rgba(168,85,247,.12);border-color:rgba(168,85,247,.25);color:#a855f7">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+                    </div>
+                    <h3>ATS Data Engineer Resume Master Kit</h3>
+                    <p class="pc-desc">Pre-formatted Word & LaTeX templates guaranteed to pass ATS bots + 50 high-impact data engineering bullet points.</p>
+                    <div class="pc-features">
+                        <div>✅ Editable Word (.docx) & LaTeX</div>
+                        <div>✅ ATS Score Guaranteed 90%+</div>
+                        <div>✅ Includes Cover Letter Template</div>
+                    </div>
+                    <div class="pc-price">
+                        <span class="pc-amount">₹299</span>
+                        <span class="pc-original">₹799</span>
+                        <span class="pc-save">62% OFF</span>
+                    </div>
+                    <a href="https://gumroad.com" target="_blank" class="btn-outline full" style="text-align:center; text-decoration:none;">Get Resume Pack</a>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="price-card card-glow">
+                    <div class="pc-badge" style="background: rgba(249,115,22,0.15); color:#f97316;">ARM Templates</div>
+                    <div class="pc-icon" style="background:rgba(249,115,22,.12);border-color:rgba(249,115,22,.25);color:#f97316">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                    </div>
+                    <h3>Azure Data Factory (ADF) Ingestion Kit</h3>
+                    <p class="pc-desc">Production ARM templates for parameterized Copy Activity, Key Vault secret scopes, and Fault Tolerance scripts.</p>
+                    <div class="pc-features">
+                        <div>✅ Ready-to-Deploy JSON Code</div>
+                        <div>✅ Parameterized Datasets Included</div>
+                        <div>✅ SHIR Gateway Config Guide</div>
+                    </div>
+                    <div class="pc-price">
+                        <span class="pc-amount">₹499</span>
+                        <span class="pc-original">₹1,499</span>
+                        <span class="pc-save">66% OFF</span>
+                    </div>
+                    <a href="https://gumroad.com" target="_blank" class="btn-outline full" style="text-align:center; text-decoration:none;">Download ADF Templates</a>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="price-card card-glow">
+                    <div class="pc-badge" style="background: rgba(34,197,94,0.15); color:#22c55e;">Spark Code</div>
+                    <div class="pc-icon" style="background:rgba(34,197,94,.12);border-color:rgba(34,197,94,.25);color:#22c55e">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                    </div>
+                    <h3>PySpark Medallion Architecture Starter Kit</h3>
+                    <p class="pc-desc">Production Delta Lake notebooks implementing Bronze (Raw), Silver (Cleaned), and Gold (Aggregated) pipelines.</p>
+                    <div class="pc-features">
+                        <div>✅ PySpark Databricks Notebooks</div>
+                        <div>✅ Delta Lake Merge & Schema Enforcement</div>
+                        <div>✅ Sample Retail Dataset Included</div>
+                    </div>
+                    <div class="pc-price">
+                        <span class="pc-amount">₹599</span>
+                        <span class="pc-original">₹1,999</span>
+                        <span class="pc-save">70% OFF</span>
+                    </div>
+                    <a href="https://gumroad.com" target="_blank" class="btn-outline full" style="text-align:center; text-decoration:none;">Get PySpark Starter Kit</a>
+                </div>
+
+                <!-- Product 5 (Medium Featured) -->
+                <div class="price-card card-glow popular">
+                    <div class="pc-popular-badge">🔥 Medium Project</div>
+                    <div class="pc-badge" style="background: rgba(234,179,8,0.15); color:#eab308;">Full Project Code</div>
+                    <div class="pc-icon" style="background:rgba(234,179,8,.12);border-color:rgba(234,179,8,.25);color:#eab308">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+                    </div>
+                    <h3>Enterprise EV Analytics Pipeline Code Bundle</h3>
+                    <p class="pc-desc">Complete source code for our viral Medium EV Data Platform article: ADF JSONs, Databricks PySpark & Synapse DDLs.</p>
+                    <div class="pc-features">
+                        <div>✅ Full Production Pipeline Code</div>
+                        <div>✅ ADF Linked Services & SHIR Config</div>
+                        <div>✅ Databricks Medallion Notebooks</div>
+                        <div>✅ High-Res Architecture Diagram</div>
+                    </div>
+                    <div class="pc-price">
+                        <span class="pc-amount">₹799</span>
+                        <span class="pc-original">₹2,499</span>
+                        <span class="pc-save">68% OFF</span>
+                    </div>
+                    <a href="https://gumroad.com" target="_blank" class="btn-glow full" style="text-align:center; text-decoration:none;">Get EV Project Source Code</a>
+                </div>
+
+                <!-- Product 6 (Medium Featured) -->
+                <div class="price-card card-glow">
+                    <div class="pc-badge" style="background: rgba(14,165,233,0.15); color:#0ea5e3;">Medium Project</div>
+                    <div class="pc-icon" style="background:rgba(14,165,233,.12);border-color:rgba(14,165,233,.25);color:#0ea5e3">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    </div>
+                    <h3>PySpark Retail Transformations Project Pack</h3>
+                    <p class="pc-desc">Source code & sample retail dataset from our Medium PySpark tutorial: Window functions, GroupBy, and Joins.</p>
+                    <div class="pc-features">
+                        <div>✅ Databricks Python Notebooks</div>
+                        <div>✅ Clean & Raw CSV Retail Datasets</div>
+                        <div>✅ Step-by-Step Explanation PDF</div>
+                    </div>
+                    <div class="pc-price">
+                        <span class="pc-amount">₹499</span>
+                        <span class="pc-original">₹1,499</span>
+                        <span class="pc-save">66% OFF</span>
+                    </div>
+                    <a href="https://gumroad.com" target="_blank" class="btn-outline full" style="text-align:center; text-decoration:none;">Get PySpark Retail Code</a>
+                </div>
+
+                <!-- Product 7 (Medium Featured) -->
+                <div class="price-card card-glow">
+                    <div class="pc-badge" style="background: rgba(168,85,247,0.15); color:#a855f7;">Medium Project</div>
+                    <div class="pc-icon" style="background:rgba(168,85,247,.12);border-color:rgba(168,85,247,.25);color:#a855f7">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                    </div>
+                    <h3>Microsoft Fabric & Lakehouse Real-time Bundle</h3>
+                    <p class="pc-desc">Production code bundle for Microsoft Fabric Lakehouse integration, Delta tables, and DirectLake PowerBI report templates.</p>
+                    <div class="pc-features">
+                        <div>✅ Fabric Notebooks & Delta Tables</div>
+                        <div>✅ PowerBI Template (.pbit)</div>
+                        <div>✅ Real-Time Streaming Config</div>
+                    </div>
+                    <div class="pc-price">
+                        <span class="pc-amount">₹699</span>
+                        <span class="pc-original">₹1,999</span>
+                        <span class="pc-save">65% OFF</span>
+                    </div>
+                    <a href="https://gumroad.com" target="_blank" class="btn-outline full" style="text-align:center; text-decoration:none;">Get Fabric Project Bundle</a>
+                </div>
+
+                <!-- Product 8 (3 Big Data Secrets) -->
+                <div class="price-card card-glow popular">
+                    <div class="pc-popular-badge">⭐ Must Read</div>
+                    <div class="pc-badge" style="background: rgba(245,158,11,0.15); color:#f59e0b;">Secret Masterclass</div>
+                    <div class="pc-icon" style="background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.25);color:#f59e0b">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"></path><path d="M9 18h6"></path><path d="M10 22h4"></path></svg>
+                    </div>
+                    <h3>3 Big Data Secrets Every Data Engineer Must Know</h3>
+                    <p class="pc-desc">The 3 production-grade architectural secrets used by Senior Data Engineers to pass top interviews and build fault-tolerant pipelines.</p>
+                    <div class="pc-features">
+                        <div>✅ <b>Secret #1:</b> Idempotent MERGE Delta Pipelines</div>
+                        <div>✅ <b>Secret #2:</b> Z-ORDER & Data Skipping Optimization</div>
+                        <div>✅ <b>Secret #3:</b> Metadata-Driven Dynamic ADF Control Tables</div>
+                    </div>
+                    <div class="pc-price">
+                        <span class="pc-amount">₹349</span>
+                        <span class="pc-original">₹1,199</span>
+                        <span class="pc-save">70% OFF</span>
+                    </div>
+                    <a href="https://gumroad.com" target="_blank" class="btn-glow full" style="text-align:center; text-decoration:none;">Get 3 Big Data Secrets PDF</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ==================== AI SANDBOX ==================== -->
+    <section id="ai-sandbox" class="section">
+        <div class="container">
+            <div class="sticker-label reveal-el">🚀 AI Sandbox</div>
+            <h2 class="sec-heading reveal-el">
+                Live <span class="shimmer-text">SQL & PySpark</span> Practice.
+            </h2>
+            <p class="sec-sub reveal-el" style="max-width:600px; margin-bottom: 40px;">
+                Write real code and let our AI compile, evaluate, and simulate the execution output in real-time. No setup required.
+            </p>
+
+            <div class="sandbox-container card-glow reveal-el" style="max-width: 900px; margin: 0 auto; background: rgba(30, 41, 59, 0.5); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
+                <div class="sandbox-header" style="background: rgba(15, 23, 42, 0.8); padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                    <div class="sandbox-tabs" style="display: flex; gap: 10px;">
+                        <button id="tab-sql" class="sandbox-tab active" onclick="setSandboxLang('sql')" style="background: rgba(124, 58, 237, 0.2); color: #fff; border: 1px solid rgba(124,58,237,0.5); padding: 8px 16px; border-radius: 6px; font-weight: 500; cursor: pointer; transition: 0.3s;">SQL</button>
+                        <button id="tab-pyspark" class="sandbox-tab" onclick="setSandboxLang('pyspark')" style="background: transparent; color: #94a3b8; border: 1px solid transparent; padding: 8px 16px; border-radius: 6px; font-weight: 500; cursor: pointer; transition: 0.3s;">PySpark</button>
+                    </div>
+                    <button id="btnRunSandbox" class="btn-glow" onclick="runSandboxCode()" style="padding: 8px 24px; font-size: 14px; border-radius: 6px;">
+                        <span>Run Code ▶</span>
+                    </button>
+                </div>
+                
+                <div style="display: flex; flex-direction: column; width: 100%;">
+                    <!-- Editor Pane -->
+                    <div style="width: 100%; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <textarea id="sandboxEditor" spellcheck="false" placeholder="-- Type your SQL query here...\nSELECT * FROM Employees WHERE department = 'Engineering';" style="width: 100%; height: 200px; background: #0d1117; color: #c9d1d9; font-family: 'Consolas', 'Courier New', monospace; font-size: 15px; padding: 20px; border: none; resize: vertical; outline: none; line-height: 1.5;"></textarea>
+                    </div>
+                    
+                    <!-- Terminal Output Pane -->
+                    <div style="width: 100%; background: #000; padding: 20px;">
+                        <div style="display: flex; align-items: center; margin-bottom: 15px; gap: 8px;">
+                            <span style="display:inline-block; width: 12px; height: 12px; border-radius: 50%; background: #ff5f56;"></span>
+                            <span style="display:inline-block; width: 12px; height: 12px; border-radius: 50%; background: #ffbd2e;"></span>
+                            <span style="display:inline-block; width: 12px; height: 12px; border-radius: 50%; background: #27c93f;"></span>
+                            <span style="color: #6e7681; font-family: monospace; font-size: 13px; margin-left: 10px;">Terminal / Output</span>
+                        </div>
+                        <div id="sandboxTerminal" style="font-family: 'Consolas', monospace; color: #2ea043; font-size: 14px; white-space: pre-wrap; line-height: 1.5; min-height: 120px; max-height: 400px; overflow-y: auto;">$ Ready. Waiting for execution...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== BLOG ==================== -->
+    <section id="blog" class="section">
+        <div class="container">
+            <div class="sticker-label reveal-el">✍️ Blog</div>
+            <h2 class="sec-heading reveal-el">
+                Latest <span class="shimmer-text">insights</span> & tutorials.
+            </h2>
+            <div class="blog-grid reveal-el" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                <!-- Medium Article 1 -->
+                <article class="blog-card card-glow" id="blog-1">
+                    <div class="blog-tag" style="background:rgba(56,189,248,0.15);color:#38bdf8;">AI & Voice</div>
+                    <h3>To Every Professional Living Away From Parents: How I Built an AI Voice Agent</h3>
+                    <p>Building a personalized, compassionate AI Voice Companion for parents to bridge emotional distance and provide voice care.</p>
+                    <div class="blog-meta">
+                        <span>📅 Published Recently</span>
+                        <span>⏱ 6 min read</span>
+                    </div>
+                    <a href="https://medium.com/search?q=To+Every+Professional+Living+Away+From+Parents+How+I+Built+an+AI+Voice+Agent" target="_blank" class="btn-outline full" style="margin-top:12px; text-align:center; text-decoration:none; font-size:0.8rem;">Read on Medium →</a>
+                </article>
+
+                <!-- Medium Article 2 -->
+                <article class="blog-card card-glow" id="blog-2">
+                    <div class="blog-tag" style="background:rgba(245,158,11,0.15);color:#f59e0b;">Architecture</div>
+                    <h3>3 Big Data Secrets Every Data Engineer Must Know</h3>
+                    <p>The 3 production architectural patterns used by Senior Data Engineers: Idempotent MERGE, Z-Ordering, & ADF Control Tables.</p>
+                    <div class="blog-meta">
+                        <span>📅 Jul 14</span>
+                        <span>⏱ 4 min read</span>
+                    </div>
+                    <a href="https://medium.com/search?q=3+Big+Data+Secrets+Every+Data+Engineer+Must+Know" target="_blank" class="btn-outline full" style="margin-top:12px; text-align:center; text-decoration:none; font-size:0.8rem;">Read on Medium →</a>
+                </article>
+
+                <!-- Medium Article 3 -->
+                <article class="blog-card card-glow" id="blog-3">
+                    <div class="blog-tag" style="background:rgba(168,85,247,0.15);color:#a855f7;">MS Fabric</div>
+                    <h3>Generating Sample Elon Musk Tweet Data Using Python for Fabric Medallion</h3>
+                    <p>Hands-on guide to generating synthetic tweet datasets and processing them through Medallion Lakehouse architecture.</p>
+                    <div class="blog-meta">
+                        <span>📅 Jul 5</span>
+                        <span>⏱ 6 min read</span>
+                    </div>
+                    <a href="https://medium.com/search?q=Generating+Sample+Elon+Musk+Tweet+Data+Using+Python+for+Practicing+Fabric" target="_blank" class="btn-outline full" style="margin-top:12px; text-align:center; text-decoration:none; font-size:0.8rem;">Read on Medium →</a>
+                </article>
+
+                <!-- Medium Article 4 -->
+                <article class="blog-card card-glow" id="blog-4">
+                    <div class="blog-tag" style="background:rgba(34,197,94,0.15);color:#22c55e;">Career Insights</div>
+                    <h3>Beyond the Tutorials: What Actually Happens on Day 1 of a Data Engineering Job?</h3>
+                    <p>Real-world insights on enterprise onboarding, Git workflows, production debugging, and team collaboration.</p>
+                    <div class="blog-meta">
+                        <span>📅 Jul 2</span>
+                        <span>⏱ 4 min read</span>
+                    </div>
+                    <a href="https://medium.com/search?q=Beyond+the+Tutorials+What+Actually+Happens+on+Day+1+of+a+Data+Engineering+Job" target="_blank" class="btn-outline full" style="margin-top:12px; text-align:center; text-decoration:none; font-size:0.8rem;">Read on Medium →</a>
+                </article>
+
+                <!-- Medium Article 5 -->
+                <article class="blog-card card-glow" id="blog-5">
+                    <div class="blog-tag" style="background:rgba(236,72,153,0.15);color:#ec4899;">PySpark Project</div>
+                    <h3>How I Built an End-to-End Retail Data Pipeline using PySpark & Medallion</h3>
+                    <p>Step-by-step pipeline build: Delta Lake Bronze ingestion, Silver cleansing, and Gold analytical aggregations.</p>
+                    <div class="blog-meta">
+                        <span>📅 Jul 1</span>
+                        <span>⏱ 5 min read</span>
+                    </div>
+                    <a href="https://medium.com/p/a22e3f408d34" target="_blank" class="btn-outline full" style="margin-top:12px; text-align:center; text-decoration:none; font-size:0.8rem;">Read on Medium →</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TESTIMONIALS ==================== -->
+    <section id="testimonials" class="section">
+        <div class="container">
+            <div class="sticker-label reveal-el">💬 Student Feedback</div>
+            <h2 class="sec-heading reveal-el">
+                What our students <span class="shimmer-text">say</span> about us.
+            </h2>
+            <p class="testi-disclaimer reveal-el">* Names changed for privacy. Feedback based on student surveys.</p>
+            <div class="testi-grid reveal-el">
+                <div class="testi-card card-glow" id="testi-1">
+                    <div class="testi-stars">★★★★★</div>
+                    <p class="testi-quote">"PySpark course completely changed my career. Went from ₹4L to ₹14L package in 6 months. The Medallion Architecture project was exactly what my interviewer asked!"</p>
+                    <div class="testi-author">
+                        <div class="testi-avatar" style="background:linear-gradient(135deg,#8b5cf6,#6366f1)">RK</div>
+                        <div>
+                            <strong>Rahul Kumar</strong>
+                            <span>Data Engineer at TCS • Batch 2024</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testi-card card-glow" id="testi-2">
+                    <div class="testi-stars">★★★★★</div>
+                    <p class="testi-quote">"Best Fabric course available. Mayur explains complex concepts so simply. The hands-on projects gave me confidence to crack my Infosys interview."</p>
+                    <div class="testi-author">
+                        <div class="testi-avatar" style="background:linear-gradient(135deg,#06b6d4,#0ea5e9)">PS</div>
+                        <div>
+                            <strong>Priya Sharma</strong>
+                            <span>Azure DE at Infosys • Batch 2024</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testi-card card-glow" id="testi-3">
+                    <div class="testi-stars">★★★★★</div>
+                    <p class="testi-quote">"The Full Stack bundle is worth every rupee. 1-on-1 mentorship helped me clear DP-203 certification in first attempt. Got placed at Cognizant!"</p>
+                    <div class="testi-author">
+                        <div class="testi-avatar" style="background:linear-gradient(135deg,#f97316,#ef4444)">AV</div>
+                        <div>
+                            <strong>Arun Verma</strong>
+                            <span>Sr. Data Engineer at Cognizant • Batch 2023</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testi-card card-glow" id="testi-4">
+                    <div class="testi-stars">★★★★★</div>
+                    <p class="testi-quote">"I was from non-IT background. This course made Data Engineering so easy to understand. Now working at Wipro as a Data Engineer. Thank you Mayur!"</p>
+                    <div class="testi-author">
+                        <div class="testi-avatar" style="background:linear-gradient(135deg,#22c55e,#16a34a)">SM</div>
+                        <div>
+                            <strong>Sneha Menon</strong>
+                            <span>Data Engineer at Wipro • Batch 2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT ==================== -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="sticker-label reveal-el">Get in Touch</div>
+            <h2 class="sec-heading reveal-el">
+                Have a project in mind? <span class="shimmer-text">Let's talk</span>.
+            </h2>
+            <div class="contact-layout reveal-el">
+                <div class="contact-left">
+                    <div class="cl-card card-glow" id="contact-email">
+                        <div class="cl-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+                        </div>
+                        <div><small>Email</small><p>contact@softsonic.in</p></div>
+                    </div>
+                    <div class="cl-card card-glow" id="contact-location">
+                        <div class="cl-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div><small>Location</small><p>India</p></div>
+                    </div>
+                    <div class="cl-card card-glow" id="contact-linkedin">
+                        <div class="cl-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                        </div>
+                        <div><small>LinkedIn</small><p><!-- UPDATE: Add your real LinkedIn URL -->linkedin.com/in/your-profile</p></div>
+                    </div>
+                    <div class="social-row">
+                        <a href="#" class="soc-btn" id="soc-github" aria-label="GitHub">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        </a>
+                        <a href="#" class="soc-btn" id="soc-linkedin" aria-label="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                        <a href="#" class="soc-btn" id="soc-x" aria-label="X / Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <form class="contact-form card-glow" id="contactForm">
+                    <div class="fg">
+                        <input type="text" id="fName" name="from_name" required placeholder=" ">
+                        <label for="fName">Your Name</label>
+                    </div>
+                    <div class="fg">
+                        <input type="email" id="fEmail" name="reply_to" required placeholder=" ">
+                        <label for="fEmail">Your Email</label>
+                    </div>
+                    <div class="fg">
+                        <input type="text" id="fSubject" name="subject" required placeholder=" ">
+                        <label for="fSubject">Subject</label>
+                    </div>
+                    <div class="fg">
+                        <textarea id="fMsg" name="message" rows="4" required placeholder=" "></textarea>
+                        <label for="fMsg">Message</label>
+                    </div>
+                    <button type="submit" class="btn-glow full" id="submitBtn">
+                        <span>Send Message</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    </button>
+                    <p class="form-note">📧 Messages are sent directly to your email via EmailJS</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container footer-inner" style="flex-direction:column; align-items:center; gap:20px;">
+            <div class="footer-brand" style="margin-bottom:0;">
+                <div class="brand-icon small">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                </div>
+                <span>Mayur <span class="brand-accent">Soft@sonic</span></span>
+            </div>
+            
+            <div class="footer-links" style="display:flex; gap:24px; flex-wrap:wrap; justify-content:center;">
+                <a href="#" style="color:var(--t2); font-size:0.85rem; text-decoration:none;">Terms & Conditions</a>
+                <a href="#" style="color:var(--t2); font-size:0.85rem; text-decoration:none;">Privacy Policy</a>
+                <a href="#" style="color:var(--t2); font-size:0.85rem; text-decoration:none;">Refund Policy</a>
+            </div>
+            
+            <p class="footer-copy" style="margin-top:10px;">© 2025 Mayur Soft@sonic.in — Built with 💜</p>
+        </div>
+    </footer>
+
+    <!-- ==================== FLOATING WIDGETS ==================== -->
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20Mayur,%20I'm%20interested%20in%20your%20courses" target="_blank" class="whatsapp-float" id="whatsappBtn" aria-label="Chat on WhatsApp">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span class="wa-tooltip">Chat with us!</span>
+    </a>
+
+    <!-- AI Assistant Chat Widget -->
+    <div class="ai-chat-btn" id="aiChatBtn" aria-label="AI Assistant">
+        <div class="ai-chat-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <span class="ai-badge">AI</span>
+    </div>
+
+    <div class="ai-chat-window" id="aiChatWindow">
+        <div class="ai-chat-header">
+            <div class="ai-chat-header-left">
+                <div class="ai-avatar">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                </div>
+                <div>
+                    <strong>Sonic AI Assistant</strong>
+                    <span class="ai-status"><span class="pulse-dot small"></span> Online</span>
+                </div>
+            </div>
+            <button class="ai-chat-close" id="aiChatClose" aria-label="Close">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+        <div class="ai-chat-body" id="aiChatBody">
+            <div class="ai-msg bot">
+                <p>👋 Hi! I'm the <strong>AI Assistant</strong> for Soft@sonic. How can I help you learn Data Engineering today?</p>
+            </div>
+            <div class="ai-quick-btns" id="aiQuickBtns">
+                <button class="ai-quick" data-q="courses">📚 What courses do you offer?</button>
+                <button class="ai-quick" data-q="pricing">💰 Course pricing & discounts</button>
+                <button class="ai-quick" data-q="placement">💼 Placement support?</button>
+                <button class="ai-quick" data-q="duration">⏰ Course duration?</button>
+                <button class="ai-quick" data-q="contact">📞 How to contact Mayur?</button>
+                <button class="ai-quick" data-q="demo">🎬 Free demo available?</button>
+            </div>
+        </div>
+        <div class="ai-chat-input">
+            <input type="text" id="aiInput" placeholder="Type your question..." autocomplete="off">
+            <button id="aiSendBtn" aria-label="Send">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+        </div>
+    </div>
+    <!-- ==================== VIDEO MODAL ==================== -->
+    <div class="ai-modal-overlay" id="videoModalOverlay" onclick="closeVideoModal(event)">
+        <div class="ai-modal-content" style="max-width: 800px; padding: 0; background: #0f172a; overflow: hidden; position: relative; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; background: rgba(15,23,42,0.9); border-bottom: 1px solid rgba(255,255,255,0.05); position: absolute; width: 100%; top: 0; z-index: 10; box-sizing: border-box;">
+                <h3 style="margin: 0; font-size: 1.1rem; display: flex; align-items: center; gap: 8px;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                    Mayur Softsonic Cinematic Ad
+                </h3>
+                <button class="icon-btn" onclick="closeVideoModal()" style="color: #94a3b8; background: transparent; border: none; font-size: 1.5rem; cursor: pointer; padding: 0;">&times;</button>
+            </div>
+            <!-- Video Player Wrapper -->
+            <div style="position: relative; width: 100%; background: #000; display: flex; justify-content: center; align-items: center; min-height: 600px; margin-top: 55px;">
+                <iframe id="promoIframe" src="ultimate_3d_preview.html" style="width: 100%; height: 600px; border: none; border-radius: 8px;" allow="autoplay"></iframe>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function openVideoModal() {
+            const overlay = document.getElementById('videoModalOverlay');
+            const iframe = document.getElementById('promoIframe');
+            
+            // Reload iframe to restart animation context
+            const src = iframe.src;
+            iframe.src = src;
+            
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVideoModal(event) {
+            if (event && event.target !== document.getElementById('videoModalOverlay') && (!event.target.closest || !event.target.closest('.icon-btn'))) {
+                return;
+            }
+            const overlay = document.getElementById('videoModalOverlay');
+            const iframe = document.getElementById('promoIframe');
+            
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+            
+            // Clear iframe source to stop audio playback
+            const src = iframe.src;
+            iframe.src = '';
+            setTimeout(() => { iframe.src = src; }, 100);
+        }
+    </script>
+
+    <!-- Architecture Modals -->
+    <div class="arch-modal" id="archModal1">
+        <div class="am-overlay" onclick="closeArchModal('archModal1')"></div>
+        <div class="am-content card-glow">
+            <div class="am-header">
+                <h3>Pipeline Architecture</h3>
+                <button onclick="closeArchModal('archModal1')" class="am-close">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <div class="am-body">
+                <p style="color:var(--t2); font-size:0.9rem; margin-bottom:20px;">Medallion Architecture processing 1M+ daily records.</p>
+                <div class="am-diagram">
+                    <svg width="100%" height="300" viewBox="0 0 600 300" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="50" y="120" width="100" height="60" rx="8" fill="rgba(168,85,247,0.1)" stroke="#a855f7" />
+                        <text x="100" y="155" text-anchor="middle" font-size="14" fill="#a855f7">Azure SQL (Raw)</text>
+                        
+                        <path d="M150 150 L220 150" stroke-dasharray="4 4" marker-end="url(#arrow)" />
+                        
+                        <rect x="220" y="60" width="160" height="180" rx="8" fill="rgba(6,182,212,0.05)" stroke="#06b6d4" stroke-dasharray="6 6" />
+                        <text x="300" y="90" text-anchor="middle" font-size="14" fill="#06b6d4">Databricks (Spark)</text>
+                        
+                        <rect x="240" y="110" width="120" height="40" rx="4" fill="rgba(6,182,212,0.15)" stroke="#06b6d4" />
+                        <text x="300" y="135" text-anchor="middle" font-size="12" fill="#06b6d4">Bronze / Silver</text>
+                        
+                        <rect x="240" y="170" width="120" height="40" rx="4" fill="rgba(249,115,22,0.15)" stroke="#f97316" />
+                        <text x="300" y="195" text-anchor="middle" font-size="12" fill="#f97316">Gold (Delta Lake)</text>
+                        
+                        <path d="M380 150 L450 150" stroke-dasharray="4 4" marker-end="url(#arrow)" />
+                        
+                        <rect x="450" y="120" width="100" height="60" rx="8" fill="rgba(242,200,17,0.1)" stroke="#F2C811" />
+                        <text x="500" y="155" text-anchor="middle" font-size="14" fill="#F2C811">Power BI</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Razorpay SDK (activate later with your keys) -->
+    <!-- AI Interview Room Modal -->
+    <div class="ai-modal-overlay" id="interviewModalOverlay" onclick="closeInterviewModal(event)">
+        <div class="ai-modal-content card-glow" style="max-width: 600px; height: 80vh; display: flex; flex-direction: column;" onclick="event.stopPropagation()">
+            <div class="ai-modal-header" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; padding: 20px 20px 0 20px;">
+                <div>
+                    <h3 style="margin: 0; display: flex; align-items: center; gap: 8px;">
+                        <span class="pulse-dot"></span> AI Interview Room
+                    </h3>
+                    <span id="interviewQuestionCount" style="font-size: 0.8rem; color: #a855f7;">Free Demo: Question 1/5</span>
+                </div>
+                <button onclick="forceCloseInterviewModal()" style="background: none; border: none; color: #fff; cursor: pointer;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            
+            <div style="flex: 1; padding: 0 20px 20px 20px; overflow: hidden; display: flex; flex-direction: column;">
+                <!-- Setup State -->
+                <div id="interviewSetup" style="flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                    <div class="icon-gradient-1" style="width: 64px; height: 64px; margin-bottom: 20px;">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                    </div>
+                    <h2 style="margin-bottom: 10px;">Practice with AI</h2>
+                    <p style="color: #94a3b8; font-size: 0.9rem; max-width: 80%; margin-bottom: 25px;">Enter the job role you are targeting. Our AI will conduct a 5-question technical mock interview and provide feedback.</p>
+                    <input type="text" id="interviewRoleInput" placeholder="e.g., Data Engineer at TCS" style="width: 80%; padding: 12px; border-radius: 8px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); color: #fff; font-size: 1rem; margin-bottom: 20px;">
+                    <button class="btn-glow" onclick="startInterview()" id="startInterviewBtn" style="padding: 10px 30px;">Start Interview</button>
+                </div>
+
+                <!-- Chat State -->
+                <div id="interviewChat" style="display: none; flex: 1; flex-direction: column; overflow: hidden;">
+                    <div id="interviewChatLog" style="flex: 1; overflow-y: auto; padding-right: 10px; display: flex; flex-direction: column; gap: 15px;">
+                        <!-- Messages go here -->
+                    </div>
+                    
+                    <div id="interviewPremiumLock" style="display: none; margin-top: 20px; text-align: center; background: rgba(168,85,247,0.1); border: 1px solid #a855f7; border-radius: 8px; padding: 20px;">
+                        <h3 style="color: #a855f7; margin-bottom: 10px;">🔒 Free Demo Completed</h3>
+                        <p style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 15px;">You've completed the 5-question limit. Upgrade to Premium for unlimited, in-depth 45-minute mock interviews.</p>
+                        <button class="btn-glow full">Unlock Premium</button>
+                    </div>
+
+                    <div id="interviewInputArea" style="margin-top: 20px; display: flex; gap: 10px; align-items: flex-end;">
+                        <textarea id="interviewAnswerInput" rows="2" placeholder="Type your answer or use voice..." style="flex: 1; padding: 12px; border-radius: 8px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); color: #fff; font-size: 0.9rem; resize: none; font-family: 'Inter', sans-serif;"></textarea>
+                        
+                        <button id="voiceRecordBtn" onclick="toggleVoiceRecord()" style="background: rgba(168,85,247,0.2); border: 1px solid #a855f7; color: #a855f7; border-radius: 50%; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s; flex-shrink: 0;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+                        </button>
+                        
+                        <button class="btn-glow" onclick="sendInterviewAnswer()" id="sendAnswerBtn" style="padding: 0 20px; height: 45px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <!-- Settings Modal -->
+    <div class="settings-modal-overlay" id="settingsModal">
+        <div class="settings-modal-content card-glow">
+            <div class="settings-header">
+                <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle; margin-right:8px;"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg> Site Preferences</h3>
+                <button id="closeSettingsBtn" style="background:transparent; border:none; color:var(--t2); cursor:pointer;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+            </div>
+            
+            <div class="settings-section">
+                <h4>Theme Appearance</h4>
+                <p>Toggle between the default Dark Cyberpunk mode and the Clean Corporate Light mode.</p>
+                <div class="theme-toggle-group">
+                    <button class="theme-btn active" id="btnDarkTheme">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                        Dark (Default)
+                    </button>
+                    <button class="theme-btn" id="btnLightTheme">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                        Light (Clean)
+                    </button>
+                </div>
+            </div>
+
+            <div class="settings-section" style="margin-top: 20px;">
+                <h4>Privacy Settings</h4>
+                <p>Manage how your data is handled while browsing.</p>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:15px; padding: 15px; background: rgba(0,0,0,0.2); border-radius:8px;">
+                    <span style="color:var(--t1); font-size:0.9rem;">Allow Basic Analytics</span>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px; padding: 15px; background: rgba(0,0,0,0.2); border-radius:8px;">
+                    <span style="color:var(--t1); font-size:0.9rem;">Enable Sound Effects</span>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Job Details Modal -->
+    <div class="settings-modal-overlay" id="jobDetailsModal">
+        <div class="settings-modal-content card-glow" style="max-width: 700px; width: 95%;">
+            <div class="settings-header" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 20px;">
+                <div style="flex:1;">
+                    <span id="jdSourceBadge" style="background:rgba(168,85,247,0.15); color:#c084fc; border:1px solid rgba(168,85,247,0.3); font-size: 0.75rem; padding: 4px 8px; border-radius: 4px;">Direct</span>
+                    <h2 id="jdTitle" style="margin-top: 10px; font-size: 1.5rem; color: #fff;">Job Title</h2>
+                    <p id="jdCompanyLoc" style="color: var(--t3); font-size: 0.95rem; margin-top: 5px;">Company • Location</p>
+                </div>
+                <button id="closeJdBtn" style="background:transparent; border:none; color:var(--t2); cursor:pointer; align-self: flex-start;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+            </div>
+            
+            <div style="display:flex; gap: 15px; margin-bottom: 25px; flex-wrap: wrap;">
+                <div style="background: rgba(0,0,0,0.3); padding: 10px 15px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05);">
+                    <span style="display:block; color:var(--t3); font-size:0.75rem; margin-bottom:3px;">Salary / Package</span>
+                    <strong id="jdSalary" style="color: #22c55e;">Not Disclosed</strong>
+                </div>
+                <div style="background: rgba(0,0,0,0.3); padding: 10px 15px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05);">
+                    <span style="display:block; color:var(--t3); font-size:0.75rem; margin-bottom:3px;">Job Type</span>
+                    <strong id="jdType" style="color: #fff;">Full Time</strong>
+                </div>
+                <div style="background: rgba(0,0,0,0.3); padding: 10px 15px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05);">
+                    <span style="display:block; color:var(--t3); font-size:0.75rem; margin-bottom:3px;">Posted</span>
+                    <strong id="jdPosted" style="color: #fff;">Just now</strong>
+                </div>
+            </div>
+
+            <div class="settings-section" style="max-height: 40vh; overflow-y: auto; padding-right: 10px;">
+                <h4 style="color:#fff; margin-bottom:10px;">Role Overview</h4>
+                <p id="jdDescription" style="color: var(--t2); line-height: 1.6; font-size: 0.95rem; margin-bottom: 20px;">Job description goes here...</p>
+                
+                <h4 style="color:#fff; margin-bottom:10px;">Requirements</h4>
+                <ul id="jdRequirements" style="color: var(--t2); line-height: 1.6; font-size: 0.95rem; padding-left: 20px;">
+                    <li>Requirement 1</li>
+                    <li>Requirement 2</li>
+                </ul>
+            </div>
+            
+            <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); display:flex; justify-content:flex-end; gap: 15px;">
+                <button id="closeJdBtnBottom" class="btn-outline">Cancel</button>
+                <button id="jdApplyLink" onclick="applyJob()" class="btn-glow">Apply on Company Site →</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Auth Modal -->
+    <div class="auth-modal" id="authModal">
+        <div class="auth-box">
+            <button class="auth-close" onclick="closeAuthModal()">×</button>
+            <div class="auth-header">
+                <h3>Student Portal</h3>
+                <p>Sign in to access your dashboard</p>
+            </div>
+            <input type="email" id="authEmail" class="auth-input" placeholder="Email address">
+            <input type="password" id="authPassword" class="auth-input" placeholder="Password">
+            <button class="auth-btn" onclick="loginWithEmail()">Sign In</button>
+            
+            <div style="text-align:center; margin: 20px 0; color:#64748b; font-size:0.8rem; position:relative;">
+                <span style="background:rgba(15,23,42,0.9); padding:0 10px; position:relative; z-index:1;">OR</span>
+                <div style="position:absolute; top:50%; left:0; width:100%; height:1px; background:rgba(255,255,255,0.1);"></div>
+            </div>
+            
+            <button class="auth-google" onclick="loginWithGoogle()">
+                <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+                Sign in with Google
+            </button>
+        </div>
+    </div>
+
+    <!-- Premium Limit Modal -->
+    <div class="premium-modal" id="premiumModal">
+        <div class="premium-box">
+            <button class="premium-close" onclick="closePremiumModal()">×</button>
+            <div class="premium-icon">✨</div>
+            <h3>Free Limit Reached</h3>
+            <p>You've used your free AI generations! Unlock unlimited PySpark Sandbox runs, ATS Resume analysis, and premium tutorials by enrolling in our Full Stack Data Engineer Course.</p>
+            <a href="#courses" class="premium-btn" onclick="closePremiumModal()">View Premium Courses</a>
+        </div>
+    </div>
+
+    <!-- AI Tutor Window -->
+    <div class="tutor-window" id="tutorWindow">
+        <div class="resize-edge-w" id="resizeW"></div>
+        <div class="tutor-header" id="tutorHeader">
+            <h4><span class="shimmer-text">✨ Course Copilot</span></h4>
+            <div style="display:flex; gap:10px;">
+                <button onclick="minimizeTutor()" title="Minimize" style="font-weight:bold; font-size:1.2rem;">_</button>
+                <button onclick="toggleTutor()" title="Close">×</button>
+            </div>
+        </div>
+        <div class="tutor-body" id="tutorBody">
+            <div class="tutor-msg ai">Hi! I'm your dedicated Course Copilot. Got a doubt in PySpark or Azure? Ask away! (Meeru Telugu lo kuda adagavachu ✨)</div>
+        </div>
+        <div class="tutor-footer" style="padding: 10px; align-items: center; gap: 5px;">
+            <button class="tutor-icon-btn" onclick="document.getElementById('tutorImageInput').click()" title="Attach Screenshot">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg>
+            </button>
+            <input type="file" id="tutorImageInput" style="display:none;" accept="image/*" onchange="simulateImageUpload(this)">
+            
+            <input type="text" id="tutorInput" class="tutor-input" style="padding: 10px; flex: 1; border-radius: 20px; font-size: 0.9rem;" placeholder="Message AI..." onkeypress="if(event.key === 'Enter') sendTutorMessage()">
+            
+            <button class="tutor-icon-btn" id="tutorMicBtn" onclick="simulateVoice()" title="Voice Input">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+            </button>
+            
+            <button class="tutor-send" onclick="sendTutorMessage()" style="width: 35px; height: 35px; margin-left:2px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Firebase SDK (ES Modules) -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+      // Placeholder Config (Replace with real Firebase Config later)
+      const firebaseConfig = {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+        projectId: "YOUR_PROJECT_ID",
+        storageBucket: "YOUR_PROJECT_ID.appspot.com",
+        messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+        appId: "YOUR_APP_ID"
+      };
+
+      // Try to init, if config is invalid it will fail silently
+      let auth = null;
+      let provider = null;
+      try {
+          const app = initializeApp(firebaseConfig);
+          auth = getAuth(app);
+          provider = new GoogleAuthProvider();
+      } catch (e) {
+          console.warn("Firebase not fully configured. Will simulate login if config fails.");
+      }
+
+      window.openAuthModal = function() { 
+          document.getElementById('authModal').classList.add('active'); 
+      };
+      
+      window.closeAuthModal = function() { 
+          document.getElementById('authModal').classList.remove('active'); 
+      };
+
+      // Helper to simulate login state if no real Firebase
+      window.simulateLogin = function(name) {
+          document.getElementById('userNameDisplay').textContent = name;
+          document.getElementById('student-dashboard').style.display = 'block';
+          if(document.getElementById('loginNavBtn')) document.getElementById('loginNavBtn').style.display = 'none';
+          if(document.getElementById('mobileLoginBtn')) document.getElementById('mobileLoginBtn').style.display = 'none';
+          document.getElementById('contactNavBtn').style.display = 'none';
+          
+          document.querySelectorAll('.section:not(#student-dashboard):not(#courses):not(#ai-sandbox):not(#ats-builder):not(#job-hunt):not(.footer)')
+            .forEach(sec => sec.style.display = 'none');
+          closeAuthModal();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+
+      window.simulateLogout = function() {
+          document.getElementById('student-dashboard').style.display = 'none';
+          if(document.getElementById('loginNavBtn')) document.getElementById('loginNavBtn').style.display = 'flex';
+          if(document.getElementById('mobileLoginBtn')) document.getElementById('mobileLoginBtn').style.display = 'block';
+          document.getElementById('contactNavBtn').style.display = 'flex';
+          document.getElementById('tutorWindow').classList.remove('active');
+          
+          document.querySelectorAll('.section:not(#student-dashboard)')
+            .forEach(sec => sec.style.display = 'block');
+      };
+
+      window.loginWithGoogle = function() {
+          if(!auth || firebaseConfig.apiKey === "YOUR_API_KEY") { 
+              alert("Real Firebase config not found. Simulating login for demo purposes!"); 
+              simulateLogin("Guest Student");
+              return; 
+          }
+          signInWithPopup(auth, provider).then((result) => {
+              closeAuthModal();
+          }).catch((error) => {
+              console.error(error);
+              alert("Login failed: " + error.message);
+          });
+      };
+
+      window.loginWithEmail = function() {
+          const email = document.getElementById('authEmail').value;
+          if(!auth || firebaseConfig.apiKey === "YOUR_API_KEY") { 
+              if(!email) { alert("Enter any email to simulate login."); return; }
+              alert("Real Firebase config not found. Simulating login for demo purposes!"); 
+              simulateLogin(email.split('@')[0]);
+              return; 
+          }
+          const pass = document.getElementById('authPassword').value;
+          signInWithEmailAndPassword(auth, email, pass).then((userCredential) => {
+              closeAuthModal();
+          }).catch((error) => {
+              console.error(error);
+              alert("Login failed: " + error.message);
+          });
+      };
+
+      window.logoutUser = function() {
+          if(auth && firebaseConfig.apiKey !== "YOUR_API_KEY") {
+              signOut(auth);
+          } else {
+              simulateLogout();
+          }
+      };
+
+      // Real Firebase Observer
+      if(auth && firebaseConfig.apiKey !== "YOUR_API_KEY") {
+          onAuthStateChanged(auth, (user) => {
+              if (user) {
+                  simulateLogin(user.displayName || user.email.split('@')[0]);
+              } else {
+                  simulateLogout();
+              }
+          });
+      }
+    </script>
+
+    <!-- ==================== JIDDU VOICE CALL SIMULATOR MODAL ==================== -->
+    <div id="jidduSimModal" class="modal-overlay" style="display:none; position:fixed; inset:0; z-index:99999; background:rgba(0,0,0,0.85); backdrop-filter:blur(12px); justify-content:center; align-items:center; padding:20px;">
+        <div class="modal-content card-glow" style="width:100%; max-width:440px; background:#0f172a; border-radius:24px; border:1px solid rgba(14,165,233,0.4); padding:0; overflow:hidden; box-shadow:0 20px 50px rgba(0,0,0,0.8); position:relative;">
+            
+            <!-- Phone Header -->
+            <div style="background:linear-gradient(135deg, #0ea5e9, #8b5cf6); padding:25px 20px; text-align:center; position:relative;">
+                <button onclick="closeJidduSimModal()" style="position:absolute; top:15px; right:15px; background:rgba(0,0,0,0.3); border:none; color:#fff; width:32px; height:32px; border-radius:50%; cursor:pointer; font-weight:bold; font-size:16px;">✕</button>
+                <div style="width:70px; height:70px; margin:0 auto 10px auto; border-radius:50%; background:#0f172a; border:3px solid #fff; display:flex; justify-content:center; align-items:center; font-size:32px; box-shadow:0 5px 15px rgba(0,0,0,0.3);">
+                    🤖
+                </div>
+                <h3 style="margin:0; color:#fff; font-size:1.25rem;">"Jiddu" Voice AI Assistant</h3>
+                <span id="jidduCallStatus" style="font-size:0.8rem; background:rgba(255,255,255,0.2); padding:3px 12px; border-radius:12px; color:#fff; display:inline-block; margin-top:6px;">🟢 Outbound Health Check Call</span>
+            </div>
+
+            <!-- Call Body -->
+            <div style="padding:20px; text-align:center; min-height:220px; display:flex; flex-direction:column; justify-content:space-between;">
+                
+                <!-- Equalizer / Waveform -->
+                <div style="display:flex; justify-content:center; align-items:center; gap:6px; height:50px; margin-bottom:15px;" id="jidduWaveform">
+                    <span style="width:4px; height:20px; background:#0ea5e9; border-radius:4px; animation: waveBar 0.8s infinite alternate;"></span>
+                    <span style="width:4px; height:40px; background:#8b5cf6; border-radius:4px; animation: waveBar 0.6s infinite alternate 0.2s;"></span>
+                    <span style="width:4px; height:15px; background:#ec4899; border-radius:4px; animation: waveBar 1s infinite alternate 0.4s;"></span>
+                    <span style="width:4px; height:35px; background:#3b82f6; border-radius:4px; animation: waveBar 0.7s infinite alternate 0.1s;"></span>
+                    <span style="width:4px; height:25px; background:#0ea5e9; border-radius:4px; animation: waveBar 0.9s infinite alternate 0.3s;"></span>
+                </div>
+
+                <!-- Live Subtitles / Dialogue -->
+                <div id="jidduSubtitles" style="background:rgba(255,255,255,0.04); border-radius:12px; padding:15px; font-size:0.95rem; color:#f1f5f9; min-height:90px; display:flex; align-items:center; justify-content:center; text-align:center; border:1px solid rgba(255,255,255,0.05); font-style:italic;">
+                    "నమస్తే అండీ! నేను జిడ్డు AI హెల్త్ అసిస్టెంట్‌ని మాట్లాడేది. ఈ రోజు ఉదయం షుగర్ & బిపి టాబ్లెట్లు వేసుకున్నారా అండీ?"
+                </div>
+
+                <!-- Live Logs (Notion & WhatsApp) -->
+                <div id="jidduLiveLogs" style="margin-top:15px; font-size:0.75rem; text-align:left; color:#94a3b8; font-family:monospace; background:#06060e; padding:12px; border-radius:8px; display:none; border:1px solid rgba(34,197,94,0.3);">
+                    <div style="color:#22c55e;">[Notion DB]: Logged ✓ (BP: Normal, Sugar: 130 mg/dL)</div>
+                    <div style="color:#38bdf8; margin-top:4px;">[WhatsApp Alert]: Sent to Colonel Mayur ✓</div>
+                </div>
+            </div>
+
+            <!-- Call Controls -->
+            <div style="background:#090d16; padding:15px 20px; display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.05);">
+                <button onclick="startJidduDialogue()" class="btn-glow" style="padding:8px 20px; font-size:0.85rem;" id="jidduReplayBtn">Replay Call 🔄</button>
+                <button onclick="closeJidduSimModal()" style="background:#ef4444; color:#fff; border:none; padding:8px 20px; border-radius:20px; font-weight:bold; cursor:pointer; font-size:0.85rem;">End Call 🔴</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== LIVE NEWS READER MODAL ==================== -->
+    <div id="newsReaderModal" class="modal-overlay" style="display:none; position:fixed; inset:0; z-index:99999; background:rgba(0,0,0,0.85); backdrop-filter:blur(15px); justify-content:center; align-items:center; padding:20px;">
+        <div class="modal-content card-glow" style="width:100%; max-width:680px; max-height:85vh; overflow-y:auto; background:#0c0c1a; border-radius:24px; border:1px solid rgba(168,85,247,0.4); padding:30px; box-shadow:0 25px 60px rgba(0,0,0,0.9); position:relative;">
+            <button onclick="closeNewsReaderModal()" style="position:absolute; top:20px; right:20px; background:rgba(255,255,255,0.1); border:none; color:#fff; width:36px; height:36px; border-radius:50%; cursor:pointer; font-weight:bold; font-size:18px;">✕</button>
+            <div id="newsReaderBadge" style="display:inline-block; padding:4px 14px; background:rgba(168,85,247,0.2); color:#c084fc; border-radius:50px; font-size:0.75rem; font-weight:bold; margin-bottom:12px;">AI BREAKTHROUGH</div>
+            <h2 id="newsReaderTitle" style="font-size:1.5rem; font-weight:800; color:#fff; margin-bottom:12px; line-height:1.3;">Article Title Loading...</h2>
+            <div style="display:flex; gap:15px; font-size:0.8rem; color:#94a3b8; margin-bottom:20px;">
+                <span id="newsReaderDate">📅 Just Now</span>
+                <span>•</span>
+                <span id="newsReaderReadTime">⏱️ 3 min read</span>
+                <span>•</span>
+                <span style="color:#0ea5e9;">🌐 HackerNews & Dev.to Stream</span>
+            </div>
+            <img id="newsReaderImg" src="" alt="Article Banner" style="width:100%; max-height:280px; object-fit:cover; border-radius:14px; border:1px solid rgba(255,255,255,0.1); margin-bottom:20px;">
+            <div id="newsReaderDesc" style="color:#cbd5e1; font-size:0.95rem; line-height:1.7; margin-bottom:20px;">
+                Article summary content...
+            </div>
+            <div style="background:rgba(14,165,233,0.08); border-left:4px solid #0ea5e9; padding:15px; border-radius:8px; margin-bottom:25px;">
+                <h4 style="color:#0ea5e9; font-size:0.9rem; margin:0 0 6px 0;">⚡ Key Takeaway for Data Engineers:</h4>
+                <p id="newsReaderTakeaway" style="color:#94a3b8; font-size:0.85rem; margin:0; line-height:1.5;">Architectural implication summary for Lakehouse & Pipeline engineers.</p>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <a id="newsReaderLink" href="#" target="_blank" class="btn-glow" style="padding:10px 24px; font-size:0.9rem;">
+                    Read Full Source Article ↗
+                </a>
+                <button onclick="closeNewsReaderModal()" class="btn-outline" style="padding:10px 20px; font-size:0.85rem;">Close Reader</button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        @keyframes waveBar {
+            0% { height: 10px; }
+            100% { height: 45px; }
+        }
+    </style>
+
+    <script src="script.js"></script>
+</body>
+</html>

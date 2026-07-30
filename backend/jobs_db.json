@@ -1,0 +1,902 @@
+[
+    {
+        "id": "copy-job-101",
+        "title": "Marketing Copywriter",
+        "company": "Dentsu",
+        "location": "Singapore",
+        "type": "Full Time",
+        "source": "Direct",
+        "salary": "$75k - $126k",
+        "posted_offset": 60,
+        "url": "https://www.indeed.com/jobs",
+        "description": "About the Role:\nWe need a Direct Response Copywriter who knows how to sell. You will write email sequences, Facebook ads, and sales pages that convert. Proven track record of generating revenue through copy is required.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Mastery of direct response principles.",
+            "Experience with email marketing platforms.",
+            "Data-driven approach to copy testing (A/B testing).",
+            "Strong persuasive writing skills."
+        ]
+    },
+    {
+        "id": "copy-job-102",
+        "title": "Marketing Copywriter",
+        "company": "Droga5",
+        "location": "Chicago, IL, USA",
+        "type": "Full Time",
+        "source": "Glassdoor",
+        "salary": "$64k - $120k",
+        "posted_offset": 140,
+        "url": "https://www.linkedin.com/jobs",
+        "description": "About the Role:\nAs a UX Writer, you will shape the voice of our product. You'll write clear, concise, and helpful UI text, from onboarding flows to error messages, ensuring our users have a seamless and delightful experience.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Experience writing microcopy for digital products.",
+            "Familiarity with Figma.",
+            "User-centric approach to writing.",
+            "Excellent collaboration skills with designers."
+        ]
+    },
+    {
+        "id": "copy-job-103",
+        "title": "Brand Storyteller",
+        "company": "Adobe",
+        "location": "Chicago, IL, USA",
+        "type": "Freelance",
+        "source": "Glassdoor",
+        "salary": "$80k - $125k",
+        "posted_offset": 33,
+        "url": "https://www.linkedin.com/jobs",
+        "description": "About the Role:\nYour role is to translate complex technical concepts into engaging, easy-to-understand content for a B2B audience. You will write case studies, API documentation guides, and thought leadership articles.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "5+ years of agency experience.",
+            "A stellar portfolio showcasing diverse campaigns.",
+            "Exceptional grammar and proofreading skills.",
+            "Ability to work under tight deadlines."
+        ]
+    },
+    {
+        "id": "copy-job-104",
+        "title": "Direct Response Copywriter",
+        "company": "Notion",
+        "location": "London, UK",
+        "type": "Full Time",
+        "source": "Indeed",
+        "salary": "$102k - $163k",
+        "posted_offset": 102,
+        "url": "https://www.indeed.com/jobs",
+        "description": "About the Role:\nJoin our dynamic content team to write SEO-optimized articles, whitepapers, and landing pages. You must have a deep understanding of keyword research, user intent, and how to write authoritative content that ranks on the first page of Google.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Proven SEO writing experience.",
+            "Familiarity with Ahrefs/Semrush.",
+            "Experience with CMS like WordPress/Webflow.",
+            "Strong understanding of B2B marketing funnels."
+        ]
+    },
+    {
+        "id": "copy-job-105",
+        "title": "Direct Response Copywriter",
+        "company": "Leo Burnett",
+        "location": "Dublin, Ireland",
+        "type": "Full Time",
+        "source": "LinkedIn",
+        "salary": "$83k - $146k",
+        "posted_offset": 76,
+        "url": "https://www.linkedin.com/jobs",
+        "description": "About the Role:\nWe need a Direct Response Copywriter who knows how to sell. You will write email sequences, Facebook ads, and sales pages that convert. Proven track record of generating revenue through copy is required.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Mastery of direct response principles.",
+            "Experience with email marketing platforms.",
+            "Data-driven approach to copy testing (A/B testing).",
+            "Strong persuasive writing skills."
+        ]
+    },
+    {
+        "id": "copy-job-106",
+        "title": "Social Media Copywriter",
+        "company": "Apple",
+        "location": "Remote (Europe)",
+        "type": "Full Time",
+        "source": "Upwork",
+        "salary": "$96k - $156k",
+        "posted_offset": 130,
+        "url": "https://www.indeed.com/jobs",
+        "description": "About the Role:\nYour role is to translate complex technical concepts into engaging, easy-to-understand content for a B2B audience. You will write case studies, API documentation guides, and thought leadership articles.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "5+ years of agency experience.",
+            "A stellar portfolio showcasing diverse campaigns.",
+            "Exceptional grammar and proofreading skills.",
+            "Ability to work under tight deadlines."
+        ]
+    },
+    {
+        "id": "copy-job-107",
+        "title": "Direct Response Copywriter",
+        "company": "BBDO",
+        "location": "Chicago, IL, USA",
+        "type": "Freelance",
+        "source": "LinkedIn",
+        "salary": "$76k - $131k",
+        "posted_offset": 19,
+        "url": "https://www.upwork.com/jobs",
+        "description": "About the Role:\nAs a UX Writer, you will shape the voice of our product. You'll write clear, concise, and helpful UI text, from onboarding flows to error messages, ensuring our users have a seamless and delightful experience.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Experience writing microcopy for digital products.",
+            "Familiarity with Figma.",
+            "User-centric approach to writing.",
+            "Excellent collaboration skills with designers."
+        ]
+    },
+    {
+        "id": "copy-job-108",
+        "title": "Senior Copywriter",
+        "company": "Leo Burnett",
+        "location": "Sydney, NSW, Australia",
+        "type": "Freelance",
+        "source": "Indeed",
+        "salary": "$107k - $149k",
+        "posted_offset": 20,
+        "url": "https://www.indeed.com/jobs",
+        "description": "About the Role:\nAs a UX Writer, you will shape the voice of our product. You'll write clear, concise, and helpful UI text, from onboarding flows to error messages, ensuring our users have a seamless and delightful experience.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Experience writing microcopy for digital products.",
+            "Familiarity with Figma.",
+            "User-centric approach to writing.",
+            "Excellent collaboration skills with designers."
+        ]
+    },
+    {
+        "id": "copy-job-109",
+        "title": "Social Media Copywriter",
+        "company": "Notion",
+        "location": "Chicago, IL, USA",
+        "type": "Contract",
+        "source": "Upwork",
+        "salary": "$75k - $134k",
+        "posted_offset": 12,
+        "url": "https://www.linkedin.com/jobs",
+        "description": "About the Role:\nWe are looking for an exceptional wordsmith to craft compelling narratives for our global campaigns. You will collaborate closely with art directors, marketing strategists, and product managers to create high-impact copy that drives engagement and conversion.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "5+ years of agency experience.",
+            "A stellar portfolio showcasing diverse campaigns.",
+            "Exceptional grammar and proofreading skills.",
+            "Ability to work under tight deadlines."
+        ]
+    },
+    {
+        "id": "copy-job-110",
+        "title": "Direct Response Copywriter",
+        "company": "Spotify",
+        "location": "Sydney, NSW, Australia",
+        "type": "Freelance",
+        "source": "Glassdoor",
+        "salary": "$108k - $178k",
+        "posted_offset": 14,
+        "url": "https://www.glassdoor.com/jobs",
+        "description": "About the Role:\nYour role is to translate complex technical concepts into engaging, easy-to-understand content for a B2B audience. You will write case studies, API documentation guides, and thought leadership articles.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "5+ years of agency experience.",
+            "A stellar portfolio showcasing diverse campaigns.",
+            "Exceptional grammar and proofreading skills.",
+            "Ability to work under tight deadlines."
+        ]
+    },
+    {
+        "id": "copy-job-111",
+        "title": "Creative Director",
+        "company": "Stripe",
+        "location": "Singapore",
+        "type": "Contract",
+        "source": "Upwork",
+        "salary": "$63k - $127k",
+        "posted_offset": 89,
+        "url": "https://www.indeed.com/jobs",
+        "description": "About the Role:\nYour role is to translate complex technical concepts into engaging, easy-to-understand content for a B2B audience. You will write case studies, API documentation guides, and thought leadership articles.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "5+ years of agency experience.",
+            "A stellar portfolio showcasing diverse campaigns.",
+            "Exceptional grammar and proofreading skills.",
+            "Ability to work under tight deadlines."
+        ]
+    },
+    {
+        "id": "copy-job-112",
+        "title": "Brand Storyteller",
+        "company": "HubSpot",
+        "location": "San Francisco, CA, USA",
+        "type": "Freelance",
+        "source": "Indeed",
+        "salary": "$108k - $138k",
+        "posted_offset": 46,
+        "url": "https://www.upwork.com/jobs",
+        "description": "About the Role:\nWe need a Direct Response Copywriter who knows how to sell. You will write email sequences, Facebook ads, and sales pages that convert. Proven track record of generating revenue through copy is required.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Mastery of direct response principles.",
+            "Experience with email marketing platforms.",
+            "Data-driven approach to copy testing (A/B testing).",
+            "Strong persuasive writing skills."
+        ]
+    },
+    {
+        "id": "copy-job-113",
+        "title": "B2B Content Strategist",
+        "company": "Netflix",
+        "location": "Sydney, NSW, Australia",
+        "type": "Contract",
+        "source": "Otta",
+        "salary": "$76k - $144k",
+        "posted_offset": 41,
+        "url": "https://www.glassdoor.com/jobs",
+        "description": "About the Role:\nYour role is to translate complex technical concepts into engaging, easy-to-understand content for a B2B audience. You will write case studies, API documentation guides, and thought leadership articles.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "5+ years of agency experience.",
+            "A stellar portfolio showcasing diverse campaigns.",
+            "Exceptional grammar and proofreading skills.",
+            "Ability to work under tight deadlines."
+        ]
+    },
+    {
+        "id": "copy-job-114",
+        "title": "B2B Content Strategist",
+        "company": "Apple",
+        "location": "Remote (Europe)",
+        "type": "Full Time",
+        "source": "Otta",
+        "salary": "$76k - $146k",
+        "posted_offset": 9,
+        "url": "https://www.linkedin.com/jobs",
+        "description": "About the Role:\nWe are looking for an exceptional wordsmith to craft compelling narratives for our global campaigns. You will collaborate closely with art directors, marketing strategists, and product managers to create high-impact copy that drives engagement and conversion.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "5+ years of agency experience.",
+            "A stellar portfolio showcasing diverse campaigns.",
+            "Exceptional grammar and proofreading skills.",
+            "Ability to work under tight deadlines."
+        ]
+    },
+    {
+        "id": "copy-job-115",
+        "title": "Marketing Copywriter",
+        "company": "Droga5",
+        "location": "Singapore",
+        "type": "Freelance",
+        "source": "Otta",
+        "salary": "$82k - $125k",
+        "posted_offset": 116,
+        "url": "https://www.glassdoor.com/jobs",
+        "description": "About the Role:\nJoin our dynamic content team to write SEO-optimized articles, whitepapers, and landing pages. You must have a deep understanding of keyword research, user intent, and how to write authoritative content that ranks on the first page of Google.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Proven SEO writing experience.",
+            "Familiarity with Ahrefs/Semrush.",
+            "Experience with CMS like WordPress/Webflow.",
+            "Strong understanding of B2B marketing funnels."
+        ]
+    },
+    {
+        "id": "copy-job-116",
+        "title": "Direct Response Copywriter",
+        "company": "Figma",
+        "location": "New York, NY, USA",
+        "type": "Full Time",
+        "source": "Upwork",
+        "salary": "$61k - $167k",
+        "posted_offset": 99,
+        "url": "https://www.indeed.com/jobs",
+        "description": "About the Role:\nJoin our dynamic content team to write SEO-optimized articles, whitepapers, and landing pages. You must have a deep understanding of keyword research, user intent, and how to write authoritative content that ranks on the first page of Google.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Proven SEO writing experience.",
+            "Familiarity with Ahrefs/Semrush.",
+            "Experience with CMS like WordPress/Webflow.",
+            "Strong understanding of B2B marketing funnels."
+        ]
+    },
+    {
+        "id": "copy-job-117",
+        "title": "Marketing Copywriter",
+        "company": "Droga5",
+        "location": "Chicago, IL, USA",
+        "type": "Contract",
+        "source": "LinkedIn",
+        "salary": "$74k - $153k",
+        "posted_offset": 167,
+        "url": "https://www.upwork.com/jobs",
+        "description": "About the Role:\nWe are looking for an exceptional wordsmith to craft compelling narratives for our global campaigns. You will collaborate closely with art directors, marketing strategists, and product managers to create high-impact copy that drives engagement and conversion.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "5+ years of agency experience.",
+            "A stellar portfolio showcasing diverse campaigns.",
+            "Exceptional grammar and proofreading skills.",
+            "Ability to work under tight deadlines."
+        ]
+    },
+    {
+        "id": "copy-job-118",
+        "title": "Technical Copywriter",
+        "company": "Stripe",
+        "location": "Berlin, Germany",
+        "type": "Contract",
+        "source": "Indeed",
+        "salary": "$80k - $147k",
+        "posted_offset": 36,
+        "url": "https://www.linkedin.com/jobs",
+        "description": "About the Role:\nWe need a Direct Response Copywriter who knows how to sell. You will write email sequences, Facebook ads, and sales pages that convert. Proven track record of generating revenue through copy is required.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Mastery of direct response principles.",
+            "Experience with email marketing platforms.",
+            "Data-driven approach to copy testing (A/B testing).",
+            "Strong persuasive writing skills."
+        ]
+    },
+    {
+        "id": "copy-job-119",
+        "title": "Marketing Copywriter",
+        "company": "Netflix",
+        "location": "Berlin, Germany",
+        "type": "Freelance",
+        "source": "Wellfound",
+        "salary": "$71k - $127k",
+        "posted_offset": 68,
+        "url": "https://www.indeed.com/jobs",
+        "description": "About the Role:\nWe are looking for an exceptional wordsmith to craft compelling narratives for our global campaigns. You will collaborate closely with art directors, marketing strategists, and product managers to create high-impact copy that drives engagement and conversion.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "5+ years of agency experience.",
+            "A stellar portfolio showcasing diverse campaigns.",
+            "Exceptional grammar and proofreading skills.",
+            "Ability to work under tight deadlines."
+        ]
+    },
+    {
+        "id": "copy-job-120",
+        "title": "Brand Storyteller",
+        "company": "Notion",
+        "location": "Sydney, NSW, Australia",
+        "type": "Full Time",
+        "source": "Glassdoor",
+        "salary": "$72k - $124k",
+        "posted_offset": 123,
+        "url": "https://www.indeed.com/jobs",
+        "description": "About the Role:\nWe need a Direct Response Copywriter who knows how to sell. You will write email sequences, Facebook ads, and sales pages that convert. Proven track record of generating revenue through copy is required.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Mastery of direct response principles.",
+            "Experience with email marketing platforms.",
+            "Data-driven approach to copy testing (A/B testing).",
+            "Strong persuasive writing skills."
+        ]
+    },
+    {
+        "id": "copy-job-121",
+        "title": "Technical Copywriter",
+        "company": "Salesforce",
+        "location": "San Francisco, CA, USA",
+        "type": "Full Time",
+        "source": "Indeed",
+        "salary": "$93k - $171k",
+        "posted_offset": 134,
+        "url": "https://www.upwork.com/jobs",
+        "description": "About the Role:\nWe need a Direct Response Copywriter who knows how to sell. You will write email sequences, Facebook ads, and sales pages that convert. Proven track record of generating revenue through copy is required.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Mastery of direct response principles.",
+            "Experience with email marketing platforms.",
+            "Data-driven approach to copy testing (A/B testing).",
+            "Strong persuasive writing skills."
+        ]
+    },
+    {
+        "id": "copy-job-122",
+        "title": "B2B Content Strategist",
+        "company": "Edelman",
+        "location": "Remote (Global)",
+        "type": "Full Time",
+        "source": "Indeed",
+        "salary": "$62k - $150k",
+        "posted_offset": 7,
+        "url": "https://www.upwork.com/jobs",
+        "description": "About the Role:\nYour role is to translate complex technical concepts into engaging, easy-to-understand content for a B2B audience. You will write case studies, API documentation guides, and thought leadership articles.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "5+ years of agency experience.",
+            "A stellar portfolio showcasing diverse campaigns.",
+            "Exceptional grammar and proofreading skills.",
+            "Ability to work under tight deadlines."
+        ]
+    },
+    {
+        "id": "copy-job-123",
+        "title": "Technical Copywriter",
+        "company": "Apple",
+        "location": "Toronto, ON, Canada",
+        "type": "Contract",
+        "source": "Glassdoor",
+        "salary": "$88k - $123k",
+        "posted_offset": 83,
+        "url": "https://www.glassdoor.com/jobs",
+        "description": "About the Role:\nYour role is to translate complex technical concepts into engaging, easy-to-understand content for a B2B audience. You will write case studies, API documentation guides, and thought leadership articles.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "5+ years of agency experience.",
+            "A stellar portfolio showcasing diverse campaigns.",
+            "Exceptional grammar and proofreading skills.",
+            "Ability to work under tight deadlines."
+        ]
+    },
+    {
+        "id": "copy-job-124",
+        "title": "SEO Content Writer",
+        "company": "BBDO",
+        "location": "Singapore",
+        "type": "Contract",
+        "source": "Indeed",
+        "salary": "$110k - $180k",
+        "posted_offset": 38,
+        "url": "https://www.linkedin.com/jobs",
+        "description": "About the Role:\nJoin our dynamic content team to write SEO-optimized articles, whitepapers, and landing pages. You must have a deep understanding of keyword research, user intent, and how to write authoritative content that ranks on the first page of Google.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Proven SEO writing experience.",
+            "Familiarity with Ahrefs/Semrush.",
+            "Experience with CMS like WordPress/Webflow.",
+            "Strong understanding of B2B marketing funnels."
+        ]
+    },
+    {
+        "id": "copy-job-125",
+        "title": "SEO Content Writer",
+        "company": "Netflix",
+        "location": "Remote (US)",
+        "type": "Full Time",
+        "source": "Indeed",
+        "salary": "$62k - $128k",
+        "posted_offset": 63,
+        "url": "https://www.glassdoor.com/jobs",
+        "description": "About the Role:\nYour role is to translate complex technical concepts into engaging, easy-to-understand content for a B2B audience. You will write case studies, API documentation guides, and thought leadership articles.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "5+ years of agency experience.",
+            "A stellar portfolio showcasing diverse campaigns.",
+            "Exceptional grammar and proofreading skills.",
+            "Ability to work under tight deadlines."
+        ]
+    },
+    {
+        "id": "copy-job-126",
+        "title": "UX Writer",
+        "company": "HubSpot",
+        "location": "Berlin, Germany",
+        "type": "Freelance",
+        "source": "Wellfound",
+        "salary": "$82k - $180k",
+        "posted_offset": 11,
+        "url": "https://www.indeed.com/jobs",
+        "description": "About the Role:\nWe need a Direct Response Copywriter who knows how to sell. You will write email sequences, Facebook ads, and sales pages that convert. Proven track record of generating revenue through copy is required.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Mastery of direct response principles.",
+            "Experience with email marketing platforms.",
+            "Data-driven approach to copy testing (A/B testing).",
+            "Strong persuasive writing skills."
+        ]
+    },
+    {
+        "id": "copy-job-127",
+        "title": "Social Media Copywriter",
+        "company": "Figma",
+        "location": "Amsterdam, Netherlands",
+        "type": "Freelance",
+        "source": "Otta",
+        "salary": "$92k - $143k",
+        "posted_offset": 124,
+        "url": "https://www.linkedin.com/jobs",
+        "description": "About the Role:\nAs a UX Writer, you will shape the voice of our product. You'll write clear, concise, and helpful UI text, from onboarding flows to error messages, ensuring our users have a seamless and delightful experience.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Experience writing microcopy for digital products.",
+            "Familiarity with Figma.",
+            "User-centric approach to writing.",
+            "Excellent collaboration skills with designers."
+        ]
+    },
+    {
+        "id": "copy-job-128",
+        "title": "Brand Storyteller",
+        "company": "Dentsu",
+        "location": "San Francisco, CA, USA",
+        "type": "Freelance",
+        "source": "Upwork",
+        "salary": "$98k - $173k",
+        "posted_offset": 6,
+        "url": "https://www.linkedin.com/jobs",
+        "description": "About the Role:\nWe need a Direct Response Copywriter who knows how to sell. You will write email sequences, Facebook ads, and sales pages that convert. Proven track record of generating revenue through copy is required.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Mastery of direct response principles.",
+            "Experience with email marketing platforms.",
+            "Data-driven approach to copy testing (A/B testing).",
+            "Strong persuasive writing skills."
+        ]
+    },
+    {
+        "id": "copy-job-129",
+        "title": "Direct Response Copywriter",
+        "company": "Notion",
+        "location": "San Francisco, CA, USA",
+        "type": "Contract",
+        "source": "Direct",
+        "salary": "$95k - $178k",
+        "posted_offset": 98,
+        "url": "https://www.indeed.com/jobs",
+        "description": "About the Role:\nAs a UX Writer, you will shape the voice of our product. You'll write clear, concise, and helpful UI text, from onboarding flows to error messages, ensuring our users have a seamless and delightful experience.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Experience writing microcopy for digital products.",
+            "Familiarity with Figma.",
+            "User-centric approach to writing.",
+            "Excellent collaboration skills with designers."
+        ]
+    },
+    {
+        "id": "copy-job-130",
+        "title": "UX Writer",
+        "company": "Shopify",
+        "location": "Austin, TX, USA",
+        "type": "Freelance",
+        "source": "Indeed",
+        "salary": "$65k - $138k",
+        "posted_offset": 163,
+        "url": "https://www.glassdoor.com/jobs",
+        "description": "About the Role:\nYour role is to translate complex technical concepts into engaging, easy-to-understand content for a B2B audience. You will write case studies, API documentation guides, and thought leadership articles.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "5+ years of agency experience.",
+            "A stellar portfolio showcasing diverse campaigns.",
+            "Exceptional grammar and proofreading skills.",
+            "Ability to work under tight deadlines."
+        ]
+    },
+    {
+        "id": "copy-job-131",
+        "title": "Creative Director",
+        "company": "TBWA",
+        "location": "San Francisco, CA, USA",
+        "type": "Full Time",
+        "source": "LinkedIn",
+        "salary": "$93k - $159k",
+        "posted_offset": 14,
+        "url": "https://www.indeed.com/jobs",
+        "description": "About the Role:\nJoin our dynamic content team to write SEO-optimized articles, whitepapers, and landing pages. You must have a deep understanding of keyword research, user intent, and how to write authoritative content that ranks on the first page of Google.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Proven SEO writing experience.",
+            "Familiarity with Ahrefs/Semrush.",
+            "Experience with CMS like WordPress/Webflow.",
+            "Strong understanding of B2B marketing funnels."
+        ]
+    },
+    {
+        "id": "copy-job-132",
+        "title": "Direct Response Copywriter",
+        "company": "Leo Burnett",
+        "location": "Remote (US)",
+        "type": "Full Time",
+        "source": "LinkedIn",
+        "salary": "$79k - $167k",
+        "posted_offset": 10,
+        "url": "https://www.upwork.com/jobs",
+        "description": "About the Role:\nAs a UX Writer, you will shape the voice of our product. You'll write clear, concise, and helpful UI text, from onboarding flows to error messages, ensuring our users have a seamless and delightful experience.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Experience writing microcopy for digital products.",
+            "Familiarity with Figma.",
+            "User-centric approach to writing.",
+            "Excellent collaboration skills with designers."
+        ]
+    },
+    {
+        "id": "copy-job-133",
+        "title": "Brand Storyteller",
+        "company": "Figma",
+        "location": "Toronto, ON, Canada",
+        "type": "Full Time",
+        "source": "Otta",
+        "salary": "$71k - $168k",
+        "posted_offset": 146,
+        "url": "https://www.linkedin.com/jobs",
+        "description": "About the Role:\nYour role is to translate complex technical concepts into engaging, easy-to-understand content for a B2B audience. You will write case studies, API documentation guides, and thought leadership articles.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "5+ years of agency experience.",
+            "A stellar portfolio showcasing diverse campaigns.",
+            "Exceptional grammar and proofreading skills.",
+            "Ability to work under tight deadlines."
+        ]
+    },
+    {
+        "id": "copy-job-134",
+        "title": "Technical Copywriter",
+        "company": "McCann",
+        "location": "Amsterdam, Netherlands",
+        "type": "Contract",
+        "source": "Direct",
+        "salary": "$105k - $144k",
+        "posted_offset": 118,
+        "url": "https://www.glassdoor.com/jobs",
+        "description": "About the Role:\nWe need a Direct Response Copywriter who knows how to sell. You will write email sequences, Facebook ads, and sales pages that convert. Proven track record of generating revenue through copy is required.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Mastery of direct response principles.",
+            "Experience with email marketing platforms.",
+            "Data-driven approach to copy testing (A/B testing).",
+            "Strong persuasive writing skills."
+        ]
+    },
+    {
+        "id": "copy-job-135",
+        "title": "Marketing Copywriter",
+        "company": "Wieden+Kennedy",
+        "location": "Austin, TX, USA",
+        "type": "Contract",
+        "source": "Wellfound",
+        "salary": "$100k - $171k",
+        "posted_offset": 72,
+        "url": "https://www.glassdoor.com/jobs",
+        "description": "About the Role:\nJoin our dynamic content team to write SEO-optimized articles, whitepapers, and landing pages. You must have a deep understanding of keyword research, user intent, and how to write authoritative content that ranks on the first page of Google.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Proven SEO writing experience.",
+            "Familiarity with Ahrefs/Semrush.",
+            "Experience with CMS like WordPress/Webflow.",
+            "Strong understanding of B2B marketing funnels."
+        ]
+    },
+    {
+        "id": "copy-job-136",
+        "title": "Marketing Copywriter",
+        "company": "Publicis",
+        "location": "Remote (US)",
+        "type": "Contract",
+        "source": "Glassdoor",
+        "salary": "$96k - $173k",
+        "posted_offset": 22,
+        "url": "https://www.glassdoor.com/jobs",
+        "description": "About the Role:\nYour role is to translate complex technical concepts into engaging, easy-to-understand content for a B2B audience. You will write case studies, API documentation guides, and thought leadership articles.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "5+ years of agency experience.",
+            "A stellar portfolio showcasing diverse campaigns.",
+            "Exceptional grammar and proofreading skills.",
+            "Ability to work under tight deadlines."
+        ]
+    },
+    {
+        "id": "copy-job-137",
+        "title": "SEO Content Writer",
+        "company": "Publicis",
+        "location": "Austin, TX, USA",
+        "type": "Freelance",
+        "source": "Indeed",
+        "salary": "$109k - $124k",
+        "posted_offset": 155,
+        "url": "https://www.upwork.com/jobs",
+        "description": "About the Role:\nWe need a Direct Response Copywriter who knows how to sell. You will write email sequences, Facebook ads, and sales pages that convert. Proven track record of generating revenue through copy is required.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Mastery of direct response principles.",
+            "Experience with email marketing platforms.",
+            "Data-driven approach to copy testing (A/B testing).",
+            "Strong persuasive writing skills."
+        ]
+    },
+    {
+        "id": "copy-job-138",
+        "title": "Technical Copywriter",
+        "company": "Publicis",
+        "location": "Los Angeles, CA, USA",
+        "type": "Full Time",
+        "source": "Otta",
+        "salary": "$89k - $160k",
+        "posted_offset": 72,
+        "url": "https://www.glassdoor.com/jobs",
+        "description": "About the Role:\nYour role is to translate complex technical concepts into engaging, easy-to-understand content for a B2B audience. You will write case studies, API documentation guides, and thought leadership articles.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "5+ years of agency experience.",
+            "A stellar portfolio showcasing diverse campaigns.",
+            "Exceptional grammar and proofreading skills.",
+            "Ability to work under tight deadlines."
+        ]
+    },
+    {
+        "id": "copy-job-139",
+        "title": "Social Media Copywriter",
+        "company": "Figma",
+        "location": "Remote (Europe)",
+        "type": "Contract",
+        "source": "Otta",
+        "salary": "$70k - $170k",
+        "posted_offset": 26,
+        "url": "https://www.indeed.com/jobs",
+        "description": "About the Role:\nYour role is to translate complex technical concepts into engaging, easy-to-understand content for a B2B audience. You will write case studies, API documentation guides, and thought leadership articles.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "5+ years of agency experience.",
+            "A stellar portfolio showcasing diverse campaigns.",
+            "Exceptional grammar and proofreading skills.",
+            "Ability to work under tight deadlines."
+        ]
+    },
+    {
+        "id": "copy-job-140",
+        "title": "Creative Director",
+        "company": "Dentsu",
+        "location": "Remote (Global)",
+        "type": "Freelance",
+        "source": "LinkedIn",
+        "salary": "$79k - $158k",
+        "posted_offset": 55,
+        "url": "https://www.linkedin.com/jobs",
+        "description": "About the Role:\nAs a UX Writer, you will shape the voice of our product. You'll write clear, concise, and helpful UI text, from onboarding flows to error messages, ensuring our users have a seamless and delightful experience.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Experience writing microcopy for digital products.",
+            "Familiarity with Figma.",
+            "User-centric approach to writing.",
+            "Excellent collaboration skills with designers."
+        ]
+    },
+    {
+        "id": "copy-job-141",
+        "title": "Brand Storyteller",
+        "company": "Apple",
+        "location": "Remote (Global)",
+        "type": "Contract",
+        "source": "Direct",
+        "salary": "$83k - $136k",
+        "posted_offset": 56,
+        "url": "https://www.indeed.com/jobs",
+        "description": "About the Role:\nAs a UX Writer, you will shape the voice of our product. You'll write clear, concise, and helpful UI text, from onboarding flows to error messages, ensuring our users have a seamless and delightful experience.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Experience writing microcopy for digital products.",
+            "Familiarity with Figma.",
+            "User-centric approach to writing.",
+            "Excellent collaboration skills with designers."
+        ]
+    },
+    {
+        "id": "copy-job-142",
+        "title": "Creative Director",
+        "company": "Nike",
+        "location": "Berlin, Germany",
+        "type": "Freelance",
+        "source": "Otta",
+        "salary": "$72k - $168k",
+        "posted_offset": 145,
+        "url": "https://www.upwork.com/jobs",
+        "description": "About the Role:\nAs a UX Writer, you will shape the voice of our product. You'll write clear, concise, and helpful UI text, from onboarding flows to error messages, ensuring our users have a seamless and delightful experience.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Experience writing microcopy for digital products.",
+            "Familiarity with Figma.",
+            "User-centric approach to writing.",
+            "Excellent collaboration skills with designers."
+        ]
+    },
+    {
+        "id": "copy-job-143",
+        "title": "Social Media Copywriter",
+        "company": "Spotify",
+        "location": "Amsterdam, Netherlands",
+        "type": "Freelance",
+        "source": "Direct",
+        "salary": "$65k - $143k",
+        "posted_offset": 79,
+        "url": "https://www.linkedin.com/jobs",
+        "description": "About the Role:\nWe need a Direct Response Copywriter who knows how to sell. You will write email sequences, Facebook ads, and sales pages that convert. Proven track record of generating revenue through copy is required.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Mastery of direct response principles.",
+            "Experience with email marketing platforms.",
+            "Data-driven approach to copy testing (A/B testing).",
+            "Strong persuasive writing skills."
+        ]
+    },
+    {
+        "id": "copy-job-144",
+        "title": "Marketing Copywriter",
+        "company": "Leo Burnett",
+        "location": "Toronto, ON, Canada",
+        "type": "Freelance",
+        "source": "Direct",
+        "salary": "$99k - $148k",
+        "posted_offset": 135,
+        "url": "https://www.indeed.com/jobs",
+        "description": "About the Role:\nWe need a Direct Response Copywriter who knows how to sell. You will write email sequences, Facebook ads, and sales pages that convert. Proven track record of generating revenue through copy is required.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Mastery of direct response principles.",
+            "Experience with email marketing platforms.",
+            "Data-driven approach to copy testing (A/B testing).",
+            "Strong persuasive writing skills."
+        ]
+    },
+    {
+        "id": "copy-job-145",
+        "title": "Senior Copywriter",
+        "company": "Airbnb",
+        "location": "Singapore",
+        "type": "Full Time",
+        "source": "Wellfound",
+        "salary": "$103k - $146k",
+        "posted_offset": 81,
+        "url": "https://www.upwork.com/jobs",
+        "description": "About the Role:\nJoin our dynamic content team to write SEO-optimized articles, whitepapers, and landing pages. You must have a deep understanding of keyword research, user intent, and how to write authoritative content that ranks on the first page of Google.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Proven SEO writing experience.",
+            "Familiarity with Ahrefs/Semrush.",
+            "Experience with CMS like WordPress/Webflow.",
+            "Strong understanding of B2B marketing funnels."
+        ]
+    },
+    {
+        "id": "copy-job-146",
+        "title": "B2B Content Strategist",
+        "company": "Leo Burnett",
+        "location": "Amsterdam, Netherlands",
+        "type": "Freelance",
+        "source": "Indeed",
+        "salary": "$77k - $130k",
+        "posted_offset": 72,
+        "url": "https://www.linkedin.com/jobs",
+        "description": "About the Role:\nJoin our dynamic content team to write SEO-optimized articles, whitepapers, and landing pages. You must have a deep understanding of keyword research, user intent, and how to write authoritative content that ranks on the first page of Google.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Proven SEO writing experience.",
+            "Familiarity with Ahrefs/Semrush.",
+            "Experience with CMS like WordPress/Webflow.",
+            "Strong understanding of B2B marketing funnels."
+        ]
+    },
+    {
+        "id": "copy-job-147",
+        "title": "Technical Copywriter",
+        "company": "Dentsu",
+        "location": "Toronto, ON, Canada",
+        "type": "Contract",
+        "source": "Direct",
+        "salary": "$70k - $129k",
+        "posted_offset": 26,
+        "url": "https://www.glassdoor.com/jobs",
+        "description": "About the Role:\nWe need a Direct Response Copywriter who knows how to sell. You will write email sequences, Facebook ads, and sales pages that convert. Proven track record of generating revenue through copy is required.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Mastery of direct response principles.",
+            "Experience with email marketing platforms.",
+            "Data-driven approach to copy testing (A/B testing).",
+            "Strong persuasive writing skills."
+        ]
+    },
+    {
+        "id": "copy-job-148",
+        "title": "Creative Director",
+        "company": "Spotify",
+        "location": "San Francisco, CA, USA",
+        "type": "Freelance",
+        "source": "Wellfound",
+        "salary": "$60k - $148k",
+        "posted_offset": 140,
+        "url": "https://www.upwork.com/jobs",
+        "description": "About the Role:\nYour role is to translate complex technical concepts into engaging, easy-to-understand content for a B2B audience. You will write case studies, API documentation guides, and thought leadership articles.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "5+ years of agency experience.",
+            "A stellar portfolio showcasing diverse campaigns.",
+            "Exceptional grammar and proofreading skills.",
+            "Ability to work under tight deadlines."
+        ]
+    },
+    {
+        "id": "copy-job-149",
+        "title": "Senior Copywriter",
+        "company": "Google",
+        "location": "Remote (Global)",
+        "type": "Contract",
+        "source": "Wellfound",
+        "salary": "$89k - $148k",
+        "posted_offset": 61,
+        "url": "https://www.upwork.com/jobs",
+        "description": "About the Role:\nWe need a Direct Response Copywriter who knows how to sell. You will write email sequences, Facebook ads, and sales pages that convert. Proven track record of generating revenue through copy is required.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Mastery of direct response principles.",
+            "Experience with email marketing platforms.",
+            "Data-driven approach to copy testing (A/B testing).",
+            "Strong persuasive writing skills."
+        ]
+    },
+    {
+        "id": "copy-job-150",
+        "title": "Social Media Copywriter",
+        "company": "Shopify",
+        "location": "Amsterdam, Netherlands",
+        "type": "Freelance",
+        "source": "Wellfound",
+        "salary": "$108k - $161k",
+        "posted_offset": 73,
+        "url": "https://www.glassdoor.com/jobs",
+        "description": "About the Role:\nAs a UX Writer, you will shape the voice of our product. You'll write clear, concise, and helpful UI text, from onboarding flows to error messages, ensuring our users have a seamless and delightful experience.\n\nWhy Join Us?\nWe offer competitive compensation, comprehensive benefits, and a culture that values creativity and innovation.",
+        "requirements": [
+            "Experience writing microcopy for digital products.",
+            "Familiarity with Figma.",
+            "User-centric approach to writing.",
+            "Excellent collaboration skills with designers."
+        ]
+    }
+]

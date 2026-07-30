@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL for Data Engineering — Mayur Soft@sonic</title>
+    <meta name="description" content="Complete 12-hour SQL course for Data Engineers. From basics to advanced Window Functions, CTEs, and real-world projects. Telugu + English.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="course.css">
+</head>
+<body>
+
+    <!-- COURSE HERO -->
+    <section class="course-hero">
+        <div class="aurora-bg"><div class="aurora-blob ab-1"></div><div class="aurora-blob ab-2"></div></div>
+        <div class="container">
+            <a href="index.html" class="back-link">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Back to Home
+            </a>
+            <div class="course-hero-content">
+                <div class="course-hero-left">
+                    <div class="sticker-label">📚 Full Course</div>
+                    <h1>SQL for <span class="shimmer-text">Data Engineering</span></h1>
+                    <p class="course-hero-sub">Complete 12-hour course from Zero to Advanced. Window Functions, CTEs, SCD, MERGE, Performance Tuning & 3 real-world projects. Telugu + English.</p>
+                    <div class="course-hero-stats">
+                        <div class="chs-item"><strong>50</strong><span>Topics</span></div>
+                        <div class="chs-item"><strong>12</strong><span>Hours</span></div>
+                        <div class="chs-item"><strong>8</strong><span>Modules</span></div>
+                        <div class="chs-item"><strong>3</strong><span>Projects</span></div>
+                    </div>
+                    <div class="course-hero-btns">
+                        <a href="#module-1" class="btn-glow"><span>Start Learning</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                        <div class="course-price-tag">
+                            <span class="cpt-price">₹2,999</span>
+                            <span class="cpt-original">₹5,999</span>
+                            <span class="cpt-off">50% OFF</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-hero-right">
+                    <div class="course-preview-card card-glow">
+                        <div class="cpc-video">
+                            <div class="cpc-play">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="#fff"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            </div>
+                            <span class="cpc-label">Preview Lesson</span>
+                        </div>
+                        <div class="cpc-info">
+                            <div>✅ Lifetime Access</div>
+                            <div>✅ Telugu + English</div>
+                            <div>✅ Certificate</div>
+                            <div>✅ Interview Prep</div>
+                            <div>✅ Transcript + Notes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGRESS BAR -->
+    <div class="course-progress-bar">
+        <div class="container cpb-inner">
+            <span class="cpb-text">Progress: <strong id="progressCount">0</strong> / 50 completed</span>
+            <div class="cpb-track"><div class="cpb-fill" id="progressFill" style="width:0%"></div></div>
+            <span class="cpb-pct" id="progressPct">0%</span>
+        </div>
+    </div>
+
+    <!-- MODULES -->
+    <section class="course-modules">
+        <div class="container">
+
+            <!-- MODULE 1 -->
+            <div class="module-block" id="module-1">
+                <div class="module-header" onclick="toggleModule(this)">
+                    <div class="mh-left">
+                        <span class="mh-num">01</span>
+                        <div>
+                            <h2>SQL Foundations</h2>
+                            <span class="mh-meta">6 topics • 1.5 hours • 🟢 Beginner</span>
+                        </div>
+                    </div>
+                    <svg class="mh-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="module-body open">
+                    <div class="topic-row" data-topic="1" onclick="openTopic(this, 'What is SQL? Why Data Engineers Need SQL', 1)">
+                        <input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()">
+                        <span class="tr-num">01</span>
+                        <div class="tr-info"><h4>What is SQL? Why Data Engineers Need SQL</h4><span>10 min • 🟢</span></div>
+                        <svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    </div>
+                    <div class="topic-row" data-topic="2" onclick="openTopic(this, 'Databases, Tables, Schemas — Big Picture', 2)">
+                        <input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()">
+                        <span class="tr-num">02</span>
+                        <div class="tr-info"><h4>Databases, Tables, Schemas — Big Picture</h4><span>12 min • 🟢</span></div>
+                        <svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    </div>
+                    <div class="topic-row" data-topic="3" onclick="openTopic(this, 'Installing SQL Server / Azure Data Studio', 3)">
+                        <input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()">
+                        <span class="tr-num">03</span>
+                        <div class="tr-info"><h4>Installing SQL Server / Azure Data Studio Setup</h4><span>15 min • 🟢</span></div>
+                        <svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    </div>
+                    <div class="topic-row" data-topic="4" onclick="openTopic(this, 'CREATE DATABASE, CREATE TABLE, Data Types', 4)">
+                        <input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()">
+                        <span class="tr-num">04</span>
+                        <div class="tr-info"><h4>CREATE DATABASE, CREATE TABLE, Data Types</h4><span>15 min • 🟢</span></div>
+                        <svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    </div>
+                    <div class="topic-row" data-topic="5" onclick="openTopic(this, 'INSERT, SELECT, UPDATE, DELETE — CRUD', 5)">
+                        <input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()">
+                        <span class="tr-num">05</span>
+                        <div class="tr-info"><h4>INSERT, SELECT, UPDATE, DELETE — CRUD Basics</h4><span>18 min • 🟢</span></div>
+                        <svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    </div>
+                    <div class="topic-row" data-topic="6" onclick="openTopic(this, 'WHERE, AND, OR, NOT, BETWEEN, IN, LIKE', 6)">
+                        <input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()">
+                        <span class="tr-num">06</span>
+                        <div class="tr-info"><h4>WHERE, AND, OR, NOT, BETWEEN, IN, LIKE</h4><span>20 min • 🟢</span></div>
+                        <svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 2 -->
+            <div class="module-block" id="module-2">
+                <div class="module-header" onclick="toggleModule(this)">
+                    <div class="mh-left"><span class="mh-num">02</span><div><h2>Data Retrieval Mastery</h2><span class="mh-meta">6 topics • 1.5 hours • 🟡 Intermediate</span></div></div>
+                    <svg class="mh-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="module-body">
+                    <div class="topic-row" data-topic="7" onclick="openTopic(this, 'ORDER BY, LIMIT/TOP, DISTINCT', 7)"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">07</span><div class="tr-info"><h4>ORDER BY, LIMIT/TOP, DISTINCT</h4><span>15 min • 🟢</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+                    <div class="topic-row" data-topic="8" onclick="openTopic(this, 'Aggregate Functions — COUNT, SUM, AVG, MIN, MAX', 8)"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">08</span><div class="tr-info"><h4>Aggregate Functions — COUNT, SUM, AVG, MIN, MAX</h4><span>18 min • 🟡</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+                    <div class="topic-row" data-topic="9" onclick="openTopic(this, 'GROUP BY & HAVING', 9)"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">09</span><div class="tr-info"><h4>GROUP BY & HAVING — Data Summarization</h4><span>18 min • 🟡</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+                    <div class="topic-row" data-topic="10" onclick="openTopic(this, 'NULL Handling — COALESCE, ISNULL, NULLIF', 10)"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">10</span><div class="tr-info"><h4>NULL Handling — IS NULL, COALESCE, ISNULL</h4><span>15 min • 🟡</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+                    <div class="topic-row" data-topic="11" onclick="openTopic(this, 'CASE WHEN — Conditional Logic', 11)"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">11</span><div class="tr-info"><h4>CASE WHEN — Conditional Logic in SQL</h4><span>15 min • 🟡</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+                    <div class="topic-row" data-topic="12" onclick="openTopic(this, 'String Functions — CONCAT, SUBSTRING, TRIM', 12)"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">12</span><div class="tr-info"><h4>String Functions — CONCAT, SUBSTRING, TRIM, REPLACE</h4><span>12 min • 🟡</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+                </div>
+            </div>
+
+            <!-- MODULE 3-8 headers (collapsed) -->
+            <div class="module-block" id="module-3"><div class="module-header" onclick="toggleModule(this)"><div class="mh-left"><span class="mh-num">03</span><div><h2>JOINs — The Heart of SQL</h2><span class="mh-meta">7 topics • 1.5 hours • 🟡🔴 Intermediate-Advanced</span></div></div><svg class="mh-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div><div class="module-body"><div class="topic-row" data-topic="13"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">13</span><div class="tr-info"><h4>INNER JOIN — Matching Records</h4><span>15 min • 🟡</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="14"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">14</span><div class="tr-info"><h4>LEFT JOIN, RIGHT JOIN — Keep All Records</h4><span>18 min • 🟡</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="15"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">15</span><div class="tr-info"><h4>FULL OUTER JOIN — Complete Picture</h4><span>12 min • 🟡</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="16"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">16</span><div class="tr-info"><h4>CROSS JOIN — Cartesian Product</h4><span>10 min • 🟡</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="17"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">17</span><div class="tr-info"><h4>SELF JOIN — Joining Table with Itself</h4><span>15 min • 🔴</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="18"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">18</span><div class="tr-info"><h4>Multiple JOINs — Joining 3+ Tables</h4><span>18 min • 🔴</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="19"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">19</span><div class="tr-info"><h4>JOIN Interview Questions — Practical Scenarios</h4><span>15 min • 🔴</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div></div>
+
+            <div class="module-block" id="module-4"><div class="module-header" onclick="toggleModule(this)"><div class="mh-left"><span class="mh-num">04</span><div><h2>Subqueries & CTEs</h2><span class="mh-meta">6 topics • 1.5 hours • 🔴 Advanced</span></div></div><svg class="mh-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div><div class="module-body"><div class="topic-row" data-topic="20"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">20</span><div class="tr-info"><h4>Subqueries in WHERE</h4><span>15 min • 🟡</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="21"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">21</span><div class="tr-info"><h4>Subqueries in SELECT — Column-level</h4><span>12 min • 🟡</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="22"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">22</span><div class="tr-info"><h4>Subqueries in FROM — Derived Tables</h4><span>15 min • 🔴</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="23"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">23</span><div class="tr-info"><h4>Correlated Subqueries — Row-by-Row</h4><span>18 min • 🔴</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="24"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">24</span><div class="tr-info"><h4>CTEs (WITH clause) — Clean Queries</h4><span>18 min • 🔴</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="25"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">25</span><div class="tr-info"><h4>Recursive CTEs — Hierarchical Data</h4><span>15 min • 🔴</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div></div>
+
+            <div class="module-block" id="module-5"><div class="module-header" onclick="toggleModule(this)"><div class="mh-left"><span class="mh-num">05</span><div><h2>Window Functions ⭐ Interview Must</h2><span class="mh-meta">8 topics • 2 hours • 🔴 Advanced</span></div></div><svg class="mh-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div><div class="module-body"><div class="topic-row" data-topic="26"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">26</span><div class="tr-info"><h4>ROW_NUMBER() — Numbering Rows</h4><span>15 min • 🔴</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="27"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">27</span><div class="tr-info"><h4>RANK() & DENSE_RANK()</h4><span>15 min • 🔴</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="28"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">28</span><div class="tr-info"><h4>NTILE() — Bucketing Data</h4><span>12 min • 🔴</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="29"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">29</span><div class="tr-info"><h4>LAG() & LEAD() — Previous/Next Row</h4><span>18 min • 🔴</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="30"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">30</span><div class="tr-info"><h4>FIRST_VALUE, LAST_VALUE, NTH_VALUE</h4><span>15 min • 🔴</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="31"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">31</span><div class="tr-info"><h4>SUM/AVG/COUNT OVER() — Running Aggregates</h4><span>18 min • 🔴</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="32"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">32</span><div class="tr-info"><h4>PARTITION BY vs GROUP BY</h4><span>12 min • 🔴</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="33"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">33</span><div class="tr-info"><h4>Window Functions Interview Problems</h4><span>20 min • 🔴</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div></div>
+
+            <div class="module-block" id="module-6"><div class="module-header" onclick="toggleModule(this)"><div class="mh-left"><span class="mh-num">06</span><div><h2>Data Engineering SQL ⭐</h2><span class="mh-meta">6 topics • 1.5 hours • 🔴 Industry</span></div></div><svg class="mh-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div><div class="module-body"><div class="topic-row" data-topic="34"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">34</span><div class="tr-info"><h4>Slowly Changing Dimensions (SCD 1, 2, 3)</h4><span>20 min • 🔴</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="35"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">35</span><div class="tr-info"><h4>MERGE Statement — UPSERT</h4><span>18 min • 🔴</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="36"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">36</span><div class="tr-info"><h4>Temp Tables vs Table Variables vs CTEs</h4><span>15 min • 🟡</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="37"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">37</span><div class="tr-info"><h4>Stored Procedures — Reusable Logic</h4><span>15 min • 🟡</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="38"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">38</span><div class="tr-info"><h4>Views & Materialized Views</h4><span>12 min • 🟡</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="39"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">39</span><div class="tr-info"><h4>Indexes — B-Tree, Clustered vs Non-Clustered</h4><span>15 min • 🔴</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div></div>
+
+            <div class="module-block" id="module-7"><div class="module-header" onclick="toggleModule(this)"><div class="mh-left"><span class="mh-num">07</span><div><h2>Performance & Optimization</h2><span class="mh-meta">5 topics • 1 hour • 🔴 Expert</span></div></div><svg class="mh-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div><div class="module-body"><div class="topic-row" data-topic="40"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">40</span><div class="tr-info"><h4>Execution Plans — How SQL Engine Thinks</h4><span>15 min • 🔴</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="41"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">41</span><div class="tr-info"><h4>Query Optimization — Do's and Don'ts</h4><span>15 min • 🔴</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="42"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">42</span><div class="tr-info"><h4>Partitioning Tables — Big Data Handling</h4><span>12 min • 🔴</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="43"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">43</span><div class="tr-info"><h4>Transactions & ACID Properties</h4><span>12 min • 🔴</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="44"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">44</span><div class="tr-info"><h4>Error Handling — TRY...CATCH</h4><span>10 min • 🟡</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div></div>
+
+            <div class="module-block" id="module-8"><div class="module-header" onclick="toggleModule(this)"><div class="mh-left"><span class="mh-num">08</span><div><h2>Projects & Interview ⭐</h2><span class="mh-meta">6 topics • 1.5 hours • 🔴 Real-World</span></div></div><svg class="mh-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div><div class="module-body"><div class="topic-row" data-topic="45"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">45</span><div class="tr-info"><h4>Project 1: E-Commerce Sales Analysis Pipeline</h4><span>20 min • 🔴</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="46"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">46</span><div class="tr-info"><h4>Project 2: Employee Hierarchy (Recursive CTE)</h4><span>15 min • 🔴</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="47"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">47</span><div class="tr-info"><h4>Project 3: Data Quality Framework in SQL</h4><span>18 min • 🔴</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="48"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">48</span><div class="tr-info"><h4>Top 20 SQL Interview Questions for Data Engineers</h4><span>20 min • 🔴</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="49"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">49</span><div class="tr-info"><h4>SQL in PySpark vs SQL Server — Differences</h4><span>12 min • 🟡</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="topic-row" data-topic="50"><input type="checkbox" class="topic-check" onclick="event.stopPropagation();updateProgress()"><span class="tr-num">50</span><div class="tr-info"><h4>Career Roadmap — What's Next After SQL?</h4><span>10 min • 🟢</span></div><svg class="tr-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div></div>
+
+        </div>
+    </section>
+
+    <!-- VIDEO PLAYER + TRANSCRIPT + COMMENTS -->
+    <div class="video-modal" id="videoModal">
+        <div class="vm-overlay" onclick="closeVideo()"></div>
+        <div class="vm-content">
+            <div class="vm-header">
+                <h3 id="vmTitle">Lesson Title</h3>
+                <button onclick="closeVideo()" class="vm-close">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <div class="vm-video">
+                <div class="vm-placeholder">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    <p>Video will be added once recorded.<br><small>YouTube embed will appear here.</small></p>
+                </div>
+            </div>
+            <!-- Tabs -->
+            <div class="vm-tabs">
+                <button class="vm-tab active" onclick="switchTab('transcript')">📝 Transcript</button>
+                <button class="vm-tab" onclick="switchTab('comments')">💬 Comments</button>
+                <button class="vm-tab" onclick="switchTab('notes')">📋 Notes</button>
+            </div>
+            <div class="vm-tab-content" id="transcriptTab">
+                <div class="vm-transcript">
+                    <p><em>Transcript will be added after video recording. Each topic will have a full Telugu + English transcript for easy revision.</em></p>
+                    
+                    <h4 style="margin-top:20px; color:var(--t1);">Sample Code Snippet:</h4>
+                    <pre style="background:var(--surface); padding:16px; border-radius:8px; border:1px solid var(--border); overflow-x:auto; margin-top:10px;">
+<code style="color:#a855f7;">SELECT</code> e.employee_name, d.department_name, e.salary
+<code style="color:#a855f7;">FROM</code> employees e
+<code style="color:#a855f7;">JOIN</code> departments d <code style="color:#a855f7;">ON</code> e.department_id = d.department_id
+<code style="color:#a855f7;">WHERE</code> e.salary > <span style="color:#06b6d4;">50000</span>;
+                    </pre>
+                    
+                    <h4 style="margin-top:24px; color:var(--t1);">Architecture Diagram (Example):</h4>
+                    <div style="margin-top:10px; padding:20px; background:var(--surface); border:1px solid var(--border); border-radius:8px; text-align:center;">
+                        <svg width="100%" height="120" viewBox="0 0 400 120" fill="none" stroke="currentColor" stroke-width="2">
+                            <!-- Source -->
+                            <rect x="20" y="30" width="80" height="60" rx="8" fill="rgba(168,85,247,0.1)" stroke="#a855f7" />
+                            <text x="60" y="65" text-anchor="middle" font-size="14" fill="currentColor">Source DB</text>
+                            
+                            <!-- Arrow 1 -->
+                            <path d="M100 60 L150 60" stroke-dasharray="4 4" marker-end="url(#arrow)" />
+                            
+                            <!-- ETL -->
+                            <rect x="150" y="30" width="100" height="60" rx="8" fill="rgba(6,182,212,0.1)" stroke="#06b6d4" />
+                            <text x="200" y="65" text-anchor="middle" font-size="14" fill="currentColor">Spark ETL</text>
+                            
+                            <!-- Arrow 2 -->
+                            <path d="M250 60 L300 60" stroke-dasharray="4 4" marker-end="url(#arrow)" />
+                            
+                            <!-- Target -->
+                            <rect x="300" y="30" width="80" height="60" rx="8" fill="rgba(34,197,94,0.1)" stroke="#22c55e" />
+                            <text x="340" y="65" text-anchor="middle" font-size="14" fill="currentColor">Data Lake</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="vm-tab-content" id="commentsTab" style="display:none">
+                <div class="vm-comments">
+                    <div class="vm-comment-form">
+                        <input type="text" id="commentName" placeholder="Your name">
+                        <textarea id="commentText" placeholder="Ask a question or leave feedback..." rows="3"></textarea>
+                        <button onclick="addComment()" class="btn-glow" style="width:auto;padding:8px 24px;font-size:.85rem"><span>Post Comment</span></button>
+                    </div>
+                    <div class="vm-comment-list" id="commentList">
+                        <div class="vm-comment">
+                            <div class="vmc-avatar" style="background:linear-gradient(135deg,#8b5cf6,#6366f1)">MS</div>
+                            <div class="vmc-body">
+                                <strong>Mayur Soft@sonic</strong> <span class="vmc-time">Instructor</span>
+                                <p>Welcome! Feel free to ask any doubts here. I'll reply as soon as possible. 🙂</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="vm-tab-content" id="notesTab" style="display:none">
+                <div class="vm-notes">
+                    <p><em>Downloadable notes/cheat sheet will be added here for each topic. PDF format.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer" style="margin-top:80px">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <div class="brand-icon small">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                </div>
+                <span>Mayur <span class="brand-accent">Soft@sonic</span></span>
+            </div>
+            <p class="footer-copy">© 2025 Mayur Soft@sonic.in — SQL for Data Engineering</p>
+        </div>
+    </footer>
+
+    <script>
+    // Module toggle
+    function toggleModule(header) {
+        const body = header.nextElementSibling;
+        const chevron = header.querySelector('.mh-chevron');
+        body.classList.toggle('open');
+        chevron.style.transform = body.classList.contains('open') ? 'rotate(180deg)' : '';
+    }
+
+    // Open topic video modal
+    function openTopic(row, title, num) {
+        document.getElementById('vmTitle').textContent = 'Topic ' + num + ': ' + title;
+        document.getElementById('videoModal').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeVideo() {
+        document.getElementById('videoModal').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    // Tab switching
+    function switchTab(tab) {
+        document.querySelectorAll('.vm-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.vm-tab-content').forEach(t => t.style.display = 'none');
+        document.getElementById(tab + 'Tab').style.display = 'block';
+        event.target.classList.add('active');
+    }
+
+    // Progress tracking (localStorage)
+    function updateProgress() {
+        setTimeout(() => {
+            const checks = document.querySelectorAll('.topic-check');
+            const done = [...checks].filter(c => c.checked).length;
+            const pct = Math.round((done / 50) * 100);
+            document.getElementById('progressCount').textContent = done;
+            document.getElementById('progressPct').textContent = pct + '%';
+            document.getElementById('progressFill').style.width = pct + '%';
+            // Save to localStorage
+            const state = [...checks].map(c => c.checked);
+            localStorage.setItem('sqlCourseProgress', JSON.stringify(state));
+        }, 10);
+    }
+    // Restore progress
+    (function() {
+        const saved = localStorage.getItem('sqlCourseProgress');
+        if (saved) {
+            const state = JSON.parse(saved);
+            const checks = document.querySelectorAll('.topic-check');
+            state.forEach((v, i) => { if (checks[i]) checks[i].checked = v; });
+            updateProgress();
+        }
+    })();
+
+    // Comments (localStorage per topic)
+    function addComment() {
+        const name = document.getElementById('commentName').value.trim() || 'Student';
+        const text = document.getElementById('commentText').value.trim();
+        if (!text) return;
+        const initials = name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0,2);
+        const colors = ['#8b5cf6','#06b6d4','#f97316','#22c55e','#ef4444'];
+        const color = colors[Math.floor(Math.random()*colors.length)];
+        const html = `<div class="vm-comment"><div class="vmc-avatar" style="background:${color}">${initials}</div><div class="vmc-body"><strong>${name}</strong> <span class="vmc-time">Just now</span><p>${text}</p></div></div>`;
+        document.getElementById('commentList').insertAdjacentHTML('afterbegin', html);
+        document.getElementById('commentName').value = '';
+        document.getElementById('commentText').value = '';
+    }
+    </script>
+</body>
+</html>

@@ -1,11 +1,11 @@
-# 🚀 MANTRIS AI — GLOBAL DATA ENGINEERING & AI CAREER HUB
+# 🚀 MAYUR SOFT@SONIC — GLOBAL DATA ENGINEERING & AI CAREER HUB
 
-[![Live Website](https://img.shields.io/badge/🌐_MANTRIS_AI_Platform-Click_to_Launch-0078D4?style=for-the-badge&logo=githubpages&logoColor=white)](https://saigopal9666.github.io/portfolio-website/)
+[![Live Website](https://img.shields.io/badge/🌐_Soft%40sonic_Platform-Click_to_Launch-0078D4?style=for-the-badge&logo=githubpages&logoColor=white)](https://saigopal9666.github.io/portfolio-website/)
 [![DP-203 Verified](https://img.shields.io/badge/Microsoft-DP--203_Azure_Data_Engineer-blue?style=for-the-badge&logo=microsoft)](https://saigopal9666.github.io/portfolio-website/)
 [![DP-700 Candidate](https://img.shields.io/badge/Microsoft-DP--700_Fabric_Data_Engineer-purple?style=for-the-badge&logo=microsoftfabric)](https://saigopal9666.github.io/portfolio-website/)
 [![Medium Masterclasses](https://img.shields.io/badge/Medium-@ramgopal1992.m-black?style=for-the-badge&logo=medium)](https://medium.com/@ramgopal1992.m)
 
-Welcome to **MANTRIS AI**, the official open-source platform founded by **Sai Gopal Mayur, MCA**. Mantris AI is an All-in-One **Data Engineering & AI Career Acceleration Platform** designed to empower students, freshers, and experienced engineers with production-grade project proof, ATS resume analyzers, real-time tech news, and interactive code translators.
+Welcome to **Soft@sonic Technologies**, the official open-source platform founded by **Sai Gopal Mayur, MCA**. Soft@sonic is an All-in-One **Data Engineering & AI Career Acceleration Platform** designed to empower students, freshers, and experienced engineers with production-grade project proof, ATS resume analyzers, real-time tech news, and interactive code translators.
 
 ---
 
@@ -14,9 +14,9 @@ Welcome to **MANTRIS AI**, the official open-source platform founded by **Sai Go
 
 ---
 
-## 🎓 HOW MANTRIS AI EMPOWERS STUDENTS & JOB SEEKERS
+## 🎓 HOW MAYUR SOFT@SONIC EMPOWERS STUDENTS & JOB SEEKERS
 
-Mantris AI is built to bridge the gap between academic theory and real-world enterprise engineering. Here is how students and aspiring Data Engineers use the platform:
+Soft@sonic Technologies is built to bridge the gap between academic theory and real-world enterprise engineering. Here is how students and aspiring Data Engineers use the platform:
 
 1. 📄 **ATS Resume Analyzer & Contact Engine:**  
    - Integrated tools helping students structure ATS-optimized resumes that pass automated recruiter ATS scanners.
@@ -32,7 +32,7 @@ Mantris AI is built to bridge the gap between academic theory and real-world ent
 ---
 
 ## 🛠️ COMPREHENSIVE TECH STACK & DESIGN SYSTEM
-* **Platform Name:** MANTRIS AI (Founded by Sai Gopal Mayur, MCA).
+* **Platform & Brand:** Soft@sonic Technologies (Founded by Sai Gopal Mayur, MCA).
 * **Frontend UI/UX:** HTML5, Modern Vanilla CSS3 (Slate & Navy Executive Theme with Glassmorphic Glow), JavaScript ES6+ (Zero heavy framework overhead for sub-second page loads).
 * **Architecture:** 3-Tier Medallion Lakehouse Architecture (Bronze ➔ Silver ➔ Gold), REST APIs, JSON-RPC 2.0.
 * **Cloud & Big Data Stack:** Azure Data Factory (ADF), Databricks, Apache Spark 3.5, PySpark DataFrames, Delta Lake, Microsoft Fabric, OneLake.
@@ -81,7 +81,7 @@ Mantris AI is built to bridge the gap between academic theory and real-world ent
 
 **Sai Gopal Mayur, MCA**  
 *Azure Data Engineer & GenAI Platform Architect*  
-* 🌐 **Mantris AI Platform:** [saigopal9666.github.io/portfolio-website](https://saigopal9666.github.io/portfolio-website/)  
+* 🌐 **Soft@sonic Platform:** [saigopal9666.github.io/portfolio-website](https://saigopal9666.github.io/portfolio-website/)  
 * 🐙 **GitHub:** [github.com/saigopal9666](https://github.com/saigopal9666)  
 * 📰 **Medium Technical Articles:** [medium.com/@ramgopal1992.m](https://medium.com/@ramgopal1992.m)  
 * 📧 **Email:** ramgopal1992.m@gmail.com  

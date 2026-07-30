@@ -1122,11 +1122,59 @@ const TECH_IMAGE_MATRIX = [
 
 let GLOBAL_TECH_NEWS_DATABASE = [
     {
+        id: "n_in1",
+        tag: "INDIA SEMICONDUCTOR",
+        category: "Global & Geopolitics",
+        title: "India Semiconductor Mission: Tata-PSMC & Micron Chip Fabs Begin Production in Gujarat & Assam",
+        date: "Just Now",
+        readTime: "4 min read",
+        link: "https://pib.gov.in",
+        img_url: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop",
+        desc: "India's ₹1.2 Lakh Crore Semiconductor Mission accelerates local assembly, testing, and packaging (ATMP) for domestic automotive, AI, and EV telecom chips.",
+        takeaway: "Local chip manufacturing strengthens India's hardware supply chain independence and lowers cloud server procurement costs."
+    },
+    {
+        id: "n_in2",
+        tag: "BHARAT AI MISSION",
+        category: "AI Breakthroughs",
+        title: "India AI Mission Deploys 10,000+ GPU Sovereign Cloud Clusters Across Hyderabad & Bengaluru",
+        date: "10 mins ago",
+        readTime: "4 min read",
+        link: "https://indiaai.gov.in",
+        img_url: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop",
+        desc: "Sovereign AI initiative builds localized Indic language LLMs (BharatGen) and high-performance PySpark cloud compute infrastructure for Indian startups.",
+        takeaway: "Expands local cloud data engineering jobs and GPU compute access for enterprise analytics teams."
+    },
+    {
+        id: "n_in3",
+        tag: "ISRO SPACE DATA",
+        category: "Global & Geopolitics",
+        title: "ISRO NISAR & Earth Observation Satellites Stream Terabyte Telemetry Feeds to Azure Cloud",
+        date: "25 mins ago",
+        readTime: "5 min read",
+        link: "https://www.isro.gov.in",
+        img_url: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop",
+        desc: "ISRO partners with global cloud providers to process high-resolution synthetic aperture radar (SAR) telemetry data using PySpark & Delta Lakehouses.",
+        takeaway: "Real-time satellite data streaming powers agricultural analytics, climate modeling, and maritime tracking."
+    },
+    {
+        id: "n_in4",
+        tag: "INDIA DPI SHIELD",
+        category: "Global & Geopolitics",
+        title: "India Digital Public Infrastructure (UPI & Aadhaar) Integrates Real-time AI Cyber Defense",
+        date: "35 mins ago",
+        readTime: "4 min read",
+        link: "https://www.npci.org.in",
+        img_url: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop",
+        desc: "National Security Operations Center deploys machine learning anomaly detection to safeguard 15 Billion monthly UPI transactions against cyber threats.",
+        takeaway: "Demonstrates world-leading real-time data streaming and fraud detection engineering at national scale."
+    },
+    {
         id: "n1",
         tag: "GEOPOLITICS & CHIPS",
         category: "Global & Geopolitics",
         title: "TSMC & ASML Accelerate 2nm Chip Fabs Amid Global Semiconductor Supply Chain Shifts",
-        date: "Just Now",
+        date: "45 mins ago",
         readTime: "4 min read",
         link: "https://www.reuters.com/technology/",
         img_url: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop",

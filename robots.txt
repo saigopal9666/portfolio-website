@@ -1,0 +1,3 @@
+# Block all web crawlers and search engines (Google, Bing, Yahoo, Yandex, Baidu)
+User-agent: *
+Disallow: /

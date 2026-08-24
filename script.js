@@ -1,5 +1,5 @@
 /* ============================================
-   MAYUR SOFT@SONIC — PREMIUM JS
+   MSG SOFT@SONIC — PREMIUM JS
    Terminal typing, counters, reveals, glow cards
    ============================================ */
 
@@ -670,10 +670,10 @@ function capitalize(str) {
         pricing: '💰 <strong>Current Pricing:</strong><br><br>• Python: <strong>₹2,999</strong> <s>₹5,999</s> (50% OFF)<br>• PySpark & Fabric: <strong>₹6,999</strong> <s>₹12,999</s> (46% OFF)<br>• Azure DE: <strong>₹8,999</strong> <s>₹15,999</s> (44% OFF)<br>• Full Stack Bundle: <strong>₹14,999</strong> <s>₹34,997</s> (57% OFF)<br><br>🔥 Limited time offer! EMI options available.',
         placement: '💼 <strong>Placement Support:</strong><br><br>✅ Resume review & ATS optimization<br>✅ Mock interviews (technical + HR)<br>✅ Job referrals to partner companies<br>✅ LinkedIn profile optimization<br>✅ 92% placement rate!<br><br>Companies: TCS, Infosys, Wipro, Cognizant & more.',
         duration: '⏰ <strong>Course Durations:</strong><br><br>• Python: <strong>6 weeks</strong> (40+ videos)<br>• PySpark & Fabric: <strong>10 weeks</strong> (80+ videos)<br>• Azure DE: <strong>12 weeks</strong> (100+ videos)<br>• Full Stack: <strong>6 months</strong> (220+ videos)<br><br>All with <strong>lifetime access</strong> — learn at your own pace!',
-        contact: '📞 <strong>Contact Mayur:</strong><br><br>📧 Email: mayur@softsonic.in.org<br>💬 WhatsApp: Click the green button →<br>🔗 LinkedIn: linkedin.com/in/mayur<br><br>We respond within 2 hours!',
+        contact: '📞 <strong>Contact Sai Gopal:</strong><br><br>📧 Email: saigopalmayur@gmail.com.org<br>💬 WhatsApp: Click the green button →<br>🔗 LinkedIn: linkedin.com/in/mayur<br><br>We respond within 2 hours!',
         demo: '🎬 Yes! <strong>Free demo class</strong> available!<br><br>📹 Watch a sample PySpark lesson<br>📋 Get the complete syllabus<br>💬 Live Q&A session<br><br>Contact via WhatsApp to schedule!',
-        hello: '👋 Hello! Welcome to Mayur Soft@sonic!<br><br>📚 Course information<br>💰 Pricing & offers<br>💼 Placement support<br>🎬 Free demo<br><br>What would you like to know?',
-        default: '🤔 Great question! For detailed queries:<br><br>💬 Chat on <strong>WhatsApp</strong> (green button)<br>📧 Email: mayur@softsonic.in.org<br>📝 Or use the contact form<br><br>We respond within 2 hours!'
+        hello: '👋 Hello! Welcome to MSG Soft@sonic!<br><br>📚 Course information<br>💰 Pricing & offers<br>💼 Placement support<br>🎬 Free demo<br><br>What would you like to know?',
+        default: '🤔 Great question! For detailed queries:<br><br>💬 Chat on <strong>WhatsApp</strong> (green button)<br>📧 Email: saigopalmayur@gmail.com.org<br>📝 Or use the contact form<br><br>We respond within 2 hours!'
     };
 
     chatBtn.addEventListener('click', () => chatWindow.classList.toggle('open'));

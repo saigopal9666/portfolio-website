@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const termBody = document.getElementById('terminalBody');
     const codeSnippets = [
         [
-            { text: '# Mayur Soft@sonic — Data Pipeline', cls: 'tc' },
+            { text: '# MSG Soft@sonic — Data Pipeline', cls: 'tc' },
             { text: '' },
             { text: 'from', cls: 'tk', rest: ' pyspark.sql ' },
             { text: 'import', cls: 'tk', rest: ' SparkSession' },
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { text: '' },
             { text: 'spark = SparkSession.builder \\' },
             { text: '    .appName(', rest: '' },
-            { text: '"MayurPipeline"', cls: 'ts', rest: ')' },
+            { text: '"MSGPipeline"', cls: 'ts', rest: ')' },
             { text: '    .getOrCreate()' },
             { text: '' },
             { text: '# Read → Transform → Write', cls: 'tc' },
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { text: '"✅ Pipeline complete!"', cls: 'ts', rest: ')' }
         ],
         [
-            { text: '-- Mayur Soft@sonic — SQL Analytics', cls: 'tc' },
+            { text: '-- MSG Soft@sonic — SQL Analytics', cls: 'tc' },
             { text: '' },
             { text: 'SELECT', cls: 'tk', rest: ' category,' },
             { text: '    COUNT', cls: 'tk', rest: '(*) as skill_count,' },
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { text: '✅ Query successful (0.012s)', cls: 'ts', rest: '' }
         ],
         [
-            { text: '# Mayur Soft@sonic — Machine Learning', cls: 'tc' },
+            { text: '# MSG Soft@sonic — Machine Learning', cls: 'tc' },
             { text: '' },
             { text: 'import', cls: 'tk', rest: ' pandas ' },
             { text: 'as', cls: 'tk', rest: ' pd' },
@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
             termBody.innerHTML = '';
             
             const bootLines = [
-                '<span class="tk">mayur@db</span><span class="tw">:</span><span class="ts">~</span>$ Initializing SQL Engine...',
+                '<span class="tk">msg@db</span><span class="tw">:</span><span class="ts">~</span>$ Initializing SQL Engine...',
                 'Loading schema my_portfolio...',
                 'Schema loaded. 4 tables found.',
                 'Entering Interactive Mode...',
@@ -245,9 +245,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Update terminal title slightly to match context
                     const termTitle = document.querySelector('.term-title');
                     if (termTitle) {
-                        if (snippetIdx === 0) termTitle.textContent = 'mayur@sonic ~ pipeline.py';
-                        else if (snippetIdx === 1) termTitle.textContent = 'mayur@sonic ~ analytics.sql';
-                        else termTitle.textContent = 'mayur@sonic ~ train_model.py';
+                        if (snippetIdx === 0) termTitle.textContent = 'msg@sonic ~ pipeline.py';
+                        else if (snippetIdx === 1) termTitle.textContent = 'msg@sonic ~ analytics.sql';
+                        else termTitle.textContent = 'msg@sonic ~ train_model.py';
                     }
                     
                     typeChar();

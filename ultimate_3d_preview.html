@@ -77,7 +77,7 @@
     <div class="subtitles" id="subtitles"></div>
 
     <div class="cinematic-overlay">
-        <h1 class="cinematic-text" id="title1">Mayur Softsonic</h1>
+        <h1 class="cinematic-text" id="title1">MSG Soft@sonic</h1>
         <h1 class="cinematic-text" id="title2">Data Engineering</h1>
         <h1 class="cinematic-text" id="title3">AI Automation</h1>
         <h1 class="cinematic-text" id="title4">Elevate Your Career</h1>
@@ -96,7 +96,7 @@
                 
                 <!-- Scene 1: Hero -->
                 <div class="scene" id="s1">
-                    <h1 class="text-6xl font-black mb-4"><i class="fa-solid fa-rocket text-blue-600"></i><br>Mayur Softsonic</h1>
+                    <h1 class="text-6xl font-black mb-4"><i class="fa-solid fa-rocket text-blue-600"></i><br>MSG Soft@sonic</h1>
                     <p class="text-2xl text-slate-500">The Ultimate Career Ecosystem.</p>
                 </div>
 
@@ -108,7 +108,7 @@
 
                 <!-- Scene 3: Sandbox -->
                 <div class="scene" id="s3">
-                    <div class="opacity-50 text-sm mb-2">mayur@sonic ~ pipeline.py</div>
+                    <div class="opacity-50 text-sm mb-2">msg@sonic ~ pipeline.py</div>
                     <div id="typewriter"></div>
                 </div>
 
@@ -188,7 +188,7 @@
                     <div class="flex items-center justify-center gap-8 w-full px-12 mt-8">
                         <div class="flex-1 bg-slate-50 p-8 rounded-2xl border-2 border-dashed border-slate-300 flex flex-col items-center">
                             <i class="fa-solid fa-file-pdf text-4xl text-red-400 mb-4"></i>
-                            <div class="font-bold">mayur_resume.pdf</div>
+                            <div class="font-bold">msg_resume.pdf</div>
                         </div>
                         <i class="fa-solid fa-arrow-right text-3xl text-slate-300"></i>
                         <div class="flex-1 bg-green-50 p-8 rounded-2xl border-2 border-green-200 flex flex-col items-center justify-center">
@@ -221,7 +221,7 @@
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
             </div>
             <span style="display:flex;gap:5px;">
-                <span style="color:#f0f0f8;">Mayur</span>
+                <span style="color:#f0f0f8;">MSG</span>
                 <span style="background:linear-gradient(135deg,#7c3aed,#a855f7,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Soft@sonic</span>
             </span>
         </div>
@@ -283,7 +283,7 @@
             const trans = (outId, inId, st) => { tl.to(outId, { y: -1000, opacity: 0, duration: 1, ease: "power3.inOut" }, st).to(inId, { y: 0, opacity: 1, duration: 1, ease: "power3.inOut" }, st); };
 
             // 0s - S1: Intro
-            tl.call(() => speak("Welcome, to Mayur Softsonic! The ultimate, AI-powered Data Engineering ecosystem."), null, 0);
+            tl.call(() => speak("Welcome, to MSG Soft@sonic! The ultimate, AI-powered Data Engineering ecosystem."), null, 0);
             playTitle("#title1", 0);
             tl.to("#mockup", { opacity: 1, duration: 0.5 }, 3)
               .to("#cameraRig", { rotationX: 0, rotationY: 0, rotationZ: 0, scale: 0.9, z: 0, duration: 3, ease: "power4.inOut" }, 3);

@@ -1,8 +1,8 @@
 # 🚀 MSG SOFT@SONIC — ENTERPRISE DATA ENGINEERING & AI PLATFORM
 
-[![Live Website](https://img.shields.io/badge/🌐_MSG_Soft%40sonic_Platform-Click_to_Launch-0078D4?style=for-the-badge&logo=vercel&logoColor=white)](https://mayursoftsonic.vercel.app)
-[![DP-203 Verified](https://img.shields.io/badge/Microsoft-DP--203_Azure_Data_Engineer-blue?style=for-the-badge&logo=microsoft)](https://mayursoftsonic.vercel.app)
-[![DP-700 Candidate](https://img.shields.io/badge/Microsoft-DP--700_Fabric_Data_Engineer-purple?style=for-the-badge&logo=microsoftfabric)](https://mayursoftsonic.vercel.app)
+[![Live Website](https://img.shields.io/badge/🌐_MSG_Soft%40sonic_Platform-Click_to_Launch-0078D4?style=for-the-badge&logo=vercel&logoColor=white)](https://portfolio-website-softsonic1.vercel.app)
+[![DP-203 Verified](https://img.shields.io/badge/Microsoft-DP--203_Azure_Data_Engineer-blue?style=for-the-badge&logo=microsoft)](https://portfolio-website-softsonic1.vercel.app)
+[![DP-700 Candidate](https://img.shields.io/badge/Microsoft-DP--700_Fabric_Data_Engineer-purple?style=for-the-badge&logo=microsoftfabric)](https://portfolio-website-softsonic1.vercel.app)
 [![Medium Masterclasses](https://img.shields.io/badge/Medium-@saigopal_M-black?style=for-the-badge&logo=medium)](https://medium.com/@saigopal_M)
 
 Welcome to **MSG Soft@sonic**, the official engineering portfolio and data platform founded by **Sai Gopal M, MCA**. MSG Soft@sonic is an enterprise-grade **Data Engineering & AI Lakehouse Ecosystem** showcasing production-grade Medallion Lakehouses, real-time IoT Telemetry pipelines, PySpark data quality frameworks, and Power BI Direct Lake analytics.
@@ -10,7 +10,7 @@ Welcome to **MSG Soft@sonic**, the official engineering portfolio and data platf
 ---
 
 ## 🌟 PUBLIC LIVE PLATFORM URL
-👉 **[https://mayursoftsonic.vercel.app](https://mayursoftsonic.vercel.app)**
+👉 **[https://portfolio-website-softsonic1.vercel.app](https://portfolio-website-softsonic1.vercel.app)**
 
 ---
 
@@ -61,7 +61,7 @@ owsBetween(-9, 0)) to compute real-time battery degradation.
 
 **Sai Gopal M, MCA**  
 *Azure & Microsoft Fabric Data Engineer | PySpark & Medallion Lakehouse Specialist*  
-* 🌐 **Live Portfolio:** [mayursoftsonic.vercel.app](https://mayursoftsonic.vercel.app)  
+* 🌐 **Live Portfolio:** [portfolio-website-softsonic1.vercel.app](https://portfolio-website-softsonic1.vercel.app)  
 * 🐙 **GitHub:** [github.com/saigopal9666](https://github.com/saigopal9666)  
 * 📰 **Medium Articles:** [medium.com/@saigopal_M](https://medium.com/@saigopal_M)  
 * 📧 **Email:** saigopalmayur@gmail.com  
